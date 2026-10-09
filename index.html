@@ -8,7 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- 楷体 / 宋体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- 霞鹜文楷：清晰楷书 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <!-- 开源隶书近似：马善政楷书偏碑味，配合系统隶书优先 -->
   <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <style>
@@ -28,7 +30,15 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+    html, body {
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: auto;
+    }
 
     body {
       font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
@@ -42,12 +52,9 @@
 
     /* ========== Header ========== */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(242, 235, 224, 0.94);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 10;
+      background: var(--bg);
       border-bottom: 1px solid var(--border-light);
       padding: 20px 16px 16px;
     }
@@ -74,7 +81,7 @@
       font-size: 0.72rem;
       color: var(--ink-muted);
       letter-spacing: 0.22em;
-      font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", serif;
+      font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
     }
 
     .search-wrap {
@@ -144,7 +151,7 @@
       border: 1px solid var(--border);
       border-radius: 3px;
       background: transparent;
-      font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", "Noto Serif SC", serif;
+      font-family: "LXGW WenKai", "KaiTi", "STKaiti", "Noto Serif SC", serif;
       font-size: 0.82rem;
       color: var(--ink-soft);
       cursor: pointer;
@@ -188,7 +195,7 @@
       color: var(--ink-muted);
       margin-bottom: 16px;
       letter-spacing: 0.1em;
-      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
+      font-family: "LXGW WenKai", "KaiTi", serif;
     }
 
     .stats strong {
@@ -269,7 +276,7 @@
       border: 1px solid var(--border);
       border-radius: 3px;
       color: var(--ink-muted);
-      font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", serif;
+      font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
       letter-spacing: 0.08em;
       white-space: nowrap;
     }
@@ -279,7 +286,7 @@
       color: var(--ink-muted);
       text-decoration: none;
       letter-spacing: 0.08em;
-      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
+      font-family: "LXGW WenKai", "KaiTi", serif;
       transition: color var(--t);
       white-space: nowrap;
       display: inline-flex;
@@ -301,7 +308,7 @@
       color: var(--ink-muted);
       font-size: 0.92rem;
       letter-spacing: 0.12em;
-      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
+      font-family: "LXGW WenKai", "KaiTi", serif;
     }
 
     .hidden { display: none !important; }
@@ -313,7 +320,7 @@
       color: var(--ink-muted);
       border-top: 1px solid var(--border-light);
       letter-spacing: 0.1em;
-      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
+      font-family: "LXGW WenKai", "KaiTi", serif;
     }
 
     /* ========== 平板 ========== */
@@ -482,6 +489,372 @@
         font-size: 0.78rem;
       }
     }
+  
+    
+    .card-side-link {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+      font-family: "LXGW WenKai", "KaiTi", serif;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    @media (min-width: 860px) {
+      .card-side-link { font-size: 0.84rem; }
+      .card:hover .card-side-link { color: var(--ink); }
+    }
+
+    /* ===== 详情弹层 ===== */
+    .modal-mask {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(26, 23, 20, 0.45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s var(--ease), visibility 0.28s;
+    }
+
+    .modal-mask.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 520px;
+      max-height: min(88vh, 720px);
+      overflow-y: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px 24px;
+      position: relative;
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.3s var(--ease);
+      box-shadow: 0 16px 48px rgba(26, 23, 20, 0.18);
+    }
+
+    .modal-mask.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--ink-muted);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--t), color var(--t), border-color var(--t);
+      font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .modal-close:hover {
+      background: var(--hover);
+      color: var(--ink);
+      border-color: var(--ink-muted);
+    }
+
+    .modal-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--ink-muted);
+      font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      padding-right: 36px;
+    }
+
+    .modal-desc {
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      margin-bottom: 22px;
+      white-space: pre-wrap;
+    }
+
+    .modal-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px 20px;
+      border: none;
+      border-radius: 4px;
+      background: var(--accent);
+      color: #f6f1e8;
+      font-size: 0.95rem;
+      font-family: "LXGW WenKai", "KaiTi", serif;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .modal-download:hover {
+      background: #3d362c;
+      box-shadow: 0 4px 14px rgba(43, 38, 30, 0.25);
+    }
+
+    .modal-download:active {
+      transform: scale(0.98);
+    }
+
+    .modal-divider {
+      margin: 24px 0 18px;
+      border: none;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .modal-contact {
+      text-align: center;
+    }
+
+    .modal-contact-title {
+      font-family: "LXGW WenKai", "KaiTi", serif;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.14em;
+      margin-bottom: 14px;
+    }
+
+    .modal-qr {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-qr-placeholder {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 12px;
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      background: var(--hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-muted);
+      font-size: 0.75rem;
+      font-family: "LXGW WenKai", "KaiTi", serif;
+      letter-spacing: 0.08em;
+    }
+
+    .modal-wx {
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: 0.9rem;
+      color: var(--ink);
+      letter-spacing: 0.06em;
+    }
+
+    .modal-wx span {
+      color: var(--ink-muted);
+      font-size: 0.8rem;
+      margin-right: 6px;
+      font-family: "LXGW WenKai", "KaiTi", serif;
+    }
+
+    .modal-tip {
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+      font-family: "LXGW WenKai", "KaiTi", serif;
+    }
+
+    /* 卡片可点击提示 */
+    .card {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (min-width: 860px) {
+      .modal {
+        padding: 36px 32px 28px;
+        max-width: 560px;
+      }
+      .modal-title { font-size: 1.35rem; }
+      .modal-desc { font-size: 0.98rem; }
+      .modal-qr, .modal-qr-placeholder {
+        width: 160px;
+        height: 160px;
+      }
+    }
+
+  
+    /* 公众号徽章 · 极简内凹 */
+    .official-badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 16px;
+      border-radius: 3px;
+      background: rgba(232, 224, 210, 0.55);
+      border: 1px solid rgba(207, 196, 176, 0.7);
+      box-shadow:
+        inset 0 1px 3px rgba(40, 32, 20, 0.12),
+        inset 0 -1px 0 rgba(255, 252, 245, 0.35);
+      font-size: 0.84rem;
+      color: rgba(42, 38, 30, 0.72);
+      letter-spacing: 0.12em;
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      font-weight: 400;
+    }
+
+    /* 需要其他资源 · 联系客服栏 */
+    .need-more {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      background: rgba(251, 247, 240, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+    }
+
+    .need-more-text {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      font-family: "LXGW WenKai", "KaiTi", serif;
+    }
+
+    .need-more-btn {
+      padding: 6px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      font-family: "LXGW WenKai", "KaiTi", serif;
+      cursor: pointer;
+      transition: background var(--t), color var(--t), transform var(--t);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .need-more-btn:hover {
+      background: var(--accent);
+      color: #f6f1e8;
+    }
+
+    .need-more-btn:active {
+      transform: scale(0.97);
+    }
+
+    @media (min-width: 860px) {
+      .official-badge { margin-top: 16px; padding: 7px 20px; font-size: 0.9rem; }
+      .need-more {
+        margin-top: 18px;
+        padding: 14px 20px;
+      }
+      .need-more-text { font-size: 0.88rem; }
+      .need-more-btn { padding: 7px 18px; font-size: 0.85rem; }
+    }
+
+  
+    /* 公众号可点击 */
+    button.official-badge {
+      cursor: pointer;
+      font: inherit;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    }
+    button.official-badge:hover {
+      background: rgba(220, 210, 192, 0.75);
+      color: rgba(42, 38, 30, 0.9);
+    }
+    button.official-badge:active {
+      box-shadow: inset 0 2px 4px rgba(40, 32, 20, 0.2);
+    }
+
+    .stats { display: none !important; }
+
+
+
+
+    /* 回到顶部按钮 */
+    #backTop.back-top {
+      position: fixed !important;
+      right: 16px !important;
+      bottom: 28px !important;
+      left: auto !important;
+      top: auto !important;
+      z-index: 99999 !important;
+      width: 44px !important;
+      height: 44px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      border: 1px solid #cfc4b0 !important;
+      background: #fbf7f0 !important;
+      color: #4f493f !important;
+      font-size: 1.2rem !important;
+      line-height: 42px !important;
+      text-align: center !important;
+      cursor: pointer !important;
+      box-shadow: 0 2px 12px rgba(28, 23, 20, 0.15) !important;
+      opacity: 0 !important;
+      visibility: visible !important;
+      pointer-events: none !important;
+      transform: none !important;
+      transition: opacity 0.25s ease !important;
+      -webkit-tap-highlight-color: transparent;
+      font-family: "Noto Serif SC", serif !important;
+    }
+    #backTop.back-top.show {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    #backTop.back-top:hover {
+      background: #2b261e !important;
+      color: #f6f1e8 !important;
+      border-color: #2b261e !important;
+    }
+
   </style>
 </head>
 <body>
@@ -489,7 +862,7 @@
     <div class="header-inner">
       <div class="brand">
         <h1>五术搬财资源库</h1>
-        <p>公众号：简约推</p>
+        <button type="button" class="official-badge" id="officialBtn" aria-label="查看公众号二维码">公众号：五术推</button>
       </div>
       <div class="search-wrap">
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -502,11 +875,14 @@
         <div class="filter-layer layer2" id="layer2"></div>
         <div class="filter-layer layer3" id="layer3"></div>
       </div>
+      <div class="need-more" id="needMore">
+        <span class="need-more-text">需要其他资源？欢迎联系客服为你查找</span>
+        <button type="button" class="need-more-btn" id="needMoreBtn">联系客服</button>
+      </div>
     </div>
   </header>
 
   <main>
-    <div class="stats">共 <strong id="count">0</strong> 个资源</div>
     <div class="list" id="list"></div>
     <div class="empty hidden" id="empty">未找到相关资源</div>
   </main>
@@ -515,7 +891,39 @@
     <p>资源仅供学习参考 · 请勿用于商业用途</p>
   </footer>
 
+  
+
+
+</div>
+
+  <!-- 详情弹层 -->
+  <div class="modal-mask" id="modalMask" role="dialog" aria-modal="true">
+    <div class="modal" id="modal">
+      <button type="button" class="modal-close" id="modalClose" aria-label="关闭">×</button>
+      <span class="modal-tag" id="modalTag"></span>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <a class="modal-download" id="modalDownload" href="#" target="_blank" rel="noopener noreferrer">立即下载</a>
+      <hr class="modal-divider" />
+      <div class="modal-contact">
+        <div class="modal-contact-title">客服微信</div>
+        <img class="modal-qr" id="modalQr" src="" alt="客服微信二维码" style="display:none" />
+        <div class="modal-qr-placeholder" id="modalQrPlaceholder">请替换二维码</div>
+        <div class="modal-wx"><span>微信号</span><strong id="modalWxId">wushu_kefu</strong></div>
+        <p class="modal-tip">长按识别二维码 · 或搜索微信号添加</p>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ========== 客服配置（改这里） ==========
+    const CONTACT = {
+      wechatId: "Zbgaogang",   // 客服微信号
+      qrImage: "qrcode.png",              // 客服二维码图片，例如 "qrcode.png"
+      gzhName: "五术推",        // 公众号名称
+      gzhQr: "gzh-qr.png"                 // 公众号二维码图片，例如 "gzh-qr.png"
+    };
+
     const resources = [
       { id: "176", title: "通用中国手语系统培训视频课程", desc: "系统讲解国家通用手语常用表达，从基础手势、日常对话到场景交流逐步进阶，视频讲解清晰，支持反复回看，适合想要学习手语、方便和听障朋友交流的爱好者学习。", categoryName: "技能教程", link: "https://pan.quark.cn/s/7e298ead4d94" },
       { id: "175", title: "立体舌象六经辨证完整版教学课程", desc: "基础舌象识别到六经辨证对应逻辑，结合大量实操案例演示，把抽象的辨证方法转化为可落地的识别技巧，帮助学习者快速掌握实用舌诊技能。", categoryName: "医", link: "https://pan.quark.cn/s/5b5bd3aeecd6" },
@@ -710,9 +1118,26 @@
     let searchQuery = '';
 
     const listEl = document.getElementById('list');
-    const countEl = document.getElementById('count');
+    const countEl = document.getElementById('count'); // optional
     const emptyEl = document.getElementById('empty');
     const searchInput = document.getElementById('search');
+
+    const mask = document.getElementById('modalMask');
+    const modalClose = document.getElementById('modalClose');
+    const modalTag = document.getElementById('modalTag');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalDownload = document.getElementById('modalDownload');
+    const modalQr = document.getElementById('modalQr');
+    const modalQrPlaceholder = document.getElementById('modalQrPlaceholder');
+    const modalWxId = document.getElementById('modalWxId');
+
+    modalWxId.textContent = CONTACT.wechatId;
+    if (CONTACT.qrImage) {
+      modalQr.src = CONTACT.qrImage;
+      modalQr.style.display = 'block';
+      modalQrPlaceholder.style.display = 'none';
+    }
 
     function makeBtn(cat, container) {
       const btn = document.createElement('button');
@@ -727,6 +1152,9 @@
       container.appendChild(btn);
     }
 
+    ['layer1', 'layer2', 'layer3'].forEach(id => {
+      document.getElementById(id).innerHTML = '';
+    });
     layer1.forEach(c => makeBtn(c, document.getElementById('layer1')));
     layer2.forEach(c => makeBtn(c, document.getElementById('layer2')));
     layer3.forEach(c => makeBtn(c, document.getElementById('layer3')));
@@ -746,6 +1174,28 @@
       return d.innerHTML;
     }
 
+    function openModal(item) {
+      modalTag.textContent = item.categoryName;
+      modalTitle.textContent = item.title;
+      modalDesc.textContent = item.desc;
+      modalDownload.href = item.link || '#';
+      mask.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      mask.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    mask.addEventListener('click', (e) => {
+      if (e.target === mask) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
     function render() {
       let list = resources;
       if (currentCategory !== '全部') {
@@ -757,7 +1207,7 @@
           r.desc.toLowerCase().includes(searchQuery)
         );
       }
-      countEl.textContent = list.length;
+      if (countEl) countEl.textContent = list.length;
       listEl.innerHTML = '';
       if (list.length === 0) {
         emptyEl.classList.remove('hidden');
@@ -773,14 +1223,110 @@
           '<p class="card-desc">' + escapeHtml(item.desc) + '</p>' +
           '<div class="card-side">' +
             '<span class="card-tag">' + escapeHtml(item.categoryName) + '</span>' +
-            '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer">查看资源' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
+            '<span class="card-side-link">查看详情' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>' +
           '</div>';
+        card.addEventListener('click', () => openModal(item));
         listEl.appendChild(card);
       });
     }
 
+
+
+    function resetContactPanel() {
+      modalDownload.style.display = "";
+      modalWxId.textContent = CONTACT.wechatId;
+      var wxLabel = modalWxId.previousElementSibling;
+      if (wxLabel) wxLabel.textContent = "微信号";
+      var tip = document.querySelector(".modal-tip");
+      if (tip) tip.textContent = "长按识别二维码 · 或搜索微信号添加";
+      var contactTitle = document.querySelector(".modal-contact-title");
+      if (contactTitle) contactTitle.textContent = "客服微信";
+      if (CONTACT.qrImage) {
+        modalQr.src = CONTACT.qrImage;
+        modalQr.style.display = "block";
+        modalQrPlaceholder.style.display = "none";
+      } else {
+        modalQr.style.display = "none";
+        modalQrPlaceholder.style.display = "flex";
+        modalQrPlaceholder.textContent = "请替换二维码";
+      }
+    }
+
+    var needMoreBtn = document.getElementById("needMoreBtn");
+    if (needMoreBtn) {
+      needMoreBtn.addEventListener("click", function () {
+        resetContactPanel();
+        modalTag.textContent = "客服";
+        modalTitle.textContent = "需要其他资源？";
+        modalDesc.textContent = "如果列表中没有你想要的资源，可添加下方客服微信说明需求，我们会尽力帮你查找或整理。";
+        modalDownload.style.display = "none";
+        mask.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+    }
+
+    var officialBtn = document.getElementById("officialBtn");
+    if (officialBtn) {
+      officialBtn.addEventListener("click", function () {
+        modalTag.textContent = "公众号";
+        modalTitle.textContent = "公众号：" + (CONTACT.gzhName || "五术推");
+        modalDesc.textContent = "扫码关注公众号，获取更多资源与更新通知。";
+        modalDownload.style.display = "none";
+        if (CONTACT.gzhQr) {
+          modalQr.src = CONTACT.gzhQr;
+          modalQr.style.display = "block";
+          modalQrPlaceholder.style.display = "none";
+        } else {
+          modalQr.style.display = "none";
+          modalQrPlaceholder.style.display = "flex";
+          modalQrPlaceholder.textContent = "请配置公众号二维码";
+        }
+        modalWxId.textContent = CONTACT.gzhName || "五术推";
+        var wxLabel = modalWxId.previousElementSibling;
+        if (wxLabel) wxLabel.textContent = "公众号";
+        var tip = document.querySelector(".modal-tip");
+        if (tip) tip.textContent = "长按识别二维码 · 关注公众号";
+        var contactTitle = document.querySelector(".modal-contact-title");
+        if (contactTitle) contactTitle.textContent = "公众号二维码";
+        mask.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+    }
+
+    var _openModalCore = openModal;
+    openModal = function (item) {
+      resetContactPanel();
+      _openModalCore(item);
+    };
+
+
     render();
   </script>
+
+
+<!-- 回到顶部：必须在 body 下，不能放进弹层 -->
+<button type="button" class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+<script>
+(function () {
+  var btn = document.getElementById("backTop");
+  if (!btn) return;
+  // 若被误放进弹层，挪到 body 末尾
+  if (btn.parentElement && btn.parentElement.id === "modalMask") {
+    document.body.appendChild(btn);
+  }
+  function check() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (y > 40) btn.classList.add("show");
+    else btn.classList.remove("show");
+  }
+  window.addEventListener("scroll", check, { passive: true });
+  window.addEventListener("touchmove", check, { passive: true });
+  btn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  check();
+})();
+</script>
 </body>
 </html>
