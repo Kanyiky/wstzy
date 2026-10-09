@@ -2,109 +2,113 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="极简资源分享 · 学习资料、技能教程、传统文化合集" />
-  <title>资源库 · Resource Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="五术搬财资源库 · 山医命相卜" />
+  <title>五术搬财资源库</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- 楷体 / 宋体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
+  <!-- 开源隶书近似：马善政楷书偏碑味，配合系统隶书优先 -->
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #fafafa;
-      --surface: #ffffff;
-      --text: #1a1a1a;
-      --text-secondary: #666666;
-      --text-muted: #999999;
-      --border: #eaeaea;
-      --accent: #111111;
-      --accent-hover: #333333;
-      --tag-bg: #f0f0f0;
-      --shadow: 0 1px 3px rgba(0,0,0,0.04);
-      --radius: 12px;
-      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --bg: #f2ebe0;
+      --surface: #fbf7f0;
+      --ink: #1a1714;
+      --ink-soft: #4f493f;
+      --ink-muted: #8f8678;
+      --border: #d4c9b5;
+      --border-light: #e5dccb;
+      --accent: #2b261e;
+      --hover: #f3ece1;
+      --radius: 8px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --t: 0.28s var(--ease);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      /* 宋体：资源正文 */
+      font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      color: var(--ink);
+      line-height: 1.75;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      font-size: 16px;
     }
 
-    /* Header */
+    /* ========== Header ========== */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(250, 250, 250, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 20px;
+      background: rgba(242, 235, 224, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 28px 24px 22px;
     }
 
     .header-inner {
-      max-width: 1200px;
+      max-width: 920px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+      text-align: center;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    .brand { margin-bottom: 22px; }
 
+    /* 隶书标题 */
     .brand h1 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-family: "STLiti", "LiSu", "Baoli SC", "Ma Shan Zheng", "Noto Serif SC", serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+      line-height: 1.3;
     }
 
-    .brand span {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 400;
+    .brand p {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.28em;
+      font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", serif;
     }
 
     .search-wrap {
       position: relative;
+      max-width: 480px;
+      margin: 0 auto 22px;
     }
 
     .search-wrap input {
       width: 100%;
-      padding: 12px 16px 12px 42px;
+      padding: 13px 16px 13px 44px;
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 4px;
       background: var(--surface);
       font-size: 0.95rem;
-      color: var(--text);
+      color: var(--ink);
       outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition);
-      font-family: inherit;
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      text-align: center;
+      transition: border-color var(--t), box-shadow var(--t), text-align 0.15s;
     }
 
     .search-wrap input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+      border-color: var(--ink-muted);
+      box-shadow: 0 0 0 3px rgba(43, 38, 30, 0.06);
+      text-align: left;
     }
 
     .search-wrap input::placeholder {
-      color: var(--text-muted);
+      color: var(--ink-muted);
+      letter-spacing: 0.1em;
     }
 
     .search-icon {
@@ -112,209 +116,268 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
-      opacity: 0.4;
+      width: 17px;
+      height: 17px;
+      opacity: 0.32;
       pointer-events: none;
     }
 
-    /* Filters */
+    /* 分类 · 楷书 · 居中 */
     .filters {
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 2px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
 
-    .filters::-webkit-scrollbar {
-      display: none;
+    .filter-layer {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .filter-layer.layer2 .filter-btn {
+      min-width: 78px;
+    }
+
+    .filter-layer.layer3 .filter-btn {
+      min-width: 96px;
     }
 
     .filter-btn {
-      flex-shrink: 0;
-      padding: 6px 14px;
-      border-radius: 20px;
+      padding: 8px 18px;
       border: 1px solid var(--border);
-      background: var(--surface);
-      font-size: 0.8rem;
-      color: var(--text-secondary);
+      border-radius: 3px;
+      background: transparent;
+      /* 楷书 */
+      font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", "Noto Serif SC", serif;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
       cursor: pointer;
-      transition: all var(--transition);
-      font-family: inherit;
+      letter-spacing: 0.14em;
       white-space: nowrap;
+      transition: background var(--t), color var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
     }
 
     .filter-btn:hover {
-      border-color: var(--text-muted);
-      color: var(--text);
+      border-color: var(--ink-muted);
+      color: var(--ink);
+      background: var(--hover);
+      transform: translateY(-1px);
+    }
+
+    .filter-btn:active {
+      transform: translateY(0);
     }
 
     .filter-btn.active {
       background: var(--accent);
-      color: #fff;
+      color: #f6f1e8;
       border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(43, 38, 30, 0.18);
     }
 
-    /* Main */
+    .filter-layer.layer1 .filter-btn {
+      min-width: 72px;
+      letter-spacing: 0.22em;
+      font-size: 1rem;
+    }
+
+    /* ========== Main ========== */
     main {
-      max-width: 1200px;
+      max-width: 920px;
       margin: 0 auto;
-      padding: 24px 20px 60px;
+      padding: 28px 24px 72px;
     }
 
     .stats {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+      letter-spacing: 0.12em;
+      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
     }
 
     .stats strong {
-      color: var(--text);
+      color: var(--ink-soft);
       font-weight: 500;
+      font-family: "Noto Serif SC", serif;
     }
 
-    /* Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
+    .list {
+      display: flex;
+      flex-direction: column;
       gap: 16px;
     }
 
-    @media (min-width: 640px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
-    }
-
-    /* Card */
+    /* 卡片 */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      padding: 22px 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      column-gap: 20px;
+      row-gap: 8px;
+      transition: border-color var(--t), box-shadow var(--t), transform var(--t), background var(--t);
       opacity: 0;
-      animation: fadeIn 0.4s ease forwards;
+      animation: fadeUp 0.4s var(--ease) forwards;
+      will-change: transform, opacity;
     }
 
     .card:hover {
+      border-color: #c4b89f;
+      box-shadow: 0 6px 20px rgba(28, 23, 20, 0.07);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      border-color: #ddd;
+      background: #fcf9f3;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .card-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      padding: 3px 10px;
-      border-radius: 6px;
-      background: var(--tag-bg);
-      color: var(--text-secondary);
+    /* 宋体标题 */
+    .card-title {
+      grid-column: 1;
+      grid-row: 1;
+      font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+      font-size: 1.12rem;
       font-weight: 500;
-      letter-spacing: 0.02em;
-      width: fit-content;
+      line-height: 1.5;
+      color: var(--ink);
+      letter-spacing: 0.03em;
     }
 
-    .card-title {
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 1.4;
-      color: var(--text);
+    /* 宋体简介 */
+    .card-desc {
+      grid-column: 1;
+      grid-row: 2;
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .card-desc {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      flex: 1;
+    .card-side {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      min-width: 88px;
     }
 
-    .card-action {
-      margin-top: 4px;
+    .card-tag {
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--ink-muted);
+      /* 分类标签用楷书 */
+      font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", serif;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      transition: border-color var(--t), color var(--t);
     }
 
-    .card-action a {
+    .card:hover .card-tag {
+      border-color: var(--ink-muted);
+      color: var(--ink-soft);
+    }
+
+    .card-side a {
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
+      transition: color var(--t), transform var(--t);
+      white-space: nowrap;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      padding: 8px 0;
-      transition: color var(--transition);
+      gap: 4px;
     }
 
-    .card-action a:hover {
-      color: var(--accent-hover);
+    .card-side a:hover {
+      color: var(--ink);
+      transform: translateX(2px);
     }
 
-    .card-action a svg {
-      width: 14px;
-      height: 14px;
-      transition: transform var(--transition);
+    .card-side a svg {
+      width: 13px;
+      height: 13px;
+      transition: transform var(--t);
     }
 
-    .card-action a:hover svg {
+    .card-side a:hover svg {
       transform: translateX(3px);
     }
 
-    /* Empty */
     .empty {
       text-align: center;
-      padding: 80px 20px;
-      color: var(--text-muted);
+      padding: 72px 20px;
+      color: var(--ink-muted);
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
     }
 
-    .empty p {
-      font-size: 0.95rem;
-    }
+    .hidden { display: none !important; }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 30px 20px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
+      padding: 32px 20px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border-light);
+      letter-spacing: 0.12em;
+      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
     }
 
-    footer a {
-      color: var(--text-secondary);
-      text-decoration: none;
+    /* 桌面端更大 */
+    @media (min-width: 768px) {
+      body { font-size: 17px; }
+      header { padding: 36px 32px 28px; }
+      .brand { margin-bottom: 26px; }
+      .brand h1 { letter-spacing: 0.22em; }
+      main { padding: 36px 32px 88px; }
+      .card { padding: 26px 28px; gap: 10px 24px; }
+      .card-title { font-size: 1.2rem; }
+      .card-desc { font-size: 0.95rem; }
+      .filter-btn { font-size: 1rem; padding: 9px 20px; }
+      .list { gap: 18px; }
     }
 
-    /* Loading skeleton optional */
-    .hidden {
-      display: none !important;
+    @media (min-width: 1100px) {
+      .header-inner,
+      main { max-width: 1000px; }
+    }
+
+    @media (max-width: 520px) {
+      header { padding: 20px 16px 16px; }
+      main { padding: 20px 16px 56px; }
+      .card { padding: 16px 16px; column-gap: 12px; }
+      .card-title { font-size: 1rem; }
+      .card-side { min-width: 72px; }
+      .filter-layer.layer2 .filter-btn,
+      .filter-layer.layer3 .filter-btn {
+        min-width: 64px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+      .brand h1 { letter-spacing: 0.1em; font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -322,304 +385,298 @@
   <header>
     <div class="header-inner">
       <div class="brand">
-        <h1>资源库</h1>
-        <span>精选学习 · 技能 · 文化</span>
+        <h1>五术搬财资源库</h1>
+        <p>山 · 医 · 命 · 相 · 卜</p>
       </div>
       <div class="search-wrap">
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
-        <input type="search" id="search" placeholder="搜索标题或描述..." autocomplete="off" />
+        <input type="search" id="search" placeholder="搜索标题或描述" autocomplete="off" />
       </div>
-      <div class="filters" id="filters"></div>
+      <div class="filters">
+        <div class="filter-layer layer1" id="layer1"></div>
+        <div class="filter-layer layer2" id="layer2"></div>
+        <div class="filter-layer layer3" id="layer3"></div>
+      </div>
     </div>
   </header>
 
   <main>
-    <div class="stats" id="stats">共 <strong id="count">0</strong> 个资源</div>
-    <div class="grid" id="grid"></div>
-    <div class="empty hidden" id="empty">
-      <p>未找到相关资源，试试其他关键词或分类</p>
-    </div>
+    <div class="stats">共 <strong id="count">0</strong> 个资源</div>
+    <div class="list" id="list"></div>
+    <div class="empty hidden" id="empty">未找到相关资源</div>
   </main>
 
   <footer>
-    <p>资源仅供学习参考 · 请勿用于商业用途 · <a href="https://github.com" target="_blank" rel="noopener">GitHub</a></p>
+    <p>资源仅供学习参考 · 请勿用于商业用途</p>
   </footer>
 
   <script>
-    // ========== 资源数据 ==========
     const resources = [
-      { id: 176, title: "通用中国手语系统培训视频课程", desc: "系统讲解国家通用手语常用表达，从基础手势、日常对话到场景交流逐步进阶，视频讲解清晰，支持反复回看，适合想要学习手语、方便和听障朋友交流的爱好者学习。", category: "course", categoryName: "技能教程", link: "https://pan.quark.cn/s/7e298ead4d94" },
-      { id: 175, title: "立体舌象六经辨证完整版教学课程", desc: "基础舌象识别到六经辨证对应逻辑，结合大量实操案例演示，把抽象的辨证方法转化为可落地的识别技巧，帮助学习者快速掌握实用舌诊技能。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/5b5bd3aeecd6" },
-      { id: 174, title: "伤寒论药证实战应用详解合集", desc: "梳理经典典籍中的核心用药辨证思路，结合实际案例拆解，帮助学习者快速理解条文背后的用药逻辑，降低经典中医典籍的学习门槛。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/900ba5bbab2e" },
-      { id: 173, title: "家电清洗全套落地实操教学合集", desc: "包含各类常见家电的深度清洁技巧，还有家电常见小故障排查、清洗后保养注意事项，实景演示无保留，不管是家庭日常清洁还是副业接单都能直接用。", category: "course", categoryName: "技能教程", link: "https://pan.quark.cn/s/1e9c2df22f96" },
-      { id: 172, title: "成人小提琴从零到入门全套教程", desc: "避开传统教学的枯燥难点，针对成人学习特点设计内容，从基础音阶到流行小曲子逐步进阶，配套练习规划，新手也能快速拉出完整曲目。", category: "course", categoryName: "技能教程", link: "https://pan.quark.cn/s/afdbf73b42f9" },
-      { id: 171, title: "精品凉拌菜+热卤全系列实操教程", desc: "上百款菜品分步教学，从基础卤汤调配、香料配比到凉拌菜调味、保鲜技巧全覆盖，零基础也能跟着步骤上手，不管是家用摆摊还是小店经营都能直接套用。", category: "course", categoryName: "技能教程", link: "https://pan.quark.cn/s/0fdb9a618298" },
-      { id: 170, title: "《中国风水文化》纪录片 100集全", desc: "整梳理传统民俗文化发展脉络，覆盖历史源流、建筑文化、人文地理等多个维度，内容详实画面清晰，适合对传统文化民俗知识感兴趣的爱好者系统观看学习。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/ca73dde6726c" },
-      { id: 169, title: "买台无人机，给全村打药", desc: "买台植保无人机要多少钱？一个月能剩多少？手续怎么办？这篇给你算清楚。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/5f30f5a1f119" },
-      { id: 168, title: "20箱土蜂起步，第一年赚不赚？", desc: "想用20箱中蜂起步养土蜂蜜，要先投入1万多到2万多。第一年可能不赚钱，第二年起才有机会多赚一两万。这篇把投入明细、取蜜卖蜜的全年账本、买蜂取蜜的操作步骤、销路和办证要求，以及常见的3个坑一次讲清。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/fcd8c5b15940" },
-      { id: 167, title: "田里加养小龙虾，一亩多赚1000到3000元", desc: "稻虾共作是稻田里种稻、再养一茬小龙虾的老办法。本文算清10亩起步的成本、一亩田的收支、操作步骤和销路，并提醒三个常见的坑。价格仅为参考区间。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/96c2bb214c2e" },
-      { id: 166, title: "林下养土鸡，200只算笔账", desc: "投入多少、月挣多少、手续怎么办、蛋卖给谁，一次讲清。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/30a228bbe8c2" },
-      { id: 165, title: "不囤货也能开店：拼多多卖家乡特产怎么做", desc: "不囤货、不交加盟费，一部手机在拼多多开店卖家乡特产。从启动资金、办证提醒、一个月流水账，到找货源、做商品页、避开三个大坑，一步步讲清楚。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/168c4abeba7d" },
-      { id: 164, title: "院子空着别浪费，种平菇投入5000元的真实账本", desc: "家里有院子，花3000～7000元就能试种平菇。这篇把设备、菌包、一茬的收支一笔笔算清，教你怎么搭棚、怎么管、怎么找销路，再提醒3个新手最容易踩的坑。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/e6a21231f01f" },
-      { id: 163, title: "一部手机拍农活，投入不到1000元", desc: "种地一年剩不下多少钱？这篇帮你算三笔账：设备要花多少，收入从哪来，哪些坑千万别踩。不讲暴富，不让你买课，只讲一个普通农户怎么一步步把农活拍成多一份收入。收益因地区、品种、行情而异，仅供参考。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/8d48add89fc5" },
-      { id: 162, title: "婚恋关系全指南：从识人到经营完整体系", desc: "覆盖从识别合适伴侣、关系升级到长期经营的全流程实用方法，帮你避开婚恋中的常见误区，更高效地找到并经营好属于自己的亲密关系。", category: "za", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/28323770a976" },
-      { id: 161, title: "高效提升认知的核心思维工具合集", desc: "整理了高手们常用的底层认知升级方法，帮你打破固有思维局限，建立更清晰的决策逻辑和认知体系，在工作、生活中做出更精准的判断。", category: "course", categoryName: "技能教程", link: "https://pan.quark.cn/s/b0779398b5ce" },
-      { id: 160, title: "微信小程序开发从入门到精通视频课", desc: "从开发环境搭建、基础组件使用到完整实战项目落地，全流程视频讲解，配套实操案例，零基础也能跟着一步步上手，快速掌握小程序开发全流程技能 。", category: "course", categoryName: "技能教程", link: "https://pan.quark.cn/s/8396e89d1916" },
-      { id: 159, title: "零基础友好的人工智能原理通俗课", desc: "避开复杂晦涩的数理公式，用大白话讲透人工智能的核心基础原理，覆盖主流技术逻辑和应用常识，完全没有技术背景的小白也能轻松听懂，快速建立对AI领域的基础认知 。", category: "course", categoryName: "技能教程", link: "https://pan.quark.cn/s/aad30d9dfbfc" },
-      { id: 158, title: "42个可直接套用的文章写作方法", desc: "拆解不同类型文章的写作底层逻辑，从结构搭建、内容填充到语言优化给出42个落地实操技巧，帮你解决内容空洞、逻辑混乱、表达平淡等常见写作问题，快速提升文章写作能力 。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/4db1152d2f15" },
-      { id: 157, title: "四季顺时养生食疗音频课", desc: "以音频形式系统讲解春夏秋冬四季养生核心逻辑，结合专业中医理论给出对应食疗方案和饮食禁忌，通勤、做家务时就能收听学习，帮你跟着季节变化从三餐细节做好日常健康调理 。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/57569067db0c" },
-      { id: 156, title: "26门小语种零基础全套学习资料", desc: "精整26门热门及小众小语种的从入门到精通全套内容，覆盖发音、基础语法、日常会话等核心板块，适配兴趣学习、考级、留学等不同需求，零基础也能直接上手开启外语学习 。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/7a95f5ffacd6" },
-      { id: 155, title: "考研英语全阶核心词汇大全", desc: "覆盖考研英语全范围核心词汇，适配基础入门到冲刺巩固全备考阶段，结合词根联想、语境记忆等多种高效方法，帮你系统搭建词汇体系，夯实考研英语备考基础 。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/d022232c36f5" },
-      { id: 154, title: "《饮食的悖论》健康饮食指南", desc: "《纽约时报》畅销书，由有40余年临床经验的美国心脏病专家史蒂文·R. 冈德里撰写，揭秘常见“健康食物”中凝集素的潜在影响，配套三阶段可落地饮食调整方案，帮你科学调整日常饮食习惯 。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/2d937dc62d41" },
-      { id: 153, title: "204张思维导图速记初中1600核心词（PDF版）", desc: "用可视化思维导图把初中1600个核心单词串联起来，告别死记硬背，大幅提升记忆效率，PDF格式可随时打印查阅，是初中生快速攻克英语词汇的高效工具 。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/ab79540aa73c" },
-      { id: 152, title: "考研英语一、二历年真题+逐题解析", desc: "整合近年考研英语一、二完整真题，搭配考点定位、解题思路拆解和易错点提醒，帮你精准把握命题趋势，高效突破备考重难点，是考研英语刷题提分的核心实用资料 。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/5e778c20dc5b" },
-      { id: 151, title: "八字命理资料400部整理打包", desc: "这次整理的《八字命理系列书籍大合集》，围绕八字命理这一传统话题，汇集成一套方便翻阅的阅读资料，属于传统文化、民俗知识、古籍整理的范畴。", category: "za", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/f81bbdddc5a4" },
-      { id: 150, title: "张天师符咒大全丨康熙皇室珍藏", desc: "《张天师符咒大全》，一份围绕道家符箓文化整理的传统文化、民俗知识、古籍整理类资料。", category: "za", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ca49c0fb33ac" },
-      { id: 149, title: "悬疑猎奇短视频副业，手机就能从0开始做", desc: "这个副业做的是悬疑、猎奇类的短视频内容：用几十秒到两三分钟，讲一个有悬念的故事，或者把一个冷门、有趣的知识讲得让人想看完。形式以\"配音＋画面＋字幕\"为主，不需要露脸，一部手机加一个剪辑软件就能做。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/7dbf06bce1b2" },
-      { id: 148, title: "用AI制作田园治愈短片，保姆级上手教程", desc: "用AI工具制作\"农村治愈、田园慢生活\"风格的短视频，发布到短视频、视频号等平台，靠内容积累观众，再通过平台公开的渠道产生收入。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/67e36d2800e5" },
-      { id: 147, title: "七十二行祖师爷", desc: "做哪一行，就拜哪一行的祖师爷。这份资料收录了七十二行祖师爷的传说，以及相关民俗内容。", category: "za", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/4fd6c7b436ba" },
-      { id: 146, title: "星座情感号从0到开通变现的全流程", desc: "做的是\"星座性格×情感沟通\"的科普娱乐内容，不做运势预测，不做收费测算。不露脸可以做，但原创表达是关键。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/731a0591aaab" },
-      { id: 145, title: "《太乙金华宗旨》", desc: "道家有一本流传几百年的小册子，叫《太乙金华宗旨》，核心讲一件事：怎么让心安定下来。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/db79a16a315a" },
-      { id: 152b, title: "废旧衣服回收：普通人冷门生意实操指南", desc: "零经验可直接落地的旧衣回收副业全流程手册，拆解循环经济赛道的完整盈利逻辑。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/db7f1ea173cb" },
-      { id: 151b, title: "单人跨境电商实操指南：Temu+美客多落地玩法", desc: "完全面向零经验新手的单人跨境运营落地手册，全程拆解Temu+美客多双平台的互补玩法。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/8f3fccf09bb8" },
-      { id: 150b, title: "AI仿写小说副业全指南", desc: "完全贴合最新平台规则的小说创作副业实操手册，全程走合规人机协同路线。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/d207e85f5f4c" },
-      { id: 149b, title: "AI非遗短视频：新手10分钟成片", desc: "用豆包写脚本、即梦生图、可灵做动画、剪映一键合成，全程国产AI工具，一部手机10分钟就能出一条高完播短视频。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/eabdcae9f60f" },
-      { id: 148b, title: "低竞争暴利新职业：餐具修复实操指南", desc: "面向普通人的冷门副业落地指南，1万左右就能轻启动，靠5-7天实操掌握核心手艺。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/7c340aaf85e2" },
-      { id: 147b, title: "视频号中老年内容：从选题到变现全流程", desc: "零出镜、轻设备的视频号中老年账号实操指南，全程只用一部手机加基础AI工具。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/fd31aaf028c6" },
-      { id: 146b, title: "AI做PPT变现全流程指南", desc: "零门槛的PPT副业实操手册，核心靠“AI批量出初稿+人工优化控质量”的标准化流程。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/dfcd65be8967" },
-      { id: 145b, title: "一个人一台电脑，用AI做赚钱小程序全流程SOP", desc: "全程避开复杂编程学习，把AI变成你的“免费开发助理”。", category: "fuye", categoryName: "创业副业", link: "https://pan.quark.cn/s/4662a893b68f" },
-      { id: 144, title: "月亮星座占星识人术", desc: "以西方占星学月亮核心体系为基础的实用识人参考资源，精准读懂一个人卸下防备后的真实情绪内核。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/c33371eadfd8" },
-      { id: 143, title: "北京烤鸭制作技术", desc: "完整还原北京烤鸭传统非遗技艺的实操教学资源，覆盖挂炉、焖炉两大主流流派的全流程核心技法。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/8f306ef27ac5" },
-      { id: 142, title: "古风手工饰品制作教程", desc: "专为国风手工爱好者打造的系统化古风饰品创作资源，从零基础入门技法到高阶非遗传统工艺全覆盖。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/41827544c2df" },
-      { id: 141, title: "21天搞定考研英语", desc: "专为考研冲刺阶段打造的短期高效提分资源，通过21天高密度科学规划，帮考生在短时间内突破考研英语核心瓶颈。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/c14f639fe6e2" },
-      { id: 140, title: "行测+申论 考公2500题", desc: "专为公务员考试打造的专项刷题提分资源，严格贴合国考、省考最新命题趋势，精选2500道高质量核心习题。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/1261d9a133db" },
-      { id: 139, title: "考研英语资料大全", desc: "覆盖考研英语全阶段备考的一站式资源合集，适配英语一、英语二所有考生的复习需求。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/0b04fe9b2a9c" },
-      { id: 138, title: "2027国考省考资料", desc: "专为2027年公务员考试打造的全维度备考资源大合集，覆盖国考、多省市联考的全阶段备考需求。", category: "soft", categoryName: "学习资料", link: "https://pan.baidu.com/s/" },
-      { id: 137, title: "从零开始学钢琴", desc: "专为完全零基础人群打造的系统化钢琴入门学习资源，从最基础的认知起步，循序渐进搭建完整弹奏能力体系。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/52a3522d185b" },
-      { id: 136, title: "变态心理学", desc: "系统讲解人类异常心理现象的心理学核心分支学习资源，以生物-心理-社会多维视角拆解各类心理障碍。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/79a5542b6922" },
-      { id: 135, title: "0-12岁英语启蒙路线课", desc: "专为中国家庭打造的全年龄段分阶英语启蒙系统资源，从0岁磨耳朵一直衔接至小学阶段校内课标要求。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/4cabb16e1a5d" },
-      { id: 134, title: "初中全科知识清单整理", desc: "完全贴合义务教育初中课标、适配七至九年级全学段的系统化知识汇总资源，覆盖9大学科。", category: "soft", categoryName: "学习资料", link: "https://pan.quark.cn/s/5e1aa19be7e0" },
-      { id: 133, title: "曾仕强：易经的智慧", desc: "国学大师曾仕强倾注多年心血打造的《易经》通俗化讲解，全套共150集完整内容。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/a294471b30d7" },
-      { id: 132, title: "零基础书法入门课", desc: "完全面向书法零经验人群的系统阶梯式学习资源，从最基础的执笔控笔到完整作品创作循序渐进。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/830ecec02450" },
-      { id: 131, title: "24种寿司制作小吃技术配方教程", desc: "覆盖全品类寿司技法的商用级实操教程，零基础也能快速掌握正反卷、军舰、手握、炙烧、稻荷等全品类寿司制作。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/10f46150b835" },
-      { id: 130, title: "中国建筑与历史文化精选", desc: "系统梳理中国建筑发展脉络、深度挖掘建筑背后历史文化内核的通识类文化资源。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/ae5b64c2999f" },
-      { id: 129, title: "尤克里里基础入门教学", desc: "专为音乐零基础人群打造的低门槛乐器学习资源，普通人每天花15-20分钟练习，一周就能完成简单曲目弹唱。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/0410a3c3f69e" },
-      { id: 128, title: "符咒合集丨从古代巫祝传统到后世道派传承", desc: "中国传统民俗文化领域的符咒类集成参考资料，完整收录从古代巫祝传统到后世道派传承的各类符咒体系内容。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/dbb91978422d" },
-      { id: 127, title: "广西灵教民间失传绝技", desc: "根植于广西本土民间民俗文化的法术秘术类传承资源，核心以完整的「灵教36法术」体系为核心内容。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/495153ecc7ec" },
-      { id: 126, title: "嫉妒与鄙视社会比较心理学", desc: "深入剖析嫉妒与鄙视的心理机制，揭示社会比较如何影响人际关系与自我认知，提供应对负面情绪的实用策略。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/bd060a56c11b" },
-      { id: 125, title: "徐骥：100幅名画里的中国美术史", desc: "通过精选艺术作品系统梳理中国美术发展脉络，适合艺术爱好者及专业学习者。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/44528ae9cad0" },
-      { id: 124, title: "书圣：王羲之书法作品合集", desc: "全面收录书圣经典墨迹，系统展示书法艺术精髓，适合书法爱好者及专业学习者研习。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/d366c6d7ad82" },
-      { id: 123, title: "各国格斗术训练全解", desc: "系统介绍全球主流格斗技术，涵盖基础理论、实战技巧与文化背景，适合初学者至进阶学员。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/8d2784edee56" },
-      { id: 122, title: "谋略心理", desc: "攻心为上的人际博弈指南", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/1584043e6aec" },
-      { id: 121, title: "滋补药膳44道", desc: "详细介绍44道滋补药膳的配方、制作方法与功效，适合养生爱好者及家庭烹饪学习者。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/67715696fdbd" },
-      { id: 120, title: "寒门难再出贵子", desc: "深入探讨社会阶层流动性问题，分析教育机会不均等现象及其成因。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/ebb6d8b51cab" },
-      { id: 119, title: "伤寒杂病论药证解读", desc: "深入解读伤寒杂病论药物与证候的对应关系，结合临床实践，揭示仲景用药心法。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/c94bfe57f7b7" },
-      { id: 118, title: "零基础魔术教学", desc: "专为魔术初学者设计，系统讲解基础魔术原理与技巧，无需任何基础即可快速上手。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/ec83d8467e11" },
-      { id: 117, title: "各种火锅类24种美食技术教程", desc: "系统介绍24种火锅类美食的制作技术，从基础汤底到特色食材处理，全面覆盖火锅烹饪要点。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/73057fe8f24f" },
-      { id: 116, title: "中国古代的家教：解析传统教子智慧与门风养成", desc: "系统解析传统家庭教育理念与实践方法，涵盖经典教子智慧与门风建设核心内容。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/d1a074d46673" },
-      { id: 115, title: "人生谋略全书", desc: "系统讲解处世智慧与心理调适技巧，帮助读者掌握人际交往策略、情绪管理方法及压力应对技能。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/03e634773158" },
-      { id: 114, title: "三部民俗神作", desc: "三本民俗文化著作深入探讨了中国传统民间信仰与习俗，适合对传统文化感兴趣的初学者至中级学习者。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/b5245d198d21" },
-      { id: 113, title: "六经伤寒舌象辩证", desc: "系统解析六经伤寒舌象，30集完整教程深入浅出，结合临床案例，助你精准辨证。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/026c548c5505" },
-      { id: 112, title: "风景摄影实战教程全能篇", desc: "系统讲解风光摄影技巧，从构图、用光到后期处理，适合初学者至进阶爱好者学习。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/11620a812d14" },
-      { id: 111, title: "手机从0基础到精通拍摄手法", desc: "全面讲解手机摄影基础知识与进阶技巧，从构图、光线到后期处理，适合零基础摄影爱好者。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/3ec9af0b9224" },
-      { id: 110, title: "特色凉菜之柠檬鸡爪", desc: "详细讲解了一道经典凉菜的制作方法，包含食材选择、调味技巧和制作步骤。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/66c86206f256" },
-      { id: 109, title: "各类奇书大合集 （23.4G）", desc: "整理收集各类奇书，涵盖山、医、命、相、卜五术相关古籍、道教相关古籍、急救仙方、易经、饮食、养生等等资料。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/9c71df70c12f" },
-      { id: 108, title: "民间秘传百病偏方", desc: "民间秘传百病偏方，主要记录民间失传或罕见的偏方秘方。仅作娱乐参考，请勿盲目相信。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/fec2c1c8ca0e" },
-      { id: 107, title: "民间绝技交流", desc: "民间绝技交流秘录，大多数为民间偏方养生诊断技艺，供大家娱乐参考，切勿盲目相信。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/89d9df95cb5e" },
-      { id: 106, title: "航拍教程：电影级航拍大师手把手教你航拍", desc: "从基础操作到电影级运镜，大疆全系无人机实战技巧全解析，手把手带你掌握构图、光影与运镜。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/c0e4fc0f172d" },
-      { id: 105, title: "巴蜀名医遗珍丛书系列 共20部", desc: "包含巴蜀地区名医的医书孤本，共20部。对中医感兴趣的可以用于增加知识经验。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/633d3e554e3a" },
-      { id: 104, title: "鬼谷正宗源流天机卜筮全书", desc: "区别于传统卜筮典籍，不局限于静态卦象解读，更强调“顺势而为”的动态推演逻辑。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/36243cfa705c" },
-      { id: 103, title: "推背图合集丨各种稀缺版本合集", desc: "包含各种稀缺孤本推背图。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/55f08ca9719b" },
-      { id: 102, title: "相命全集 共10部", desc: "涵盖手相、面相、指纹、十二支、姓名、星象、灵数等等，仅供大家娱乐参考。", category: "xiang", categoryName: "相", link: "https://pan.quark.cn/s/f8e65cb8195f" },
-      { id: 101, title: "阴阳宅阵法秘术合集", desc: "以阴阳宅阵法为主，包含图镇、二十八星宿、金斗门阵法、延命镇、建财库等等。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/cd2000a8cac4" },
-      { id: 100, title: "图解系列：易经、道教、奇门等等 共266部", desc: "涵盖易经、道教、奇门、佛学等等，可以让爱好者更好的了解各种文化。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/b8089942855a" },
-      { id: 99, title: "道家阴盘奇门符咒课", desc: "讲解道家阴盘奇门符咒，适合对传统文化有兴趣的人群。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/dc399365bbd6" },
-      { id: 98, title: "古人房中养生术合集 72部", desc: "收集整理了72部古代房中养生术，仅供各位娱乐参考。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/62e20e339b3d" },
-      { id: 97, title: "神秘文化体系合集", desc: "涵盖中华自古以来的神秘色彩体系，催魂法、占候术、占星术、占梦术、权谋术、择吉、相法、相地术、命术、武术、符篆、咒语、周易、降神等等。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/5f65dbedbd4c" },
-      { id: 96, title: "谋术全鉴丨古往今来谋术合集", desc: "涵盖六韬、鬼谷子、孙子兵法、三十六计、人物志、长短经、素书等，战场、商场、官场、情场均有所披露。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/ba57e5b5717b" },
-      { id: 95, title: "图解鲁班书丨古人阳宅的趋吉避凶", desc: "对于鲁班书的阳宅趋吉避凶进行图解分析，适合对传统文化、家居布局感兴趣的初学者及爱好者。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/383572724158" },
-      { id: 94, title: "酱汁配方丨近千种酱料酱汁合集", desc: "涵盖上千种酱汁配料，大酱、果酱、酱料、调味酱、卤料等等，可以家用也可开店摆摊。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/21233c3edfb1" },
-      { id: 93, title: "素书丨民间称为天书 奇书", desc: "相传是秦末汉初黄石公所著，张良得黄石公传授此书后，辅佐刘邦建立大汉王朝。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/2c756c88846b" },
-      { id: 92, title: "玄门道家五术合集丨山医命相卜", desc: "收集关于玄门道家五术书籍资料，五术精髓，涵盖山医命相卜。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/f8903b6232d1" },
-      { id: 91, title: "图解引导术丨传说中的修仙秘法", desc: "按照马王堆出土的引导图进行图解教学，主要以动作、呼吸来强身健体。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/1082ad930dfb" },
-      { id: 90, title: "预测全书丨各种预测学合集", desc: "含有周易八卦、六爻、八字，主要预测疾病、官讼、年时、事业、成败、来意、伤灾、婚姻、出行、天气、升迁。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/d14cbf77e111" },
-      { id: 89, title: "心术大全", desc: "包含识人、韬晦、权谋、统御、预测、察伪、破迷、察奸等等。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/ddbee844def5" },
-      { id: 88, title: "八字由浅入深丨如何趋利避害", desc: "八字学基础知识，帮助初学者掌握核心概念与分析方法。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/44a3dc569280" },
-      { id: 87, title: "珍贵海外回归中医失传古籍善本", desc: "收集近200部流失海外中医古籍中精选62部，具有高学术水平和实用价值。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/701b6c9b4427" },
-      { id: 86, title: "图解撼龙经丨看懂龙脉 古法堪舆", desc: "系统讲解传统理论，通过图解方式帮助读者理解龙脉识别与点穴技巧。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/16a1dd81e29b" },
-      { id: 85, title: "整理《民间失传秘术》合集", desc: "包含防身秘术、行乐秘术、入梦秘术、民间秘术等，内容仅供大家娱乐阅读。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/01f1dc144624" },
-      { id: 84, title: "古法男性洗髓功", desc: "涵盖基础理论、呼吸导引、专项练习及保养原则等核心知识点。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/3e5a52f8ed56" },
-      { id: 83, title: "历史中外神秘现象全记录12部", desc: "系统收录古今中外各类神秘现象与未解之谜的科普读物。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/a348b2adfac4" },
-      { id: 82, title: "奇门遁甲丨入门到精通", desc: "从零开始系统学习奇门遁甲，详解排盘步骤与核心规则，结合实战案例解读。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/8f89e44a8561" },
-      { id: 81, title: "超稀有珍藏道家秘籍522部", desc: "涵盖道家各种资料书籍合集，秘籍涵盖内丹、养生、符箓、经典注疏等稀世文献。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/a44c34089604" },
-      { id: 80, title: "小六壬预测术课：零基础入门传统技法", desc: "小六壬预测术筑基课，围绕基础阶段的学习需求提供参考。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/2c2e659258f8" },
-      { id: 79, title: "面相识人术-曾国藩冰鉴", desc: "系统传授传统识人智慧，通过面部特征解析性格特质，帮助学习者掌握精准判断人的能力。", category: "xiang", categoryName: "相", link: "https://pan.quark.cn/s/0b1f7cb63b48" },
-      { id: 78, title: "武术教程合集", desc: "涵盖夺刀、特种兵技术、泰拳、太极拳实战、擒拿、散打、截拳道等，仅供学习强身健体使用。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/9e36bd0fcafd" },
-      { id: 77, title: "《三教九流合集》", desc: "上九流、中九流、下九流的完整分类与介绍。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/627ced4b1454" },
-      { id: 76, title: "滋阴补阳秘籍合集", desc: "收录关于滋阴补血的典籍，主要以食补为主，仅供娱乐阅读。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/eb3f0501b7a6" },
-      { id: 75, title: "《中国古代八大兵书》", desc: "包含孙膑兵书、吴起兵书、三十六计、姜太公兵书、曾国藩兵书、春秋、尉缭子兵书。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/b14c6a42fcc6" },
-      { id: 74, title: "《方术大全》历史方术一本通", desc: "含有占星术、八卦术、周易、炼丹术、养生术、相术、房中养生术、堪舆术、奇门遁甲术等。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/eb6437ac1fdb" },
-      { id: 73, title: "《古今妖怪大全》", desc: "收录305个妖怪、217个神话故事、417幅经典绘画。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/7daf27e0a496" },
-      { id: 72, title: "药酒配方大全", desc: "系统介绍传统药酒配方，涵盖原料选择、制作工艺及功效应用。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/96bca25966f3" },
-      { id: 71, title: "精心整理[1000部术数合集]", desc: "内涵八字命理400部、奇门284部、紫微斗数285部、六爻43部、梅花29部、小六壬72部、风水103部。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/3113537ab4b7" },
-      { id: 70, title: "历朝历代野史集合", desc: "系统汇编中国从上古至近代各类民间稗官笔记、私家著述、朝野逸闻的稀缺历史文献合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/64c2391bc6ee" },
-      { id: 69, title: "《轻功修炼秘法》", desc: "九嶷山深几千里，峰谷崎岖人不到。山中旧有仙佬家，十里飞泉绕丹灶。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/4ab895abd475" },
-      { id: 68, title: "德国大学收藏的稀缺失传中医古籍[共26部]", desc: "从德国慕尼黑大学、汉堡大学等高校馆藏中整理回流的珍稀中医古籍合集。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/227403de5027" },
-      { id: 67, title: "《六壬断易秘诀》", desc: "秘诀占怪断，凡占人家有怪异之物不祥等。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/1a62db8447d3" },
-      { id: 66, title: "超级读心术，从微表情看透对方真实想法", desc: "系统讲解基于心理学与行为分析的识人技巧，帮助你在社交、职场、商务谈判中快速判断对方性格与真实意图。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/dc9dac6ae25e" },
-      { id: 65, title: "350种摆摊开店小吃技术配方", desc: "系统整理了350种小吃技术配方，涵盖煎炸、卤煮、烧烤、甜品等品类。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/c60e8c08bf76" },
-      { id: 64, title: "引诱手段", desc: "让人心甘情愿被你说服的高阶心理术，看清人性如何被语言、幻想与情绪牵引。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/db43e7393686" },
-      { id: 63, title: "中医珍贵古籍善本全集2000本", desc: "面向关注传统医学文献的读者、学习者及古籍研究人员，适合用于中医古籍阅读、文献检索与研究参考。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/fda3da4ae289" },
-      { id: 62, title: "符咒文化研究", desc: "系统介绍符咒文化的历史演变、理论基础与实践应用。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/9bf42fd9187b" },
-      { id: 61, title: "《中华擒拿术》缠丝擒拿手", desc: "系统介绍传统武术擒拿技术，包含72路基础技法与32路精细小擒拿。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/3f63a2c59caa" },
-      { id: 60, title: "中医古籍合集-适合个人收藏阅读", desc: "整理了以中医古籍为主题的50+本传统医学资料。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/af2b7b13f6da" },
-      { id: 59, title: "104套小吃配方教程+创业落地指南", desc: "围绕小吃创业与开店筹备整理，包含104套小吃配方及创业落地指南。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/07b5928285a8" },
-      { id: 58, title: "紫微斗数自学合集[共48部]", desc: "整理了48本紫微斗数经典图书，围绕传统命理相关内容提供集中阅读与资料参考。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/1f909e01fa72" },
-      { id: 57, title: "绝版梅花易数·象数思维的智慧", desc: "面向希望了解相关文本的读者，提供较为通俗的阅读参考。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/633b462eef53" },
-      { id: 56, title: "90年代书籍《皇室秘方大全》", desc: "从十数万首历代宫廷御用秘方中精选近千首经过临床验证的经典方剂。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/44004d3000e6" },
-      { id: 55, title: "吕祖全书 总六十四卷", desc: "六十四卷内容清晰划分为本传、灵迹、经诰、金丹、语录、诗文六大板块。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/065e3698359e" },
-      { id: 54, title: "旧书-道家养生书籍 2册", desc: "从80-90年代国内正式出版的道家养生绝版老书中精选出的稀缺经典合集。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/cafa0edf93ea" },
-      { id: 53, title: "《中国历史地图集》", desc: "由谭其骧院士主持、复旦大学团队耗时二十余年编撰的国家级权威历史地理巨著。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/7d3ae1e50be8" },
-      { id: 52, title: "图解奇门遁甲图书PDF版", desc: "专为零基础人群打造的奇门遁甲轻量化入门高清电子资料合集。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/9aa6cfbb9322" },
-      { id: 51, title: "千门八将系列", desc: "完整收录中国传统江湖博弈智慧的稀缺经典合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/9429357dc438" },
-      { id: 50, title: "500份心理学书籍", desc: "覆盖全梯度、全场景的超大全品类心理学电子资料合集，整合500本经典心理学书籍。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/b309d3e4408f" },
-      { id: 49, title: "《中国传统工艺全集》14册合集", desc: "内容覆盖丝绸织染、中药炮制、传统机械、文物修复、民间手工艺、漆艺、甲胄复原等多个领域。", category: "za", categoryName: "杂集", link: "https://pan.baidu.com/s/" },
-      { id: 48, title: "《溜须拍马术》", desc: "1998年出版的绝版社会文化类书籍，专门剖析传统人情社会人际沟通潜规则。", category: "za", categoryName: "杂集", link: "https://pan.baidu.com/s/" },
-      { id: 47, title: "中国功夫系列图书", desc: "系统整理中华传统武术全体系的稀缺经典合集，全面收录国内各大武术流派的核心传承著作。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/eb6fa4ab08c7" },
-      { id: 46, title: "古盖天之学也《周髀算经》", desc: "以勾股之法，度天地之高厚，推日月之运行，而得其度数。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/37467edf2438" },
-      { id: 45, title: "80年代绝版书籍《养气功健身法》", desc: "由当代著名武术家、中医养生家马礼堂先生所著的经典传统养生气功专著。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/b0f2cec1ccfa" },
-      { id: 44, title: "《风水宝典》", desc: "以环境心理学与传统空间智慧为双核的现代家居优化手册，聚焦于“气流管理”“阴阳平衡”与“动静分区”。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/c425c2bcc6d7" },
-      { id: 43, title: "中小学全科教辅资料合集", desc: "覆盖1～9年级上下册内容，囊括多种热门练习册、同步作业本、单元测试卷、课堂学案、期末复习习题。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/ce2617cf4155" },
-      { id: 42, title: "中医古籍珍稀抄本精选10本", desc: "贯唯集、剑慧草堂医案、济世珍宝、旌孝堂医案、江泽之医案、脉理集要等。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/c06d6f9bd6f1" },
-      { id: 41, title: "《河洛阳宅直断心法 印象篇》", desc: "带实战图解100例。主讲宅屋形体、大门玄关、厅堂格局、阴阳人宫对应。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/32db68d0b10b" },
-      { id: 40, title: "两部绝版手相书", desc: "由《中国秘传手相术》1986版与《手纹与人生》2004光明日报版两本稀缺老书组成。", category: "xiang", categoryName: "相", link: "https://pan.quark.cn/s/fd4fc382e0d4" },
-      { id: 39, title: "10本绝版老菜谱", desc: "珍藏级60-90年代经典绝版老菜谱合集，总计2300余页。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/7fcad0b28c9f" },
-      { id: 38, title: "《600种中草药野外识别高清图谱》", desc: "由北京中医药大学刘春生教授等权威专家编著的专业野外中草药识别工具书。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/2fe8220bca16" },
-      { id: 37, title: "全套占星教学课程合集", desc: "系统化、阶梯式的数字命理线上教程，专为零基础爱好者及希望深入专业应用的命理研习者设计。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/dd3d2d7c08e4" },
-      { id: 36, title: "《七经图》", desc: "明代万历年间由徽州学者吴继仕编纂的儒家经典珍稀图解古籍。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/e5b4e3b3d35e" },
-      { id: 35, title: "家居布局智慧：极简风水入门", desc: "完全摒弃传统风水复杂晦涩理论的轻量化居家空间优化资源。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/ee39765fa8c6" },
-      { id: 34, title: "《古法明目功：入门六式+分步演练+手型呼吸》", desc: "基于中医经络理论，融合手型导引与腹式呼吸，专为缓解屏幕用眼疲劳设计。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/7b7cb071c308" },
-      { id: 33, title: "《奇门遁甲秘笈大全》刘伯温·辑", desc: "中国古代奇门遁甲术数体系的集大成传世典籍。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/4716ea4249e8" },
-      { id: 32, title: "《麻衣相术》", desc: "中国相面术第一传世经典，民间流传最广、体系最完整的相术蓝本。", category: "xiang", categoryName: "相", link: "https://pan.quark.cn/s/9c2ad845186d" },
-      { id: 31, title: "《周易图解》古籍", desc: "以“以图释易”为核心的珍稀传统易学图谱类文献。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/24272309f6e0" },
-      { id: 30, title: "钦天监必学《古经天象考》古籍", desc: "清代著名学者雷学淇耗费十余年心血编撰的中国古代天文历法经典专著。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/9114c8285771" },
-      { id: 29, title: "易学简单入门资料", desc: "专为零基础人群打造的轻量化易学入门学习合集。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/f1e26b56c8b2" },
-      { id: 28, title: "《命理基本知识》20章", desc: "专为零基础爱好者打造的体系化八字命理入门教程，全书共20个循序渐进的独立章节。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/3f930ab77e7f" },
-      { id: 27, title: "绝版道教符咒手抄本图", desc: "系统整理民间散藏珍稀道教符咒手抄本的高清影印合集，总页数超260页。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/bc22b2cbad72" },
-      { id: 26, title: "辣条制作配方及教程", desc: "面向零基础人群的全场景辣条制作实用教程合集，覆盖家庭自制、摆摊创业两大核心场景。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/81e179e8048f" },
-      { id: 25, title: "钦天监必学《天文图说》", desc: "中国古代天文学史上的里程碑式经典文献，世界上现存最早、最精准的古代星图配套文字典籍。", category: "bu", categoryName: "卜", link: "https://pan.quark.cn/s/0ab1247aa705" },
-      { id: 24, title: "《洞天奥旨》中医古籍全书", desc: "清代名医陈士铎所著的经典中医外科专著，又名《外科秘录》。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/7bd30107cac8" },
-      { id: 23, title: "古籍相面术《相法十六篇》全集", desc: "中国现存最早的系统面相学经典著作，传为汉代第一女相师许负所撰。", category: "xiang", categoryName: "相", link: "https://pan.quark.cn/s/f6d1f87ce28c" },
-      { id: 22, title: "《图解葬书》风水经典版", desc: "以晋代郭璞原著为核心、以清代《四库全书》文渊阁本为权威底本整理的可视化传统风水经典合集。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/220769429f84" },
-      { id: 21, title: "中国地道药材鉴别使用手册（上下册）", desc: "由中医药学者张穗坚编著的专业中药材实用工具书，系统收录国内主流道地药材的完整鉴别与使用规范。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/da6d9e3eb4d5" },
-      { id: 20, title: "神农本草经七十六药集释", desc: "聚焦《神农本草经》76味核心常用药的深度集释工具书。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/ac4c6abc3c0a" },
-      { id: 19, title: "最全鲁班书古籍汇总", desc: "系统整理52部历代《鲁班书》相关珍稀版本的大型民俗古籍数字合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/99211c64057c" },
-      { id: 18, title: "聊斋故事图文全集", desc: "完整收录《聊斋志异》经典篇目、搭配海量珍稀古版画的可视化古典文学合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/5122534f2cd2" },
-      { id: 17, title: "易经图文解析版系列 共7部", desc: "体系完整、全图文化的《易经》入门到精通全系列教程。", category: "ming", categoryName: "命", link: "https://pan.quark.cn/s/0d724b32dc30" },
-      { id: 16, title: "超级自卫术+单招制敌完整高清版", desc: "面向完全无武术基础普通人的轻量化实战防卫教程。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/92879db85264" },
-      { id: 15, title: "90年代《民间秘术》600种", desc: "完整收录600种散落在市井乡间、濒临失传的传统民间技艺与生活智慧。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/2c5c268d0a5d" },
-      { id: 14, title: "最全高清人体穴位图及穴位图解大全", desc: "系统收录全身400余个正经穴位的中医可视化实用工具书。", category: "yi", categoryName: "医", link: "https://pan.quark.cn/s/d784bafdbfd7" },
-      { id: 12, title: "1200份实用合同word模板（各行各业）", desc: "覆盖全场景商业与日常需求的标准化合同文档合集，全部为可直接编辑的Word格式。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/6df62b621aed" },
-      { id: 11, title: "《孙子兵法》：千年智慧，跨界指南！", desc: "一本超越军事的智慧奇书！《孙子兵法》不仅是兵家经典，更藏着人生与成功的密码。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/1265e485e12a" },
-      { id: 10, title: "《风水术》·风水自助手册", desc: "完全摒弃传统风水复杂晦涩的理气理论，以“自查、调整、化解”为核心逻辑。", category: "shan", categoryName: "山", link: "https://pan.quark.cn/s/1f24aab4bf1e" },
-      { id: 9, title: "《民间生活奇招秘术》：90年代民间智慧宝典", desc: "完整收录近千条90年代民间流传实用生活技巧的怀旧类生活百科合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/5d71eb21b8f8" },
-      { id: 8, title: "禽畜养殖技术资料", desc: "覆盖20个主流养殖品类的全场景落地式技术合集。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/bfe10c8146f2" },
-      { id: 7, title: "果树种植技术资料", desc: "覆盖草莓、葡萄、砂糖桔、桃、西瓜、樱桃六大主流经济果树的全流程落地式栽培技术合集。", category: "course", categoryName: "教程", link: "https://pan.quark.cn/s/5290d320c098" },
-      { id: 6, title: "阳明心学：传习录 古籍电子版", desc: "以明嘉靖三十七年国家图书馆藏珍稀刻本为底本高清数字化的阳明心学核心文献合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/4f4f157845c9" },
-      { id: 5, title: "道教洞真部神符(符箓)古籍", desc: "源自道教上清派核心传承的珍稀符箓类文献合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/061e4fec4cda" },
-      { id: 4, title: "古籍：推背图手抄本（电子版）", desc: "民间流传的珍稀传统谶纬类古籍数字化资源。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/61bad5bead73" },
-      { id: 3, title: "绝版古籍书电子版合集（13类）", desc: "民间系统整理的珍稀绝版古籍数字化典藏合集，完整收录13大门类市面罕见的孤本、珍本、失传文献。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/ca619a9ec3ac" },
-      { id: 2, title: "各门各派武林秘籍大全（共309套）", desc: "系统收录中华传统武术各流派核心典籍的数字化典藏合集。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/793c5358aec7" },
-      { id: 1, title: "各地方志（全国古今共4000+册）", desc: "覆盖全国各行政区域的珍稀地方文献合集，上起唐代图经古本，下迄当代新编省市县三级志书。", category: "za", categoryName: "杂集", link: "https://pan.quark.cn/s/f4b7cef1a222" }
+      { id: "176", title: "通用中国手语系统培训视频课程", desc: "系统讲解国家通用手语常用表达，从基础手势、日常对话到场景交流逐步进阶，视频讲解清晰，支持反复回看，适合想要学习手语、方便和听障朋友交流的爱好者学习。", categoryName: "技能教程", link: "https://pan.quark.cn/s/7e298ead4d94" },
+      { id: "175", title: "立体舌象六经辨证完整版教学课程", desc: "基础舌象识别到六经辨证对应逻辑，结合大量实操案例演示，把抽象的辨证方法转化为可落地的识别技巧，帮助学习者快速掌握实用舌诊技能。", categoryName: "医", link: "https://pan.quark.cn/s/5b5bd3aeecd6" },
+      { id: "174", title: "伤寒论药证实战应用详解合集", desc: "梳理经典典籍中的核心用药辨证思路，结合实际案例拆解，帮助学习者快速理解条文背后的用药逻辑，降低经典中医典籍的学习门槛。", categoryName: "医", link: "https://pan.quark.cn/s/900ba5bbab2e" },
+      { id: "173", title: "家电清洗全套落地实操教学合集", desc: "包含各类常见家电的深度清洁技巧，还有家电常见小故障排查、清洗后保养注意事项，实景演示无保留，不管是家庭日常清洁还是副业接单都能直接用。", categoryName: "技能教程", link: "https://pan.quark.cn/s/1e9c2df22f96" },
+      { id: "172", title: "成人小提琴从零到入门全套教程", desc: "避开传统教学的枯燥难点，针对成人学习特点设计内容，从基础音阶到流行小曲子逐步进阶，配套练习规划，新手也能快速拉出完整曲目。", categoryName: "技能教程", link: "https://pan.quark.cn/s/afdbf73b42f9" },
+      { id: "171", title: "精品凉拌菜+热卤全系列实操教程", desc: "上百款菜品分步教学，从基础卤汤调配、香料配比到凉拌菜调味、保鲜技巧全覆盖，零基础也能跟着步骤上手，不管是家用摆摊还是小店经营都能直接套用。", categoryName: "技能教程", link: "https://pan.quark.cn/s/0fdb9a618298" },
+      { id: "170", title: "《中国风水文化》纪录片 100集全", desc: "整梳理传统民俗文化发展脉络，覆盖历史源流、建筑文化、人文地理等多个维度，内容详实画面清晰，适合对传统文化民俗知识感兴趣的爱好者系统观看学习。", categoryName: "山", link: "https://pan.quark.cn/s/ca73dde6726c" },
+      { id: "169", title: "买台无人机，给全村打药", desc: "买台植保无人机要多少钱？一个月能剩多少？手续怎么办？这篇给你算清楚。", categoryName: "创业副业", link: "https://pan.quark.cn/s/5f30f5a1f119" },
+      { id: "168", title: "20箱土蜂起步，第一年赚不赚？", desc: "想用20箱中蜂起步养土蜂蜜，要先投入1万多到2万多。第一年可能不赚钱，第二年起才有机会多赚一两万。这篇把投入明细、取蜜卖蜜的全年账本、买蜂取蜜的操作步骤、销路和办证要求，以及常见的3个坑一次讲清。", categoryName: "创业副业", link: "https://pan.quark.cn/s/fcd8c5b15940" },
+      { id: "167", title: "田里加养小龙虾，一亩多赚1000到3000元", desc: "稻虾共作是稻田里种稻、再养一茬小龙虾的老办法。本文算清10亩起步的成本、一亩田的收支、操作步骤和销路，并提醒三个常见的坑。价格仅为参考区间。", categoryName: "创业副业", link: "https://pan.quark.cn/s/96c2bb214c2e" },
+      { id: "166", title: "林下养土鸡，200只算笔账", desc: "投入多少、月挣多少、手续怎么办、蛋卖给谁，一次讲清。", categoryName: "创业副业", link: "https://pan.quark.cn/s/30a228bbe8c2" },
+      { id: "165", title: "不囤货也能开店：拼多多卖家乡特产怎么做", desc: "不囤货、不交加盟费，一部手机在拼多多开店卖家乡特产。从启动资金、办证提醒、一个月流水账，到找货源、做商品页、避开三个大坑，一步步讲清楚。", categoryName: "创业副业", link: "https://pan.quark.cn/s/168c4abeba7d" },
+      { id: "164", title: "院子空着别浪费，种平菇投入5000元的真实账本", desc: "家里有院子，花3000～7000元就能试种平菇。这篇把设备、菌包、一茬的收支一笔笔算清，教你怎么搭棚、怎么管、怎么找销路，再提醒3个新手最容易踩的坑。", categoryName: "创业副业", link: "https://pan.quark.cn/s/e6a21231f01f" },
+      { id: "163", title: "一部手机拍农活，投入不到1000元", desc: "种地一年剩不下多少钱？这篇帮你算三笔账：设备要花多少，收入从哪来，哪些坑千万别踩。不讲暴富，不让你买课，只讲一个普通农户怎么一步步把农活拍成多一份收入。收益因地区、品种、行情而异，仅供参考。", categoryName: "创业副业", link: "https://pan.quark.cn/s/8d48add89fc5" },
+      { id: "162", title: "婚恋关系全指南：从识人到经营完整体系", desc: "覆盖从识别合适伴侣、关系升级到长期经营的全流程实用方法，帮你避开婚恋中的常见误区，更高效地找到并经营好属于自己的亲密关系。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/28323770a976" },
+      { id: "161", title: "高效提升认知的核心思维工具合集", desc: "整理了高手们常用的底层认知升级方法，帮你打破固有思维局限，建立更清晰的决策逻辑和认知体系，在工作、生活中做出更精准的判断。", categoryName: "技能教程", link: "https://pan.quark.cn/s/b0779398b5ce" },
+      { id: "160", title: "微信小程序开发从入门到精通视频课", desc: "从开发环境搭建、基础组件使用到完整实战项目落地，全流程视频讲解，配套实操案例，零基础也能跟着一步步上手，快速掌握小程序开发全流程技能 。", categoryName: "技能教程", link: "https://pan.quark.cn/s/8396e89d1916" },
+      { id: "159", title: "零基础友好的人工智能原理通俗课", desc: "避开复杂晦涩的数理公式，用大白话讲透人工智能的核心基础原理，覆盖主流技术逻辑和应用常识，完全没有技术背景的小白也能轻松听懂，快速建立对AI领域的基础认知 。", categoryName: "技能教程", link: "https://pan.quark.cn/s/aad30d9dfbfc" },
+      { id: "158", title: "42个可直接套用的文章写作方法", desc: "拆解不同类型文章的写作底层逻辑，从结构搭建、内容填充到语言优化给出42个落地实操技巧，帮你解决内容空洞、逻辑混乱、表达平淡等常见写作问题，快速提升文章写作能力 。", categoryName: "学习资料", link: "https://pan.quark.cn/s/4db1152d2f15" },
+      { id: "157", title: "四季顺时养生食疗音频课", desc: "以音频形式系统讲解春夏秋冬四季养生核心逻辑，结合专业中医理论给出对应食疗方案和饮食禁忌，通勤、做家务时就能收听学习，帮你跟着季节变化从三餐细节做好日常健康调理 。", categoryName: "医", link: "https://pan.quark.cn/s/57569067db0c" },
+      { id: "156", title: "26门小语种零基础全套学习资料", desc: "精整26门热门及小众小语种的从入门到精通全套内容，覆盖发音、基础语法、日常会话等核心板块，适配兴趣学习、考级、留学等不同需求，零基础也能直接上手开启外语学习 。", categoryName: "学习资料", link: "https://pan.quark.cn/s/7a95f5ffacd6" },
+      { id: "155", title: "考研英语全阶核心词汇大全", desc: "覆盖考研英语全范围核心词汇，适配基础入门到冲刺巩固全备考阶段，结合词根联想、语境记忆等多种高效方法，帮你系统搭建词汇体系，夯实考研英语备考基础 。", categoryName: "学习资料", link: "https://pan.quark.cn/s/d022232c36f5" },
+      { id: "154", title: "《饮食的悖论》健康饮食指南", desc: "《纽约时报》畅销书，由有40余年临床经验的美国心脏病专家史蒂文·R. 冈德里撰写，揭秘常见「健康食物」中凝集素的潜在影响，配套三阶段可落地饮食调整方案，帮你科学调整日常饮食习惯 。", categoryName: "医", link: "https://pan.quark.cn/s/2d937dc62d41" },
+      { id: "153", title: "204张思维导图速记初中1600核心词（PDF版）", desc: "用可视化思维导图把初中1600个核心单词串联起来，告别死记硬背，大幅提升记忆效率，PDF格式可随时打印查阅，是初中生快速攻克英语词汇的高效工具 。", categoryName: "学习资料", link: "https://pan.quark.cn/s/ab79540aa73c" },
+      { id: "152", title: "考研英语一、二历年真题+逐题解析", desc: "整合近年考研英语一、二完整真题，搭配考点定位、解题思路拆解和易错点提醒，帮你精准把握命题趋势，高效突破备考重难点，是考研英语刷题提分的核心实用资料 。", categoryName: "学习资料", link: "https://pan.quark.cn/s/5e778c20dc5b" },
+      { id: "151", title: "八字命理资料400部整理打包", desc: "这次整理的《八字命理系列书籍大合集》，围绕八字命理这一传统话题，汇集成一套方便翻阅的阅读资料，属于传统文化、民俗知识、古籍整理的范畴。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/f81bbdddc5a4" },
+      { id: "150", title: "张天师符咒大全丨康熙皇室珍藏", desc: "《张天师符咒大全》，一份围绕道家符箓文化整理的传统文化、民俗知识、古籍整理类资料。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ca49c0fb33ac" },
+      { id: "149", title: "悬疑猎奇短视频副业，手机就能从0开始做", desc: "这个副业做的是悬疑、猎奇类的短视频内容：用几十秒到两三分钟，讲一个有悬念的故事，或者把一个冷门、有趣的知识讲得让人想看完。形式以\\\"配音＋画面＋字幕\\\"为主，不需要露脸，一部手机加一个剪辑软件就能做。", categoryName: "创业副业", link: "https://pan.quark.cn/s/7dbf06bce1b2" },
+      { id: "148", title: "用AI制作田园治愈短片，保姆级上手教程", desc: "用AI工具制作\\\"农村治愈、田园慢生活\\\"风格的短视频，发布到短视频、视频号等平台，靠内容积累观众，再通过平台公开的渠道产生收入。", categoryName: "创业副业", link: "https://pan.quark.cn/s/67e36d2800e5" },
+      { id: "147", title: "七十二行祖师爷", desc: "做哪一行，就拜哪一行的祖师爷。这份资料收录了七十二行祖师爷的传说，以及相关民俗内容。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/4fd6c7b436ba" },
+      { id: "146", title: "星座情感号从0到开通变现的全流程", desc: "做的是\\\"星座性格×情感沟通\\\"的科普娱乐内容，不做运势预测，不做收费测算。不露脸可以做，但原创表达是关键。", categoryName: "创业副业", link: "https://pan.quark.cn/s/731a0591aaab" },
+      { id: "145", title: "《太乙金华宗旨》", desc: "道家有一本流传几百年的小册子，叫《太乙金华宗旨》，核心讲一件事：怎么让心安定下来。", categoryName: "医", link: "https://pan.quark.cn/s/db79a16a315a" },
+      { id: "152b", title: "废旧衣服回收：普通人冷门生意实操指南", desc: "零经验可直接落地的旧衣回收副业全流程手册，拆解循环经济赛道的完整盈利逻辑。", categoryName: "创业副业", link: "https://pan.quark.cn/s/db7f1ea173cb" },
+      { id: "151b", title: "单人跨境电商实操指南：Temu+美客多落地玩法", desc: "完全面向零经验新手的单人跨境运营落地手册，全程拆解Temu+美客多双平台的互补玩法。", categoryName: "创业副业", link: "https://pan.quark.cn/s/8f3fccf09bb8" },
+      { id: "150b", title: "AI仿写小说副业全指南", desc: "完全贴合最新平台规则的小说创作副业实操手册，全程走合规人机协同路线。", categoryName: "创业副业", link: "https://pan.quark.cn/s/d207e85f5f4c" },
+      { id: "149b", title: "AI非遗短视频：新手10分钟成片", desc: "用豆包写脚本、即梦生图、可灵做动画、剪映一键合成，全程国产AI工具，一部手机10分钟就能出一条高完播短视频。", categoryName: "创业副业", link: "https://pan.quark.cn/s/eabdcae9f60f" },
+      { id: "148b", title: "低竞争暴利新职业：餐具修复实操指南", desc: "面向普通人的冷门副业落地指南，1万左右就能轻启动，靠5-7天实操掌握核心手艺。", categoryName: "创业副业", link: "https://pan.quark.cn/s/7c340aaf85e2" },
+      { id: "147b", title: "视频号中老年内容：从选题到变现全流程", desc: "零出镜、轻设备的视频号中老年账号实操指南，全程只用一部手机加基础AI工具。", categoryName: "创业副业", link: "https://pan.quark.cn/s/fd31aaf028c6" },
+      { id: "146b", title: "AI做PPT变现全流程指南", desc: "零门槛的PPT副业实操手册，核心靠「AI批量出初稿+人工优化控质量」的标准化流程。", categoryName: "创业副业", link: "https://pan.quark.cn/s/dfcd65be8967" },
+      { id: "145b", title: "一个人一台电脑，用AI做赚钱小程序全流程SOP", desc: "全程避开复杂编程学习，把AI变成你的「免费开发助理」。", categoryName: "创业副业", link: "https://pan.quark.cn/s/4662a893b68f" },
+      { id: "144", title: "月亮星座占星识人术", desc: "以西方占星学月亮核心体系为基础的实用识人参考资源，精准读懂一个人卸下防备后的真实情绪内核。", categoryName: "卜", link: "https://pan.quark.cn/s/c33371eadfd8" },
+      { id: "143", title: "北京烤鸭制作技术", desc: "完整还原北京烤鸭传统非遗技艺的实操教学资源，覆盖挂炉、焖炉两大主流流派的全流程核心技法。", categoryName: "技能教程", link: "https://pan.quark.cn/s/8f306ef27ac5" },
+      { id: "142", title: "古风手工饰品制作教程", desc: "专为国风手工爱好者打造的系统化古风饰品创作资源，从零基础入门技法到高阶非遗传统工艺全覆盖。", categoryName: "技能教程", link: "https://pan.quark.cn/s/41827544c2df" },
+      { id: "141", title: "21天搞定考研英语", desc: "专为考研冲刺阶段打造的短期高效提分资源，通过21天高密度科学规划，帮考生在短时间内突破考研英语核心瓶颈。", categoryName: "学习资料", link: "https://pan.quark.cn/s/c14f639fe6e2" },
+      { id: "140", title: "行测+申论 考公2500题", desc: "专为公务员考试打造的专项刷题提分资源，严格贴合国考、省考最新命题趋势，精选2500道高质量核心习题。", categoryName: "学习资料", link: "https://pan.quark.cn/s/1261d9a133db" },
+      { id: "139", title: "考研英语资料大全", desc: "覆盖考研英语全阶段备考的一站式资源合集，适配英语一、英语二所有考生的复习需求。", categoryName: "学习资料", link: "https://pan.quark.cn/s/0b04fe9b2a9c" },
+      { id: "138", title: "2027国考省考资料", desc: "专为2027年公务员考试打造的全维度备考资源大合集，覆盖国考、多省市联考的全阶段备考需求。", categoryName: "学习资料", link: "https://pan.baidu.com/s/" },
+      { id: "137", title: "从零开始学钢琴", desc: "专为完全零基础人群打造的系统化钢琴入门学习资源，从最基础的认知起步，循序渐进搭建完整弹奏能力体系。", categoryName: "技能教程", link: "https://pan.quark.cn/s/52a3522d185b" },
+      { id: "136", title: "变态心理学", desc: "系统讲解人类异常心理现象的心理学核心分支学习资源，以生物-心理-社会多维视角拆解各类心理障碍。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/79a5542b6922" },
+      { id: "135", title: "0-12岁英语启蒙路线课", desc: "专为中国家庭打造的全年龄段分阶英语启蒙系统资源，从0岁磨耳朵一直衔接至小学阶段校内课标要求。", categoryName: "学习资料", link: "https://pan.quark.cn/s/4cabb16e1a5d" },
+      { id: "134", title: "初中全科知识清单整理", desc: "完全贴合义务教育初中课标、适配七至九年级全学段的系统化知识汇总资源，覆盖9大学科。", categoryName: "学习资料", link: "https://pan.quark.cn/s/5e1aa19be7e0" },
+      { id: "133", title: "曾仕强：易经的智慧", desc: "国学大师曾仕强倾注多年心血打造的《易经》通俗化讲解，全套共150集完整内容。", categoryName: "命", link: "https://pan.quark.cn/s/a294471b30d7" },
+      { id: "132", title: "零基础书法入门课", desc: "完全面向书法零经验人群的系统阶梯式学习资源，从最基础的执笔控笔到完整作品创作循序渐进。", categoryName: "技能教程", link: "https://pan.quark.cn/s/830ecec02450" },
+      { id: "131", title: "24种寿司制作小吃技术配方教程", desc: "覆盖全品类寿司技法的商用级实操教程，零基础也能快速掌握正反卷、军舰、手握、炙烧、稻荷等全品类寿司制作。", categoryName: "技能教程", link: "https://pan.quark.cn/s/10f46150b835" },
+      { id: "130", title: "中国建筑与历史文化精选", desc: "系统梳理中国建筑发展脉络、深度挖掘建筑背后历史文化内核的通识类文化资源。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ae5b64c2999f" },
+      { id: "129", title: "尤克里里基础入门教学", desc: "专为音乐零基础人群打造的低门槛乐器学习资源，普通人每天花15-20分钟练习，一周就能完成简单曲目弹唱。", categoryName: "技能教程", link: "https://pan.quark.cn/s/0410a3c3f69e" },
+      { id: "128", title: "符咒合集丨从古代巫祝传统到后世道派传承", desc: "中国传统民俗文化领域的符咒类集成参考资料，完整收录从古代巫祝传统到后世道派传承的各类符咒体系内容。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/dbb91978422d" },
+      { id: "127", title: "广西灵教民间失传绝技", desc: "根植于广西本土民间民俗文化的法术秘术类传承资源，核心以完整的「灵教36法术」体系为核心内容。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/495153ecc7ec" },
+      { id: "126", title: "嫉妒与鄙视社会比较心理学", desc: "深入剖析嫉妒与鄙视的心理机制，揭示社会比较如何影响人际关系与自我认知，提供应对负面情绪的实用策略。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/bd060a56c11b" },
+      { id: "125", title: "徐骥：100幅名画里的中国美术史", desc: "通过精选艺术作品系统梳理中国美术发展脉络，适合艺术爱好者及专业学习者。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/44528ae9cad0" },
+      { id: "124", title: "书圣：王羲之书法作品合集", desc: "全面收录书圣经典墨迹，系统展示书法艺术精髓，适合书法爱好者及专业学习者研习。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/d366c6d7ad82" },
+      { id: "123", title: "各国格斗术训练全解", desc: "系统介绍全球主流格斗技术，涵盖基础理论、实战技巧与文化背景，适合初学者至进阶学员。", categoryName: "技能教程", link: "https://pan.quark.cn/s/8d2784edee56" },
+      { id: "122", title: "谋略心理", desc: "攻心为上的人际博弈指南", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/1584043e6aec" },
+      { id: "121", title: "滋补药膳44道", desc: "详细介绍44道滋补药膳的配方、制作方法与功效，适合养生爱好者及家庭烹饪学习者。", categoryName: "医", link: "https://pan.quark.cn/s/67715696fdbd" },
+      { id: "120", title: "寒门难再出贵子", desc: "深入探讨社会阶层流动性问题，分析教育机会不均等现象及其成因。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ebb6d8b51cab" },
+      { id: "119", title: "伤寒杂病论药证解读", desc: "深入解读伤寒杂病论药物与证候的对应关系，结合临床实践，揭示仲景用药心法。", categoryName: "医", link: "https://pan.quark.cn/s/c94bfe57f7b7" },
+      { id: "118", title: "零基础魔术教学", desc: "专为魔术初学者设计，系统讲解基础魔术原理与技巧，无需任何基础即可快速上手。", categoryName: "技能教程", link: "https://pan.quark.cn/s/ec83d8467e11" },
+      { id: "117", title: "各种火锅类24种美食技术教程", desc: "系统介绍24种火锅类美食的制作技术，从基础汤底到特色食材处理，全面覆盖火锅烹饪要点。", categoryName: "技能教程", link: "https://pan.quark.cn/s/73057fe8f24f" },
+      { id: "116", title: "中国古代的家教：解析传统教子智慧与门风养成", desc: "系统解析传统家庭教育理念与实践方法，涵盖经典教子智慧与门风建设核心内容。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/d1a074d46673" },
+      { id: "115", title: "人生谋略全书", desc: "系统讲解处世智慧与心理调适技巧，帮助读者掌握人际交往策略、情绪管理方法及压力应对技能。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/03e634773158" },
+      { id: "114", title: "三部民俗神作", desc: "三本民俗文化著作深入探讨了中国传统民间信仰与习俗，适合对传统文化感兴趣的初学者至中级学习者。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/b5245d198d21" },
+      { id: "113", title: "六经伤寒舌象辩证", desc: "系统解析六经伤寒舌象，30集完整教程深入浅出，结合临床案例，助你精准辨证。", categoryName: "医", link: "https://pan.quark.cn/s/026c548c5505" },
+      { id: "112", title: "风景摄影实战教程全能篇", desc: "系统讲解风光摄影技巧，从构图、用光到后期处理，适合初学者至进阶爱好者学习。", categoryName: "技能教程", link: "https://pan.quark.cn/s/11620a812d14" },
+      { id: "111", title: "手机从0基础到精通拍摄手法", desc: "全面讲解手机摄影基础知识与进阶技巧，从构图、光线到后期处理，适合零基础摄影爱好者。", categoryName: "技能教程", link: "https://pan.quark.cn/s/3ec9af0b9224" },
+      { id: "110", title: "特色凉菜之柠檬鸡爪", desc: "详细讲解了一道经典凉菜的制作方法，包含食材选择、调味技巧和制作步骤。", categoryName: "技能教程", link: "https://pan.quark.cn/s/66c86206f256" },
+      { id: "109", title: "各类奇书大合集 （23.4G）", desc: "整理收集各类奇书，涵盖山、医、命、相、卜五术相关古籍、道教相关古籍、急救仙方、易经、饮食、养生等等资料。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/9c71df70c12f" },
+      { id: "108", title: "民间秘传百病偏方", desc: "民间秘传百病偏方，主要记录民间失传或罕见的偏方秘方。仅作娱乐参考，请勿盲目相信。", categoryName: "医", link: "https://pan.quark.cn/s/fec2c1c8ca0e" },
+      { id: "107", title: "民间绝技交流", desc: "民间绝技交流秘录，大多数为民间偏方养生诊断技艺，供大家娱乐参考，切勿盲目相信。", categoryName: "医", link: "https://pan.quark.cn/s/89d9df95cb5e" },
+      { id: "106", title: "航拍教程：电影级航拍大师手把手教你航拍", desc: "从基础操作到电影级运镜，大疆全系无人机实战技巧全解析，手把手带你掌握构图、光影与运镜。", categoryName: "技能教程", link: "https://pan.quark.cn/s/c0e4fc0f172d" },
+      { id: "105", title: "巴蜀名医遗珍丛书系列 共20部", desc: "包含巴蜀地区名医的医书孤本，共20部。对中医感兴趣的可以用于增加知识经验。", categoryName: "医", link: "https://pan.quark.cn/s/633d3e554e3a" },
+      { id: "104", title: "鬼谷正宗源流天机卜筮全书", desc: "区别于传统卜筮典籍，不局限于静态卦象解读，更强调「顺势而为」的动态推演逻辑。", categoryName: "卜", link: "https://pan.quark.cn/s/36243cfa705c" },
+      { id: "103", title: "推背图合集丨各种稀缺版本合集", desc: "包含各种稀缺孤本推背图。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/55f08ca9719b" },
+      { id: "102", title: "相命全集 共10部", desc: "涵盖手相、面相、指纹、十二支、姓名、星象、灵数等等，仅供大家娱乐参考。", categoryName: "相", link: "https://pan.quark.cn/s/f8e65cb8195f" },
+      { id: "101", title: "阴阳宅阵法秘术合集", desc: "以阴阳宅阵法为主，包含图镇、二十八星宿、金斗门阵法、延命镇、建财库等等。", categoryName: "山", link: "https://pan.quark.cn/s/cd2000a8cac4" },
+      { id: "100", title: "图解系列：易经、道教、奇门等等 共266部", desc: "涵盖易经、道教、奇门、佛学等等，可以让爱好者更好的了解各种文化。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/b8089942855a" },
+      { id: "99", title: "道家阴盘奇门符咒课", desc: "讲解道家阴盘奇门符咒，适合对传统文化有兴趣的人群。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/dc399365bbd6" },
+      { id: "98", title: "古人房中养生术合集 72部", desc: "收集整理了72部古代房中养生术，仅供各位娱乐参考。", categoryName: "医", link: "https://pan.quark.cn/s/62e20e339b3d" },
+      { id: "97", title: "神秘文化体系合集", desc: "涵盖中华自古以来的神秘色彩体系，催魂法、占候术、占星术、占梦术、权谋术、择吉、相法、相地术、命术、武术、符篆、咒语、周易、降神等等。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/5f65dbedbd4c" },
+      { id: "96", title: "谋术全鉴丨古往今来谋术合集", desc: "涵盖六韬、鬼谷子、孙子兵法、三十六计、人物志、长短经、素书等，战场、商场、官场、情场均有所披露。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ba57e5b5717b" },
+      { id: "95", title: "图解鲁班书丨古人阳宅的趋吉避凶", desc: "对于鲁班书的阳宅趋吉避凶进行图解分析，适合对传统文化、家居布局感兴趣的初学者及爱好者。", categoryName: "山", link: "https://pan.quark.cn/s/383572724158" },
+      { id: "94", title: "酱汁配方丨近千种酱料酱汁合集", desc: "涵盖上千种酱汁配料，大酱、果酱、酱料、调味酱、卤料等等，可以家用也可开店摆摊。", categoryName: "技能教程", link: "https://pan.quark.cn/s/21233c3edfb1" },
+      { id: "93", title: "素书丨民间称为天书 奇书", desc: "相传是秦末汉初黄石公所著，张良得黄石公传授此书后，辅佐刘邦建立大汉王朝。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/2c756c88846b" },
+      { id: "92", title: "玄门道家五术合集丨山医命相卜", desc: "收集关于玄门道家五术书籍资料，五术精髓，涵盖山医命相卜。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/f8903b6232d1" },
+      { id: "91", title: "图解引导术丨传说中的修仙秘法", desc: "按照马王堆出土的引导图进行图解教学，主要以动作、呼吸来强身健体。", categoryName: "医", link: "https://pan.quark.cn/s/1082ad930dfb" },
+      { id: "90", title: "预测全书丨各种预测学合集", desc: "含有周易八卦、六爻、八字，主要预测疾病、官讼、年时、事业、成败、来意、伤灾、婚姻、出行、天气、升迁。", categoryName: "卜", link: "https://pan.quark.cn/s/d14cbf77e111" },
+      { id: "89", title: "心术大全", desc: "包含识人、韬晦、权谋、统御、预测、察伪、破迷、察奸等等。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ddbee844def5" },
+      { id: "88", title: "八字由浅入深丨如何趋利避害", desc: "八字学基础知识，帮助初学者掌握核心概念与分析方法。", categoryName: "命", link: "https://pan.quark.cn/s/44a3dc569280" },
+      { id: "87", title: "珍贵海外回归中医失传古籍善本", desc: "收集近200部流失海外中医古籍中精选62部，具有高学术水平和实用价值。", categoryName: "医", link: "https://pan.quark.cn/s/701b6c9b4427" },
+      { id: "86", title: "图解撼龙经丨看懂龙脉 古法堪舆", desc: "系统讲解传统理论，通过图解方式帮助读者理解龙脉识别与点穴技巧。", categoryName: "山", link: "https://pan.quark.cn/s/16a1dd81e29b" },
+      { id: "85", title: "整理《民间失传秘术》合集", desc: "包含防身秘术、行乐秘术、入梦秘术、民间秘术等，内容仅供大家娱乐阅读。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/01f1dc144624" },
+      { id: "84", title: "古法男性洗髓功", desc: "涵盖基础理论、呼吸导引、专项练习及保养原则等核心知识点。", categoryName: "医", link: "https://pan.quark.cn/s/3e5a52f8ed56" },
+      { id: "83", title: "历史中外神秘现象全记录12部", desc: "系统收录古今中外各类神秘现象与未解之谜的科普读物。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/a348b2adfac4" },
+      { id: "82", title: "奇门遁甲丨入门到精通", desc: "从零开始系统学习奇门遁甲，详解排盘步骤与核心规则，结合实战案例解读。", categoryName: "卜", link: "https://pan.quark.cn/s/8f89e44a8561" },
+      { id: "81", title: "超稀有珍藏道家秘籍522部", desc: "涵盖道家各种资料书籍合集，秘籍涵盖内丹、养生、符箓、经典注疏等稀世文献。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/a44c34089604" },
+      { id: "80", title: "小六壬预测术课：零基础入门传统技法", desc: "小六壬预测术筑基课，围绕基础阶段的学习需求提供参考。", categoryName: "卜", link: "https://pan.quark.cn/s/2c2e659258f8" },
+      { id: "79", title: "面相识人术-曾国藩冰鉴", desc: "系统传授传统识人智慧，通过面部特征解析性格特质，帮助学习者掌握精准判断人的能力。", categoryName: "相", link: "https://pan.quark.cn/s/0b1f7cb63b48" },
+      { id: "78", title: "武术教程合集", desc: "涵盖夺刀、特种兵技术、泰拳、太极拳实战、擒拿、散打、截拳道等，仅供学习强身健体使用。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/9e36bd0fcafd" },
+      { id: "77", title: "《三教九流合集》", desc: "上九流、中九流、下九流的完整分类与介绍。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/627ced4b1454" },
+      { id: "76", title: "滋阴补阳秘籍合集", desc: "收录关于滋阴补血的典籍，主要以食补为主，仅供娱乐阅读。", categoryName: "医", link: "https://pan.quark.cn/s/eb3f0501b7a6" },
+      { id: "75", title: "《中国古代八大兵书》", desc: "包含孙膑兵书、吴起兵书、三十六计、姜太公兵书、曾国藩兵书、春秋、尉缭子兵书。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/b14c6a42fcc6" },
+      { id: "74", title: "《方术大全》历史方术一本通", desc: "含有占星术、八卦术、周易、炼丹术、养生术、相术、房中养生术、堪舆术、奇门遁甲术等。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/eb6437ac1fdb" },
+      { id: "73", title: "《古今妖怪大全》", desc: "收录305个妖怪、217个神话故事、417幅经典绘画。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/7daf27e0a496" },
+      { id: "72", title: "药酒配方大全", desc: "系统介绍传统药酒配方，涵盖原料选择、制作工艺及功效应用。", categoryName: "医", link: "https://pan.quark.cn/s/96bca25966f3" },
+      { id: "71", title: "精心整理[1000部术数合集]", desc: "内涵八字命理400部、奇门284部、紫微斗数285部、六爻43部、梅花29部、小六壬72部、风水103部。", categoryName: "命", link: "https://pan.quark.cn/s/3113537ab4b7" },
+      { id: "70", title: "历朝历代野史集合", desc: "系统汇编中国从上古至近代各类民间稗官笔记、私家著述、朝野逸闻的稀缺历史文献合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/64c2391bc6ee" },
+      { id: "69", title: "《轻功修炼秘法》", desc: "九嶷山深几千里，峰谷崎岖人不到。山中旧有仙佬家，十里飞泉绕丹灶。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/4ab895abd475" },
+      { id: "68", title: "德国大学收藏的稀缺失传中医古籍[共26部]", desc: "从德国慕尼黑大学、汉堡大学等高校馆藏中整理回流的珍稀中医古籍合集。", categoryName: "医", link: "https://pan.quark.cn/s/227403de5027" },
+      { id: "67", title: "《六壬断易秘诀》", desc: "秘诀占怪断，凡占人家有怪异之物不祥等。", categoryName: "卜", link: "https://pan.quark.cn/s/1a62db8447d3" },
+      { id: "66", title: "超级读心术，从微表情看透对方真实想法", desc: "系统讲解基于心理学与行为分析的识人技巧，帮助你在社交、职场、商务谈判中快速判断对方性格与真实意图。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/dc9dac6ae25e" },
+      { id: "65", title: "350种摆摊开店小吃技术配方", desc: "系统整理了350种小吃技术配方，涵盖煎炸、卤煮、烧烤、甜品等品类。", categoryName: "技能教程", link: "https://pan.quark.cn/s/c60e8c08bf76" },
+      { id: "64", title: "引诱手段", desc: "让人心甘情愿被你说服的高阶心理术，看清人性如何被语言、幻想与情绪牵引。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/db43e7393686" },
+      { id: "63", title: "中医珍贵古籍善本全集2000本", desc: "面向关注传统医学文献的读者、学习者及古籍研究人员，适合用于中医古籍阅读、文献检索与研究参考。", categoryName: "医", link: "https://pan.quark.cn/s/fda3da4ae289" },
+      { id: "62", title: "符咒文化研究", desc: "系统介绍符咒文化的历史演变、理论基础与实践应用。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/9bf42fd9187b" },
+      { id: "61", title: "《中华擒拿术》缠丝擒拿手", desc: "系统介绍传统武术擒拿技术，包含72路基础技法与32路精细小擒拿。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/3f63a2c59caa" },
+      { id: "60", title: "中医古籍合集-适合个人收藏阅读", desc: "整理了以中医古籍为主题的50+本传统医学资料。", categoryName: "医", link: "https://pan.quark.cn/s/af2b7b13f6da" },
+      { id: "59", title: "104套小吃配方教程+创业落地指南", desc: "围绕小吃创业与开店筹备整理，包含104套小吃配方及创业落地指南。", categoryName: "技能教程", link: "https://pan.quark.cn/s/07b5928285a8" },
+      { id: "58", title: "紫微斗数自学合集[共48部]", desc: "整理了48本紫微斗数经典图书，围绕传统命理相关内容提供集中阅读与资料参考。", categoryName: "命", link: "https://pan.quark.cn/s/1f909e01fa72" },
+      { id: "57", title: "绝版梅花易数·象数思维的智慧", desc: "面向希望了解相关文本的读者，提供较为通俗的阅读参考。", categoryName: "卜", link: "https://pan.quark.cn/s/633b462eef53" },
+      { id: "56", title: "90年代书籍《皇室秘方大全》", desc: "从十数万首历代宫廷御用秘方中精选近千首经过临床验证的经典方剂。", categoryName: "医", link: "https://pan.quark.cn/s/44004d3000e6" },
+      { id: "55", title: "吕祖全书 总六十四卷", desc: "六十四卷内容清晰划分为本传、灵迹、经诰、金丹、语录、诗文六大板块。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/065e3698359e" },
+      { id: "54", title: "旧书-道家养生书籍 2册", desc: "从80-90年代国内正式出版的道家养生绝版老书中精选出的稀缺经典合集。", categoryName: "医", link: "https://pan.quark.cn/s/cafa0edf93ea" },
+      { id: "53", title: "《中国历史地图集》", desc: "由谭其骧院士主持、复旦大学团队耗时二十余年编撰的国家级权威历史地理巨著。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/7d3ae1e50be8" },
+      { id: "52", title: "图解奇门遁甲图书PDF版", desc: "专为零基础人群打造的奇门遁甲轻量化入门高清电子资料合集。", categoryName: "命", link: "https://pan.quark.cn/s/9aa6cfbb9322" },
+      { id: "51", title: "千门八将系列", desc: "完整收录中国传统江湖博弈智慧的稀缺经典合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/9429357dc438" },
+      { id: "50", title: "500份心理学书籍", desc: "覆盖全梯度、全场景的超大全品类心理学电子资料合集，整合500本经典心理学书籍。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/b309d3e4408f" },
+      { id: "49", title: "《中国传统工艺全集》14册合集", desc: "内容覆盖丝绸织染、中药炮制、传统机械、文物修复、民间手工艺、漆艺、甲胄复原等多个领域。", categoryName: "奇异杂集", link: "https://pan.baidu.com/s/" },
+      { id: "48", title: "《溜须拍马术》", desc: "1998年出版的绝版社会文化类书籍，专门剖析传统人情社会人际沟通潜规则。", categoryName: "奇异杂集", link: "https://pan.baidu.com/s/" },
+      { id: "47", title: "中国功夫系列图书", desc: "系统整理中华传统武术全体系的稀缺经典合集，全面收录国内各大武术流派的核心传承著作。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/eb6fa4ab08c7" },
+      { id: "46", title: "古盖天之学也《周髀算经》", desc: "以勾股之法，度天地之高厚，推日月之运行，而得其度数。", categoryName: "卜", link: "https://pan.quark.cn/s/37467edf2438" },
+      { id: "45", title: "80年代绝版书籍《养气功健身法》", desc: "由当代著名武术家、中医养生家马礼堂先生所著的经典传统养生气功专著。", categoryName: "医", link: "https://pan.quark.cn/s/b0f2cec1ccfa" },
+      { id: "44", title: "《风水宝典》", desc: "以环境心理学与传统空间智慧为双核的现代家居优化手册，聚焦于「气流管理」「阴阳平衡」与「动静分区」。", categoryName: "山", link: "https://pan.quark.cn/s/c425c2bcc6d7" },
+      { id: "43", title: "中小学全科教辅资料合集", desc: "覆盖1～9年级上下册内容，囊括多种热门练习册、同步作业本、单元测试卷、课堂学案、期末复习习题。", categoryName: "技能教程", link: "https://pan.quark.cn/s/ce2617cf4155" },
+      { id: "42", title: "中医古籍珍稀抄本精选10本", desc: "贯唯集、剑慧草堂医案、济世珍宝、旌孝堂医案、江泽之医案、脉理集要等。", categoryName: "医", link: "https://pan.quark.cn/s/c06d6f9bd6f1" },
+      { id: "41", title: "《河洛阳宅直断心法 印象篇》", desc: "带实战图解100例。主讲宅屋形体、大门玄关、厅堂格局、阴阳人宫对应。", categoryName: "山", link: "https://pan.quark.cn/s/32db68d0b10b" },
+      { id: "40", title: "两部绝版手相书", desc: "由《中国秘传手相术》1986版与《手纹与人生》2004光明日报版两本稀缺老书组成。", categoryName: "相", link: "https://pan.quark.cn/s/fd4fc382e0d4" },
+      { id: "39", title: "10本绝版老菜谱", desc: "珍藏级60-90年代经典绝版老菜谱合集，总计2300余页。", categoryName: "技能教程", link: "https://pan.quark.cn/s/7fcad0b28c9f" },
+      { id: "38", title: "《600种中草药野外识别高清图谱》", desc: "由北京中医药大学刘春生教授等权威专家编著的专业野外中草药识别工具书。", categoryName: "医", link: "https://pan.quark.cn/s/2fe8220bca16" },
+      { id: "37", title: "全套占星教学课程合集", desc: "系统化、阶梯式的数字命理线上教程，专为零基础爱好者及希望深入专业应用的命理研习者设计。", categoryName: "卜", link: "https://pan.quark.cn/s/dd3d2d7c08e4" },
+      { id: "36", title: "《七经图》", desc: "明代万历年间由徽州学者吴继仕编纂的儒家经典珍稀图解古籍。", categoryName: "命", link: "https://pan.quark.cn/s/e5b4e3b3d35e" },
+      { id: "35", title: "家居布局智慧：极简风水入门", desc: "完全摒弃传统风水复杂晦涩理论的轻量化居家空间优化资源。", categoryName: "山", link: "https://pan.quark.cn/s/ee39765fa8c6" },
+      { id: "34", title: "《古法明目功：入门六式+分步演练+手型呼吸》", desc: "基于中医经络理论，融合手型导引与腹式呼吸，专为缓解屏幕用眼疲劳设计。", categoryName: "医", link: "https://pan.quark.cn/s/7b7cb071c308" },
+      { id: "33", title: "《奇门遁甲秘笈大全》刘伯温·辑", desc: "中国古代奇门遁甲术数体系的集大成传世典籍。", categoryName: "卜", link: "https://pan.quark.cn/s/4716ea4249e8" },
+      { id: "32", title: "《麻衣相术》", desc: "中国相面术第一传世经典，民间流传最广、体系最完整的相术蓝本。", categoryName: "相", link: "https://pan.quark.cn/s/9c2ad845186d" },
+      { id: "31", title: "《周易图解》古籍", desc: "以「以图释易」为核心的珍稀传统易学图谱类文献。", categoryName: "命", link: "https://pan.quark.cn/s/24272309f6e0" },
+      { id: "30", title: "钦天监必学《古经天象考》古籍", desc: "清代著名学者雷学淇耗费十余年心血编撰的中国古代天文历法经典专著。", categoryName: "卜", link: "https://pan.quark.cn/s/9114c8285771" },
+      { id: "29", title: "易学简单入门资料", desc: "专为零基础人群打造的轻量化易学入门学习合集。", categoryName: "卜", link: "https://pan.quark.cn/s/f1e26b56c8b2" },
+      { id: "28", title: "《命理基本知识》20章", desc: "专为零基础爱好者打造的体系化八字命理入门教程，全书共20个循序渐进的独立章节。", categoryName: "命", link: "https://pan.quark.cn/s/3f930ab77e7f" },
+      { id: "27", title: "绝版道教符咒手抄本图", desc: "系统整理民间散藏珍稀道教符咒手抄本的高清影印合集，总页数超260页。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/bc22b2cbad72" },
+      { id: "26", title: "辣条制作配方及教程", desc: "面向零基础人群的全场景辣条制作实用教程合集，覆盖家庭自制、摆摊创业两大核心场景。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/81e179e8048f" },
+      { id: "25", title: "钦天监必学《天文图说》", desc: "中国古代天文学史上的里程碑式经典文献，世界上现存最早、最精准的古代星图配套文字典籍。", categoryName: "卜", link: "https://pan.quark.cn/s/0ab1247aa705" },
+      { id: "24", title: "《洞天奥旨》中医古籍全书", desc: "清代名医陈士铎所著的经典中医外科专著，又名《外科秘录》。", categoryName: "医", link: "https://pan.quark.cn/s/7bd30107cac8" },
+      { id: "23", title: "古籍相面术《相法十六篇》全集", desc: "中国现存最早的系统面相学经典著作，传为汉代第一女相师许负所撰。", categoryName: "相", link: "https://pan.quark.cn/s/f6d1f87ce28c" },
+      { id: "22", title: "《图解葬书》风水经典版", desc: "以晋代郭璞原著为核心、以清代《四库全书》文渊阁本为权威底本整理的可视化传统风水经典合集。", categoryName: "山", link: "https://pan.quark.cn/s/220769429f84" },
+      { id: "21", title: "中国地道药材鉴别使用手册（上下册）", desc: "由中医药学者张穗坚编著的专业中药材实用工具书，系统收录国内主流道地药材的完整鉴别与使用规范。", categoryName: "医", link: "https://pan.quark.cn/s/da6d9e3eb4d5" },
+      { id: "20", title: "神农本草经七十六药集释", desc: "聚焦《神农本草经》76味核心常用药的深度集释工具书。", categoryName: "医", link: "https://pan.quark.cn/s/ac4c6abc3c0a" },
+      { id: "19", title: "最全鲁班书古籍汇总", desc: "系统整理52部历代《鲁班书》相关珍稀版本的大型民俗古籍数字合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/99211c64057c" },
+      { id: "18", title: "聊斋故事图文全集", desc: "完整收录《聊斋志异》经典篇目、搭配海量珍稀古版画的可视化古典文学合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/5122534f2cd2" },
+      { id: "17", title: "易经图文解析版系列 共7部", desc: "体系完整、全图文化的《易经》入门到精通全系列教程。", categoryName: "命", link: "https://pan.quark.cn/s/0d724b32dc30" },
+      { id: "16", title: "超级自卫术+单招制敌完整高清版", desc: "面向完全无武术基础普通人的轻量化实战防卫教程。", categoryName: "技能教程", link: "https://pan.quark.cn/s/92879db85264" },
+      { id: "15", title: "90年代《民间秘术》600种", desc: "完整收录600种散落在市井乡间、濒临失传的传统民间技艺与生活智慧。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/2c5c268d0a5d" },
+      { id: "14", title: "最全高清人体穴位图及穴位图解大全", desc: "系统收录全身400余个正经穴位的中医可视化实用工具书。", categoryName: "医", link: "https://pan.quark.cn/s/d784bafdbfd7" },
+      { id: "12", title: "1200份实用合同word模板（各行各业）", desc: "覆盖全场景商业与日常需求的标准化合同文档合集，全部为可直接编辑的Word格式。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/6df62b621aed" },
+      { id: "11", title: "《孙子兵法》：千年智慧，跨界指南！", desc: "一本超越军事的智慧奇书！《孙子兵法》不仅是兵家经典，更藏着人生与成功的密码。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/1265e485e12a" },
+      { id: "10", title: "《风水术》·风水自助手册", desc: "完全摒弃传统风水复杂晦涩的理气理论，以「自查、调整、化解」为核心逻辑。", categoryName: "山", link: "https://pan.quark.cn/s/1f24aab4bf1e" },
+      { id: "9", title: "《民间生活奇招秘术》：90年代民间智慧宝典", desc: "完整收录近千条90年代民间流传实用生活技巧的怀旧类生活百科合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/5d71eb21b8f8" },
+      { id: "8", title: "禽畜养殖技术资料", desc: "覆盖20个主流养殖品类的全场景落地式技术合集。", categoryName: "技能教程", link: "https://pan.quark.cn/s/bfe10c8146f2" },
+      { id: "7", title: "果树种植技术资料", desc: "覆盖草莓、葡萄、砂糖桔、桃、西瓜、樱桃六大主流经济果树的全流程落地式栽培技术合集。", categoryName: "技能教程", link: "https://pan.quark.cn/s/5290d320c098" },
+      { id: "6", title: "阳明心学：传习录 古籍电子版", desc: "以明嘉靖三十七年国家图书馆藏珍稀刻本为底本高清数字化的阳明心学核心文献合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/4f4f157845c9" },
+      { id: "5", title: "道教洞真部神符(符箓)古籍", desc: "源自道教上清派核心传承的珍稀符箓类文献合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/061e4fec4cda" },
+      { id: "4", title: "古籍：推背图手抄本（电子版）", desc: "民间流传的珍稀传统谶纬类古籍数字化资源。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/61bad5bead73" },
+      { id: "3", title: "绝版古籍书电子版合集（13类）", desc: "民间系统整理的珍稀绝版古籍数字化典藏合集，完整收录13大门类市面罕见的孤本、珍本、失传文献。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ca619a9ec3ac" },
+      { id: "2", title: "各门各派武林秘籍大全（共309套）", desc: "系统收录中华传统武术各流派核心典籍的数字化典藏合集。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/793c5358aec7" },
+      { id: "1", title: "各地方志（全国古今共4000+册）", desc: "覆盖全国各行政区域的珍稀地方文献合集，上起唐代图经古本，下迄当代新编省市县三级志书。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/f4b7cef1a222" }
     ];
 
-    // ========== 逻辑 ==========
-    const categories = ['全部', ...Array.from(new Set(resources.map(r => r.categoryName)))];
+    const layer1 = ['全部'];
+    const layer2 = ['山', '医', '命', '相', '卜'];
+    const layer3 = ['技能教程', '创业副业', '奇异杂集', '学习资料'];
+
     let currentCategory = '全部';
     let searchQuery = '';
 
-    const grid = document.getElementById('grid');
-    const filtersEl = document.getElementById('filters');
+    const listEl = document.getElementById('list');
     const countEl = document.getElementById('count');
     const emptyEl = document.getElementById('empty');
     const searchInput = document.getElementById('search');
 
-    // 渲染分类按钮
-    categories.forEach(cat => {
+    function makeBtn(cat, container) {
       const btn = document.createElement('button');
-      btn.className = 'filter-btn' + (cat === '全部' ? ' active' : '');
+      btn.className = 'filter-btn' + (cat === currentCategory ? ' active' : '');
       btn.textContent = cat;
-      btn.dataset.cat = cat;
       btn.addEventListener('click', () => {
         currentCategory = cat;
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         render();
       });
-      filtersEl.appendChild(btn);
-    });
+      container.appendChild(btn);
+    }
 
-    // 搜索
+    layer1.forEach(c => makeBtn(c, document.getElementById('layer1')));
+    layer2.forEach(c => makeBtn(c, document.getElementById('layer2')));
+    layer3.forEach(c => makeBtn(c, document.getElementById('layer3')));
+
     let searchTimer;
     searchInput.addEventListener('input', (e) => {
       clearTimeout(searchTimer);
       searchTimer = setTimeout(() => {
         searchQuery = e.target.value.trim().toLowerCase();
         render();
-      }, 200);
+      }, 160);
     });
+
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
 
     function render() {
       let list = resources;
-
       if (currentCategory !== '全部') {
         list = list.filter(r => r.categoryName === currentCategory);
       }
-
       if (searchQuery) {
         list = list.filter(r =>
           r.title.toLowerCase().includes(searchQuery) ||
           r.desc.toLowerCase().includes(searchQuery)
         );
       }
-
       countEl.textContent = list.length;
-      grid.innerHTML = '';
-
+      listEl.innerHTML = '';
       if (list.length === 0) {
         emptyEl.classList.remove('hidden');
         return;
       }
       emptyEl.classList.add('hidden');
-
       list.forEach((item, i) => {
         const card = document.createElement('article');
         card.className = 'card';
-        card.style.animationDelay = `${Math.min(i * 0.03, 0.3)}s`;
-        card.innerHTML = `
-          <span class="card-tag">${item.categoryName}</span>
-          <h2 class="card-title">${escapeHtml(item.title)}</h2>
-          <p class="card-desc">${escapeHtml(item.desc)}</p>
-          <div class="card-action">
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer">
-              查看资源
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        `;
-        grid.appendChild(card);
+        card.style.animationDelay = Math.min(i * 0.025, 0.3) + 's';
+        card.innerHTML =
+          '<h2 class="card-title">' + escapeHtml(item.title) + '</h2>' +
+          '<p class="card-desc">' + escapeHtml(item.desc) + '</p>' +
+          '<div class="card-side">' +
+            '<span class="card-tag">' + escapeHtml(item.categoryName) + '</span>' +
+            '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer">查看资源' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
+          '</div>';
+        listEl.appendChild(card);
       });
     }
 
-    function escapeHtml(str) {
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    }
-
-    // 初始渲染
     render();
   </script>
 </body>
