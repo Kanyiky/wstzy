@@ -1,4 +1,4 @@
-# 资源库 · Resource Archive
+# 五术搬财资源库 · Resource Archive
 
 极简风格的资源分享网页，适配手机与电脑。
 
