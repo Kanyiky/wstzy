@@ -28,11 +28,9 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     body {
-      /* 宋体：资源正文 */
       font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
       background: var(--bg);
       color: var(--ink);
@@ -47,156 +45,149 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(242, 235, 224, 0.92);
+      background: rgba(242, 235, 224, 0.94);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-light);
-      padding: 28px 24px 22px;
+      padding: 20px 16px 16px;
     }
 
     .header-inner {
-      max-width: 920px;
+      max-width: 1000px;
       margin: 0 auto;
       text-align: center;
     }
 
-    .brand { margin-bottom: 22px; }
+    .brand { margin-bottom: 16px; }
 
-    /* 隶书标题 */
     .brand h1 {
       font-family: "STLiti", "LiSu", "Baoli SC", "Ma Shan Zheng", "Noto Serif SC", serif;
-      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-size: 1.55rem;
       font-weight: 400;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       color: var(--ink);
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
     .brand p {
-      margin-top: 8px;
-      font-size: 0.8rem;
+      margin-top: 6px;
+      font-size: 0.72rem;
       color: var(--ink-muted);
-      letter-spacing: 0.28em;
+      letter-spacing: 0.22em;
       font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", serif;
     }
 
     .search-wrap {
       position: relative;
-      max-width: 480px;
-      margin: 0 auto 22px;
+      max-width: 100%;
+      margin: 0 auto 14px;
     }
 
     .search-wrap input {
       width: 100%;
-      padding: 13px 16px 13px 44px;
+      padding: 11px 14px 11px 40px;
       border: 1px solid var(--border);
       border-radius: 4px;
       background: var(--surface);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--ink);
       outline: none;
       font-family: "Noto Serif SC", "Songti SC", serif;
-      text-align: center;
-      transition: border-color var(--t), box-shadow var(--t), text-align 0.15s;
+      transition: border-color var(--t), box-shadow var(--t);
     }
 
     .search-wrap input:focus {
       border-color: var(--ink-muted);
       box-shadow: 0 0 0 3px rgba(43, 38, 30, 0.06);
-      text-align: left;
     }
 
     .search-wrap input::placeholder {
       color: var(--ink-muted);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
     }
 
     .search-icon {
       position: absolute;
-      left: 14px;
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      width: 17px;
-      height: 17px;
+      width: 16px;
+      height: 16px;
       opacity: 0.32;
       pointer-events: none;
     }
 
-    /* 分类 · 楷书 · 居中 */
+    /* ===== 分类：手机默认 ===== */
     .filters {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      align-items: stretch;
+      gap: 8px;
     }
 
     .filter-layer {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-wrap: nowrap;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 2px;
     }
 
-    .filter-layer.layer2 .filter-btn {
-      min-width: 78px;
-    }
-
-    .filter-layer.layer3 .filter-btn {
-      min-width: 96px;
-    }
+    .filter-layer::-webkit-scrollbar { display: none; }
 
     .filter-btn {
-      padding: 8px 18px;
+      flex-shrink: 0;
+      padding: 7px 12px;
       border: 1px solid var(--border);
       border-radius: 3px;
       background: transparent;
-      /* 楷书 */
       font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", "Noto Serif SC", serif;
-      font-size: 0.95rem;
+      font-size: 0.82rem;
       color: var(--ink-soft);
       cursor: pointer;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       white-space: nowrap;
       transition: background var(--t), color var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
+      -webkit-tap-highlight-color: transparent;
     }
 
     .filter-btn:hover {
       border-color: var(--ink-muted);
       color: var(--ink);
       background: var(--hover);
-      transform: translateY(-1px);
     }
 
-    .filter-btn:active {
-      transform: translateY(0);
-    }
+    .filter-btn:active { transform: scale(0.97); }
 
     .filter-btn.active {
       background: var(--accent);
       color: #f6f1e8;
       border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(43, 38, 30, 0.18);
+      box-shadow: 0 2px 8px rgba(43, 38, 30, 0.16);
     }
 
     .filter-layer.layer1 .filter-btn {
-      min-width: 72px;
-      letter-spacing: 0.22em;
-      font-size: 1rem;
+      letter-spacing: 0.16em;
+      font-size: 0.88rem;
+      padding: 7px 16px;
     }
 
-    /* ========== Main ========== */
+    /* ===== Main 手机 ===== */
     main {
-      max-width: 920px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 28px 24px 72px;
+      padding: 18px 14px 56px;
     }
 
     .stats {
       text-align: center;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       color: var(--ink-muted);
-      margin-bottom: 24px;
-      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+      letter-spacing: 0.1em;
       font-family: "ZCOOL XiaoWei", "KaiTi", serif;
     }
 
@@ -209,128 +200,107 @@
     .list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
-    /* 卡片 */
+    /* 手机卡片：上下结构，避免右侧挤在一起 */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 22px 24px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      grid-template-rows: auto auto;
-      column-gap: 20px;
-      row-gap: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       transition: border-color var(--t), box-shadow var(--t), transform var(--t), background var(--t);
       opacity: 0;
       animation: fadeUp 0.4s var(--ease) forwards;
-      will-change: transform, opacity;
     }
 
     .card:hover {
       border-color: #c4b89f;
-      box-shadow: 0 6px 20px rgba(28, 23, 20, 0.07);
-      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(28, 23, 20, 0.06);
       background: #fcf9f3;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 宋体标题 */
     .card-title {
-      grid-column: 1;
-      grid-row: 1;
       font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-      font-size: 1.12rem;
+      font-size: 1.02rem;
       font-weight: 500;
-      line-height: 1.5;
+      line-height: 1.45;
       color: var(--ink);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
+      order: 1;
     }
 
-    /* 宋体简介 */
     .card-desc {
-      grid-column: 1;
-      grid-row: 2;
       font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--ink-soft);
-      line-height: 1.65;
+      line-height: 1.6;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+      order: 2;
     }
 
     .card-side {
-      grid-column: 2;
-      grid-row: 1 / 3;
+      order: 3;
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      flex-direction: row;
+      align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      min-width: 88px;
+      gap: 10px;
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-light);
     }
 
     .card-tag {
-      font-size: 0.78rem;
-      padding: 4px 12px;
+      font-size: 0.72rem;
+      padding: 3px 10px;
       border: 1px solid var(--border);
       border-radius: 3px;
       color: var(--ink-muted);
-      /* 分类标签用楷书 */
       font-family: "ZCOOL XiaoWei", "KaiTi", "STKaiti", serif;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       white-space: nowrap;
-      transition: border-color var(--t), color var(--t);
-    }
-
-    .card:hover .card-tag {
-      border-color: var(--ink-muted);
-      color: var(--ink-soft);
     }
 
     .card-side a {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--ink-muted);
       text-decoration: none;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       font-family: "ZCOOL XiaoWei", "KaiTi", serif;
-      transition: color var(--t), transform var(--t);
+      transition: color var(--t);
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .card-side a:hover {
-      color: var(--ink);
-      transform: translateX(2px);
-    }
+    .card-side a:active { color: var(--ink); }
 
     .card-side a svg {
-      width: 13px;
-      height: 13px;
-      transition: transform var(--t);
-    }
-
-    .card-side a:hover svg {
-      transform: translateX(3px);
+      width: 12px;
+      height: 12px;
     }
 
     .empty {
       text-align: center;
-      padding: 72px 20px;
+      padding: 56px 16px;
       color: var(--ink-muted);
-      font-size: 1rem;
-      letter-spacing: 0.14em;
+      font-size: 0.92rem;
+      letter-spacing: 0.12em;
       font-family: "ZCOOL XiaoWei", "KaiTi", serif;
     }
 
@@ -338,46 +308,179 @@
 
     footer {
       text-align: center;
-      padding: 32px 20px;
-      font-size: 0.78rem;
+      padding: 24px 16px;
+      font-size: 0.72rem;
       color: var(--ink-muted);
       border-top: 1px solid var(--border-light);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       font-family: "ZCOOL XiaoWei", "KaiTi", serif;
     }
 
-    /* 桌面端更大 */
-    @media (min-width: 768px) {
-      body { font-size: 17px; }
-      header { padding: 36px 32px 28px; }
-      .brand { margin-bottom: 26px; }
-      .brand h1 { letter-spacing: 0.22em; }
-      main { padding: 36px 32px 88px; }
-      .card { padding: 26px 28px; gap: 10px 24px; }
-      .card-title { font-size: 1.2rem; }
-      .card-desc { font-size: 0.95rem; }
-      .filter-btn { font-size: 1rem; padding: 9px 20px; }
-      .list { gap: 18px; }
-    }
-
-    @media (min-width: 1100px) {
-      .header-inner,
-      main { max-width: 1000px; }
-    }
-
-    @media (max-width: 520px) {
-      header { padding: 20px 16px 16px; }
-      main { padding: 20px 16px 56px; }
-      .card { padding: 16px 16px; column-gap: 12px; }
-      .card-title { font-size: 1rem; }
-      .card-side { min-width: 72px; }
-      .filter-layer.layer2 .filter-btn,
-      .filter-layer.layer3 .filter-btn {
-        min-width: 64px;
-        padding: 6px 12px;
-        font-size: 0.85rem;
+    /* ========== 平板 ========== */
+    @media (min-width: 600px) {
+      header { padding: 24px 20px 20px; }
+      .brand h1 { font-size: 1.85rem; letter-spacing: 0.16em; }
+      .search-wrap { max-width: 440px; }
+      .filter-layer {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        gap: 10px;
       }
-      .brand h1 { letter-spacing: 0.1em; font-size: 1.5rem; }
+      .filter-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+      .filter-layer.layer2 .filter-btn { min-width: 72px; }
+      .filter-layer.layer3 .filter-btn { min-width: 90px; }
+      main { padding: 24px 20px 64px; }
+      .card { padding: 18px 20px; }
+    }
+
+    /* ========== 电脑端：大气左右布局 ========== */
+    @media (min-width: 860px) {
+      body { font-size: 17px; }
+
+      header { padding: 36px 32px 28px; }
+
+      .brand { margin-bottom: 24px; }
+
+      .brand h1 {
+        font-size: clamp(2rem, 2.6vw, 2.5rem);
+        letter-spacing: 0.2em;
+      }
+
+      .brand p {
+        font-size: 0.8rem;
+        letter-spacing: 0.28em;
+        margin-top: 8px;
+      }
+
+      .search-wrap {
+        max-width: 480px;
+        margin-bottom: 22px;
+      }
+
+      .search-wrap input {
+        padding: 13px 16px 13px 44px;
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
+      .search-wrap input:focus { text-align: left; }
+
+      .filters {
+        align-items: center;
+        gap: 12px;
+      }
+
+      .filter-layer {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        gap: 12px;
+      }
+
+      .filter-btn {
+        font-size: 1rem;
+        padding: 9px 20px;
+        letter-spacing: 0.12em;
+      }
+
+      .filter-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .filter-btn:active { transform: translateY(0); }
+
+      .filter-layer.layer1 .filter-btn {
+        min-width: 72px;
+        letter-spacing: 0.2em;
+        font-size: 1.02rem;
+      }
+
+      .filter-layer.layer2 .filter-btn { min-width: 78px; }
+      .filter-layer.layer3 .filter-btn { min-width: 100px; }
+
+      main { padding: 36px 32px 88px; }
+
+      .stats {
+        font-size: 0.88rem;
+        margin-bottom: 24px;
+      }
+
+      .list { gap: 18px; }
+
+      /* 电脑：左文右操作 */
+      .card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        column-gap: 24px;
+        row-gap: 8px;
+        padding: 26px 28px;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(28, 23, 20, 0.07);
+      }
+
+      .card-title {
+        grid-column: 1;
+        grid-row: 1;
+        order: unset;
+        font-size: 1.18rem;
+      }
+
+      .card-desc {
+        grid-column: 1;
+        grid-row: 2;
+        order: unset;
+        font-size: 0.95rem;
+      }
+
+      .card-side {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        order: unset;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        min-width: 92px;
+        gap: 12px;
+      }
+
+      .card-tag {
+        font-size: 0.78rem;
+        padding: 4px 12px;
+      }
+
+      .card-side a {
+        font-size: 0.84rem;
+      }
+
+      .card-side a:hover {
+        color: var(--ink);
+        transform: translateX(2px);
+      }
+
+      .card-side a svg {
+        width: 13px;
+        height: 13px;
+        transition: transform var(--t);
+      }
+
+      .card-side a:hover svg {
+        transform: translateX(3px);
+      }
+
+      footer {
+        padding: 32px 20px;
+        font-size: 0.78rem;
+      }
     }
   </style>
 </head>
