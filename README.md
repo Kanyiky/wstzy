@@ -7,16 +7,22 @@
 
 <br>
 
-<h2 align="center">
-  <a href="https://kanyiky.github.io/wstzy/" style="text-decoration:none; color:#2b261e;">
-    【 进入资源库 】
+<p align="center">
+  <a href="https://kanyiky.github.io/wstzy/">
+    <img
+      src="https://img.shields.io/badge/%E8%BF%9B%E5%85%A5%E8%B5%84%E6%BA%90%E5%BA%93-%E4%BA%94%E6%9C%AF%E6%90%AC%E8%B4%A2-2b261e?style=for-the-badge&labelColor=e8e0d2&color=2b261e"
+      alt="进入资源库"
+      height="64"
+    />
   </a>
+</p>
+
+<h2 align="center">
+  <a href="https://kanyiky.github.io/wstzy/">【 进入资源库 】</a>
 </h2>
 
 <p align="center">
-  <a href="https://kanyiky.github.io/wstzy/">
-    五术搬财 · 山医命相卜
-  </a>
+  <a href="https://kanyiky.github.io/wstzy/">五术搬财 · 山医命相卜</a>
 </p>
 
 <br>
