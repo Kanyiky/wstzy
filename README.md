@@ -3,12 +3,11 @@
 
 <p align="center">
   <a href="https://kanyiky.github.io/wstzy/">
-    <img src="./enter-btn.png" alt="进入资源库" width="420" />
+    <img src="./enter-btn.png" alt="进入资源库" width="480" />
   </a>
 </p>
 
 <br>
----
 
 ## 这是什么
 
