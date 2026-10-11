@@ -5,11 +5,21 @@
 聚焦 **山 · 医 · 命 · 相 · 卜**，汇集技能教程、创业副业、奇异杂集与学习资料，  
 整理一套面向「提升自身、务实赚钱」的资源导航站。
 
+<br>
+
+<h2 align="center">
+  <a href="https://kanyiky.github.io/wstzy/" style="text-decoration:none; color:#2b261e;">
+    【 进入资源库 】
+  </a>
+</h2>
+
 <p align="center">
   <a href="https://kanyiky.github.io/wstzy/">
-    <img src="https://img.shields.io/badge/进入资源库-点击访问-2b261e?style=for-the-badge&labelColor=cfc4b0&color=2b261e" alt="进入资源库" />
+    五术搬财 · 山医命相卜
   </a>
 </p>
+
+<br>
 
 **直接访问：** [打开五术搬财资源库](https://kanyiky.github.io/wstzy/)
 
