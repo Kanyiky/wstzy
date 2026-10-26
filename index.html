@@ -15,18 +15,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f2ebe0;
-      --surface: #fbf7f0;
+      --bg: #f5f1e8;
+      --surface: #faf7f1;
       --ink: #1a1714;
-      --ink-soft: #4f493f;
-      --ink-muted: #8f8678;
-      --border: #d4c9b5;
-      --border-light: #e5dccb;
+      --ink-soft: #4a443c;
+      --ink-muted: #8a8276;
+      --border: rgba(43, 38, 30, 0.12);
+      --border-light: rgba(43, 38, 30, 0.08);
+      --border-strong: rgba(43, 38, 30, 0.28);
       --accent: #2b261e;
-      --hover: #f3ece1;
-      --radius: 8px;
+      --hover: rgba(43, 38, 30, 0.04);
+      --radius: 4px;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --t: 0.28s var(--ease);
+      --t: 0.35s var(--ease);
+      --content: 760px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -44,10 +46,11 @@
       font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
       background: var(--bg);
       color: var(--ink);
-      line-height: 1.75;
+      line-height: 1.8;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       font-size: 16px;
+      letter-spacing: 0.02em;
     }
 
     /* ========== Header ========== */
@@ -56,22 +59,22 @@
       z-index: 10;
       background: var(--bg);
       border-bottom: 1px solid var(--border-light);
-      padding: 20px 16px 16px;
+      padding: 28px 16px 22px;
     }
 
     .header-inner {
-      max-width: 1000px;
+      max-width: var(--content);
       margin: 0 auto;
       text-align: center;
     }
 
-    .brand { margin-bottom: 16px; }
+    .brand { margin-bottom: 20px; }
 
     .brand h1 {
       font-family: "STLiti", "LiSu", "Baoli SC", "Ma Shan Zheng", "Noto Serif SC", serif;
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 400;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.2em;
       color: var(--ink);
       line-height: 1.35;
     }
@@ -94,18 +97,18 @@
       width: 100%;
       padding: 11px 14px 11px 40px;
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: var(--radius);
       background: var(--surface);
       font-size: 0.9rem;
       color: var(--ink);
       outline: none;
       font-family: "Noto Serif SC", "Songti SC", serif;
-      transition: border-color var(--t), box-shadow var(--t);
+      transition: border-color var(--t);
     }
 
     .search-wrap input:focus {
-      border-color: var(--ink-muted);
-      box-shadow: 0 0 0 3px rgba(43, 38, 30, 0.06);
+      border-color: var(--border-strong);
+      box-shadow: none;
     }
 
     .search-wrap input::placeholder {
@@ -124,19 +127,20 @@
       pointer-events: none;
     }
 
-    /* ===== 分类：手机默认 ===== */
+    /* ===== 分类 ===== */
     .filters {
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      gap: 8px;
+      gap: 10px;
+      padding-top: 4px;
     }
 
     .filter-layer {
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
-      gap: 6px;
+      gap: 8px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -147,33 +151,33 @@
 
     .filter-btn {
       flex-shrink: 0;
-      padding: 7px 12px;
+      padding: 7px 14px;
       border: 1px solid var(--border);
-      border-radius: 3px;
+      border-radius: var(--radius);
       background: transparent;
       font-family: "LXGW WenKai", "KaiTi", "STKaiti", "Noto Serif SC", serif;
       font-size: 0.82rem;
       color: var(--ink-soft);
       cursor: pointer;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       white-space: nowrap;
       transition: background var(--t), color var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
       -webkit-tap-highlight-color: transparent;
     }
 
     .filter-btn:hover {
-      border-color: var(--ink-muted);
+      border-color: var(--border-strong);
       color: var(--ink);
       background: var(--hover);
     }
 
-    .filter-btn:active { transform: scale(0.97); }
+    .filter-btn:active { transform: scale(0.98); }
 
     .filter-btn.active {
       background: var(--accent);
-      color: #f6f1e8;
+      color: #f5f1e8;
       border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(43, 38, 30, 0.16);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
     }
 
     .filter-layer.layer1 .filter-btn {
@@ -182,12 +186,14 @@
       padding: 7px 16px;
     }
 
+
     /* ===== Main 手机 ===== */
     main {
-      max-width: 1000px;
+      max-width: var(--content);
       margin: 0 auto;
-      padding: 18px 14px 56px;
+      padding: 28px 16px 72px;
     }
+
 
     .stats {
       text-align: center;
@@ -207,31 +213,42 @@
     .list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0;
     }
 
-    /* 手机卡片：上下结构，避免右侧挤在一起 */
+    /* 书目式条目：细线分隔，少框 */
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(43, 38, 30, 0.08);
+      border-radius: 0;
+      padding: 22px 4px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      transition: border-color var(--t), box-shadow var(--t), transform var(--t), background var(--t);
+      transition: background var(--t), padding var(--t);
       opacity: 0;
-      animation: fadeUp 0.4s var(--ease) forwards;
+      animation: fadeUp 0.45s var(--ease) forwards;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+
+    .card:first-child {
+      border-top: 1px solid rgba(43, 38, 30, 0.08);
     }
 
     .card:hover {
-      border-color: #c4b89f;
-      box-shadow: 0 4px 16px rgba(28, 23, 20, 0.06);
-      background: #fcf9f3;
+      background: rgba(43, 38, 30, 0.03);
+      transform: none;
+    }
+
+    .card:active {
+      background: rgba(43, 38, 30, 0.05);
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -239,17 +256,17 @@
       font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
       font-size: 1.02rem;
       font-weight: 500;
-      line-height: 1.45;
+      line-height: 1.5;
       color: var(--ink);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       order: 1;
     }
 
     .card-desc {
       font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--ink-soft);
-      line-height: 1.6;
+      line-height: 1.7;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -265,8 +282,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      margin-top: 4px;
-      padding-top: 10px;
+      margin-top: 6px;
+      padding-top: 12px;
       border-top: 1px solid var(--border-light);
     }
 
@@ -274,7 +291,7 @@
       font-size: 0.72rem;
       padding: 3px 10px;
       border: 1px solid var(--border);
-      border-radius: 3px;
+      border-radius: var(--radius);
       color: var(--ink-muted);
       font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
       letter-spacing: 0.08em;
@@ -315,7 +332,7 @@
 
     footer {
       text-align: center;
-      padding: 24px 16px;
+      padding: 28px 16px 40px;
       font-size: 0.72rem;
       color: var(--ink-muted);
       border-top: 1px solid var(--border-light);
@@ -337,8 +354,8 @@
         font-size: 0.9rem;
         padding: 8px 16px;
       }
-      .filter-layer.layer2 .filter-btn { min-width: 72px; }
-      .filter-layer.layer3 .filter-btn { min-width: 90px; }
+      .filter-layer.layer2 .filter-btn { min-width: 0; }
+      .filter-layer.layer3 .filter-btn { min-width: 0; }
       main { padding: 24px 20px 64px; }
       .card { padding: 18px 20px; }
     }
@@ -387,35 +404,39 @@
         gap: 12px;
       }
 
+      .filters { gap: 16px; }
+
+      .filter-layer { gap: 6px; }
+
       .filter-btn {
-        font-size: 1rem;
-        padding: 9px 20px;
-        letter-spacing: 0.12em;
+        font-size: 0.95rem;
+        padding: 10px 18px;
+        letter-spacing: 0.16em;
       }
 
       .filter-btn:hover {
-        transform: translateY(-1px);
+        transform: none;
       }
 
-      .filter-btn:active { transform: translateY(0); }
+      .filter-btn:active { transform: scale(0.98); }
 
       .filter-layer.layer1 .filter-btn {
-        min-width: 72px;
-        letter-spacing: 0.2em;
-        font-size: 1.02rem;
+        min-width: 0;
+        letter-spacing: 0.24em;
+        font-size: 1rem;
       }
 
-      .filter-layer.layer2 .filter-btn { min-width: 78px; }
-      .filter-layer.layer3 .filter-btn { min-width: 100px; }
+      .filter-layer.layer2 .filter-btn { min-width: 0; }
+      .filter-layer.layer3 .filter-btn { min-width: 0; }
 
-      main { padding: 36px 32px 88px; }
+      main { padding: 40px 32px 96px; }
 
       .stats {
         font-size: 0.88rem;
         margin-bottom: 24px;
       }
 
-      .list { gap: 18px; }
+      .list { gap: 20px; }
 
       /* 电脑：左文右操作 */
       .card {
@@ -428,8 +449,9 @@
       }
 
       .card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(28, 23, 20, 0.07);
+        transform: translateY(-1px);
+        box-shadow: none;
+        border-color: var(--border-strong);
       }
 
       .card-title {
@@ -511,9 +533,9 @@
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(26, 23, 20, 0.45);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(26, 23, 20, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -535,12 +557,12 @@
       overflow-y: auto;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 28px 24px 24px;
+      border-radius: var(--radius);
+      padding: 32px 28px 28px;
       position: relative;
-      transform: translateY(16px) scale(0.98);
-      transition: transform 0.3s var(--ease);
-      box-shadow: 0 16px 48px rgba(26, 23, 20, 0.18);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.4s var(--ease);
+      box-shadow: 0 12px 40px rgba(26, 23, 20, 0.12);
     }
 
     .modal-mask.open .modal {
@@ -725,28 +747,26 @@
     /* 公众号徽章 · 极简内凹 */
     .official-badge {
       display: inline-block;
-      margin-top: 14px;
-      padding: 6px 16px;
-      border-radius: 3px;
-      background: rgba(232, 224, 210, 0.55);
-      border: 1px solid rgba(207, 196, 176, 0.7);
-      box-shadow:
-        inset 0 1px 3px rgba(40, 32, 20, 0.12),
-        inset 0 -1px 0 rgba(255, 252, 245, 0.35);
+      margin-top: 16px;
+      padding: 6px 18px;
+      border-radius: var(--radius);
+      background: rgba(43, 38, 30, 0.05);
+      border: 1px solid var(--border);
+      box-shadow: inset 0 1px 2px rgba(40, 32, 20, 0.08);
       font-size: 0.84rem;
-      color: rgba(42, 38, 30, 0.72);
-      letter-spacing: 0.12em;
+      color: rgba(42, 38, 30, 0.7);
+      letter-spacing: 0.14em;
       font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
       font-weight: 400;
     }
 
     /* 需要其他资源 · 联系客服栏 */
     .need-more {
-      margin-top: 16px;
-      padding: 12px 16px;
+      margin-top: 20px;
+      padding: 14px 18px;
       border: 1px dashed var(--border);
-      border-radius: 6px;
-      background: rgba(251, 247, 240, 0.7);
+      border-radius: var(--radius);
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -918,429 +938,76 @@
   <script>
     // ========== 客服配置（改这里） ==========
     const CONTACT = {
-      wechatId: "Zbgaogang",   // 客服微信号
-      qrImage: "qrcode.png",              // 客服二维码图片，例如 "qrcode.png"
+      wechatId: "wushu_kefu",   // 客服微信号
+      qrImage: "",              // 客服二维码图片，例如 "qrcode.png"
       gzhName: "五术推",        // 公众号名称
-      gzhQr: "gzh-qr.png"                 // 公众号二维码图片，例如 "gzh-qr.png"
+      gzhQr: ""                 // 公众号二维码图片，例如 "gzh-qr.png"
     };
 
     const resources = [
-        {
-    id: 228,
-    title: "特色凉菜之柠檬鸡爪制作教程",
-    desc: "把网红爆款柠檬鸡爪的全套制作步骤拆解到极致，从鸡爪预处理、去腥技巧、核心调味配比到冷藏入味的时间把控全部讲透，新手零失败，做出来的鸡爪酸辣爽口Q弹，不管是家用解馋还是摆摊做小生意都能用。\n\n",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/ab2bfa320946"
-  },
-  {
-    id: 227,
-    title: "730份折纸教程打包合集",
-    desc: "汇总730份不同难度的折纸教程，从入门级的小动物、千纸鹤，到进阶的复杂立体造型、实用折纸物件全覆盖，每一份都配有清晰的步骤图解，不管是亲子手工、兴趣爱好还是手工教学都能直接取用。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/0c6c709bcb83"
-  },
-  {
-    id: 226,
-    title: "古风手工饰品制作教程",
-    desc: "从基础的发簪、步摇材料认识，到缠花、绒花、串珠等各类古风首饰的制作技法分步讲解，配套高清实操演示，零基础也能跟着一步步操作，轻松做出精致惊艳的国风手工首饰，适配兴趣爱好甚至副业接单需求。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/cd74f92fa1dc"
-  },
-  {
-    id: 225,
-    title: "微表情读心术实用教程",
-    desc: "从日常社交场景切入，拆解不同微表情、肢体动作背后对应的真实心理活动，配套大量生活化的案例演示，不用记复杂的专业理论，普通人也能快速掌握基础读心技巧，在人际交往中精准判断对方真实想法。",
-    category: "xiang",
-    categoryName: "相",
-    link: "https://pan.quark.cn/s/78281078c995"
-  },
-  {
-    id: 224,
-    title: "男性魅力系统提升教程",
-    desc: "从外在形象打理、沟通表达技巧、情绪价值提供到个人气场塑造全维度讲解，没有空泛的鸡汤理论，全是可直接落地的实操方法，帮男生一步步系统提升个人吸引力，轻松建立舒适的社交相处状态。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/c71306623dd3"
-  },
-  {
-    id: 223,
-    title: "天涯神贴高阶合集",
-    desc: "精选当年天涯论坛里流传度极高、含金量拉满的高阶神贴内容，覆盖古籍手抄版、社会规律、个人成长等多个方向，很多内容是现在很难再找到的稀缺干货，读完能快速打破信息差，提升对现实世界的认知深度。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/d40146fe76cc"
-  },
-  {
-    id: 222,
-    title: "《谋略全书》：历代谋士智慧集大成",
-    desc: "汇总从先秦到明清历代知名谋士的核心处世谋略、决策智慧与实战案例，把复杂的谋略逻辑转化成现代人能直接用到职场、社交、商业决策里的实用思路，帮你提升判断能力，遇事不再慌乱无措。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/370a3c77f9a0"
-  },
-  {
-    id: 221,
-    title: "装修避坑全流程图解",
-    desc: "把从收房验房、水电改造、瓦工木工到软装进场的全装修流程，用直观的图解形式呈现，每一步都标注了常见陷阱和对应的应对方法，哪怕是完全没接触过装修的新手，也能一眼看懂关键注意事项，避开90%以上的装修坑。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/8cf8afe3f565"
-  },
-  {
-    id: 220,
-    title: "高中教辅汇总全系列资料",
-    desc: "覆盖高中全学段全学科的核心教辅内容，汇总同步知识点讲义、高频考点汇总、历年真题解析、专项刷题题库等多类素材，适配不同分数段学生的复习需求，方便按需调取使用，针对性补齐各科知识短板。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/0591ec53c348"
-  },
-  {
-    id: 219,
-    title: "外贸出口退税实操课程",
-    desc: "针对外贸企业的退税全流程打造，从退税政策解读、单证整理、申报系统操作到常见退税风险规避逐一拆解，配套真实企业申报案例，帮外贸从业者理清退税全步骤，高效完成申报，避免因操作失误导致的资金损失。\n\n高中教辅汇总全系列资料",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/c0b172746ef5"
-  },
-  {
-    id: 218,
-    title: "零基础系统学习网络安全教程",
-    desc: "从计算机基础、网络原理入门讲起，逐步延伸到渗透测试、漏洞防护、数据安全运维等核心技能，配套大量实操演示案例，零基础也能跟着一步步练习，系统掌握网络安全全流程实用技能，适配从业考证、个人信息防护等多类需求。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/b0a9ec9ef169"
-  },
-  {
-    id: 217,
-    title: "《增加灵感见识古籍》83部",
-    desc: "精选83部横跨历史、人文、民俗、智慧类的稀缺古籍珍本，避开晦涩难懂的冷门篇目，内容覆盖古人处世智慧、文化典故、奇闻轶事等多个方向，通读下来能快速拓宽认知边界，打破日常思维局限，为创作、思考提供源源不断的灵感素材",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/082252917d8a"
-  },
-       {
-    id: 216,
-    title: "执业药师考试核心备考资料包",
-    desc: "覆盖2026年最新考纲要求的全部核心考点，汇总药事管理与法规、四大核心药学科目的高频考点笔记、历年真题解析、考前押题密卷，配套记忆口诀和易错题汇总，帮考生避开备考误区，大幅提升复习效率，顺利通过考试。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/803cc4fd68d6"
-  },
-  {
-    id: 215,
-    title: "主管护师考试系统学习资料",
-    desc: "依托人卫版官方教材核心框架，梳理内科、外科、妇产科等9大护理专业模块的必背考点，配套章节同步练习题、历年真题精讲、考前冲刺模拟卷，用表格化形式突出重点，帮考生把零散知识点串联起来，轻松通关考试。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/46de8dd24fa7"
-  },
-  {
-    id: 214,
-    title: "护士资格考试全套备考资料",
-    desc: "针对护考的两大考试科目量身打造，汇总历年高频考点速记手册、易错考点梳理、近5年真题带练、考前金题卷，把复杂的护理考点转化成好记的顺口溜和思维导图，零基础也能短时间高效备考，顺利拿证。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/f797cb743276"
-  },
-  {
-    id: 213,
-    title: "妇产科主治医师考试学习资料",
-    desc: "贴合妇产科主治考试4个科目的考纲要求，整理基础知识、相关专业知识等模块的核心考点笔记，配套历年真题解析、案例分析专项训练、考前冲刺模拟题，精准覆盖考点盲区，帮助考生两年内顺利通过全部科目。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/da2ff4f9107a"
-  },
-  {
-    id: 212,
-    title: "药学职称考试全层级备考资料",
-    desc: "覆盖药士、药师、主管药师全层级考试内容，按考试科目分类整理核心考点总结、章节习题集、历年真题详解，配套备考规划和记忆技巧，帮不同基础的药学考生理清复习脉络，稳步提升应试能力。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/937bda41dba1"
-  },
-  {
-    id: 211,
-    title: "全科主治医师考试核心资料包",
-    desc: "围绕全科医学考纲梳理全部必背知识点，汇总常见病症诊疗、公共卫生服务、医学人文等模块的考点笔记，配套专项练习题、历年真题解析、考前模拟卷，帮考生高效串联全科零散考点，顺利通过考试。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/12b792ac4779"
-  },
-  {
-    id: 210,
-    title: "内科主治医师考试系统学习资料",
-    desc: "贴合内科主治考试的官方大纲，梳理30+常见内科疾病的核心考点、诊疗要点、高频考题，配套思维导图、历年真题带练、案例分析专项突破，帮考生精准把握考试重点，大幅提升备考效率。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/274c692adcff"
-  },
-  {
-    id: 209,
-    title: "银行招聘考试全套备考资料",
-    desc: "覆盖EPI、综合知识、英语、性格测试四大考试模块，汇总各大银行历年真题、高频考点速记、专项刷题集、面试真题解析，从网申简历指导到笔试面试全流程覆盖，帮考生顺利拿到银行offer。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/3a8d8c3e9bef"
-  },
-  {
-    id: 208,
-    title: "营养师全套系统教程",
-    desc: "从基础营养学理论、各类人群膳食搭配、常见慢病营养调理，到食品卫生管理、配餐实操技能全阶段讲解，配套视频课程、考点笔记、实操案例，零基础也能系统掌握营养师核心技能，适配考证和日常实用需求。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/4fafd37a0c31"
-  },
-  {
-    id: 207,
-    title: "十年中考真题全科分类汇编",
-    desc: "汇总近10年全国各省市中考全科真题，按学科知识点分类整理成word+pdf双格式，每道题配套详细答案解析和考点标注，方便考生按模块针对性刷题，精准把握中考命题规律，补齐知识短板。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/4ca889fc534e"
-  },
-  {
-    id: 206,
-    title: "台式机笔记本电脑维修教程合集",
-    desc: "从硬件基础识别、系统安装调试，到主板故障检测、显卡维修、笔记本清灰换硅脂、常见软硬件问题排查全流程讲解，配套大量现场实操演示视频，零基础也能快速上手，掌握电脑维修实用技能。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/a40b5f5edc85"
-  },
-  {
-    id: 205,
-    title: "《图解经典》系列精选50本PDF合集",
-    desc: "精选涵盖老庄哲学、易经基础、传统风水、术数入门、奇门遁甲、佛道文化等方向的50本经典图解书籍，全部是通俗易懂的白话解读版本，没有晦涩的古文门槛，适合传统文化爱好者入门学习参考。",
-    category: "shan",
-    categoryName: "山",
-    link: "https://pan.quark.cn/s/8fc8fbf61a2a"
-  },
-  {
-    id: 204,
-    title: "《易经入门与占卦解卦》",
-    desc: "通俗直白的讲解方式拆解易经的基础理论、八卦逻辑、起卦方法和解卦思路，配套大量生活化的实操案例，避开复杂难懂的传统术语，零基础也能快速入门，学会基础的易经实用技法。",
-    category: "bu",
-    categoryName: "卜",
-    link: "https://pan.quark.cn/s/1d2c61a9c0db"
-  },
-  {
-    id: 203,
-    title: "税务师考试PDF资料合集",
-    desc: "覆盖税务师5个考试科目的全部核心内容，汇总高频考点精讲笔记、历年真题集、章节练习题、考前冲刺押题卷，配套科目备考规划，帮考生理清税法相关考点逻辑，高效备考顺利拿证。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/d327bf245a4c"
-  },
-  {
-    id: 202,
-    title: "单位阳谋：讲透体制内单位门道251节全课",
-    desc: "251节系统课程拆解体制内单位的行事逻辑、沟通技巧、相处分寸与成长路径，不讲空泛的大道理，全是贴合真实职场场景的实用经验，帮新手快速适应环境，少走职场弯路。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/56d6e92c3309"
-  },
-  {
-    id: 201,
-    title: "2027行测申论狂刷2500题高分题库",
-    desc: "精选公务员考试行测五大模块+申论各题型的2500道高频经典题目，每道题都配套详细的分步解题思路和技巧总结，帮考生在刷题过程中摸清命题规律，快速提升做题速度和正确率。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/97632b026e72"
-  },
-  {
-    id: 200,
-    title: "2027考研英语大全全套资料",
-    desc: "针对2027届考研考生打造，从英语单词语法基础、长难句拆解，到阅读技巧、作文模板、历年真题精讲、考前模拟卷全覆盖，配套分阶段备考规划，帮考生从零基础开始稳步提升，冲刺英语高分。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/6933da58d3d6"
-  },
-  {
-    id: 199,
-    title: "太素秘传脉法断人吉凶",
-    desc: "这套资料传承传统太素脉法的核心体系，把脉象和阴阳五行、传统民俗文化的对应逻辑拆解清晰，不仅讲解基础的诊脉辨症方法，还梳理了太素脉法里通过脉象特质推演人性格禀赋、吉凶祸福、事业财运走向的核心实操思路，配套大量真实案例参考，是传统民俗脉法文化的珍贵学习素材。",
-    category: "bu",
-    categoryName: "卜",
-    link: "https://pan.quark.cn/s/8485c195d5ed"
-  },
-  {
-    id: 198,
-    title: "秘籍合集",
-    desc: "合集含有秘传桃花术、金蟾铁裆功、九阴真经、房事验方集成、一阳回春术、葵花宝典。该资源仅供娱乐参考，请勿相信。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/c09583ce5fdc"
-  },
-       {
-    id: 197,
-    title: "茅山、六壬、风水、法术类民俗资料合集",
-    desc: "这套合集汇总了多个传统民俗文化分支的珍贵参考资料，包含茅山相关文化典籍、大六壬入门到进阶的完整教程、传统风水文化理论资料等内容，体系完整内容丰富，覆盖多个传统民俗文化研究方向，是民俗文化爱好者不可多得的全套参考素材。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/c0a35d425762"
-  },
-  {
-    id: 196,
-    title: "《玄女经四十九章》群书注译增补版",
-    desc: "在原有通行版本的译注基础上，补充了之前失传的部分章节内容，每一章都做了逐句的通俗化注解和背景解读，把这部黄老学派经典里的哲学思想、治理理念、修身思路用现代人能看懂的方式讲解清楚，不用啃晦涩的古文原文，就能完整读懂这部珍贵的传统经典。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/989638511ffc"
-  },
-  {
-    id: 195,
-    title: "地理龙穴扼要传统地理资料",
-    desc: "作为传统民俗地理文化的经典参考资料，系统整理了峦头理论、山水选址、地形辨析等相关核心内容，把传统地理文化里的相关理论脉络梳理得清晰连贯，内容详实逻辑通顺，是研究传统民俗地理文化的重要参考素材，适合相关文化爱好者深入研读。",
-    category: "shan",
-    categoryName: "山",
-    link: "https://pan.quark.cn/s/9f3f2c673a32"
-  },
-  {
-    id: 194,
-    title: "《相貌与性格》识人实用手册",
-    desc: "结合传统识人文化和现代日常社交的经验，从人的五官形态、神态微表情、说话的语气语速等细节，拆解不同性格的人的行为特质和沟通相处技巧，没有玄学化的夸张内容，全是能直接用到职场、交友、商务谈判里的实用识人方法，帮你快速判断对方的性格，避开人际交往里的坑。",
-    category: "xiang",
-    categoryName: "相",
-    link: "https://pan.quark.cn/s/593bb60a6960"
-  },
-  {
-    id: 193,
-    title: "帝皇风水绝学资料",
-    desc: "这套资料系统梳理了传统民俗文化中相关风水理论的完整体系，从基础的方位理论、环境选址逻辑，到不同场景的布局思路都有清晰的讲解，内容完整体系连贯，是研究传统民俗文化脉络的珍贵参考素材，适合相关文化爱好者收藏学习。",
-    category: "shan",
-    categoryName: "山",
-    link: "https://pan.quark.cn/s/f1e5b7abc69e"
-  },
-  {
-    id: 192,
-    title: "英语口语日常1000句全套音视频",
-    desc: "专门挑选了出国旅游、职场沟通、日常社交等场景里最高频使用的1000句口语，没有复杂的语法和生僻词，每一句都配套慢速跟读音频和实景对话视频，你可以利用碎片化时间反复磨耳朵、跟着开口练，坚持一两个月就能摆脱“哑巴英语”，遇到日常涉外场景能顺畅表达自己的想法。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/f3e735f86c6a"
-  },
-  {
-    id: 191,
-    title: "系统木工手艺自学视频全集",
-    desc: "从最基础的卷尺、手锯、电钻等常用工具的安全使用方法开始教起，一步步讲解木料识别、开料刨平、传统榫卯制作、家具组装打磨上漆的全流程，哪怕是零基础的手工爱好者，跟着视频反复练习，也能从做小凳子、小摆件开始，慢慢掌握独立打造实木家具的完整木匠手艺。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/0034ba00f86f"
-  },
-  {
-    id: 190,
-    title: "弘法大师空海全集资料集",
-    desc: "完整收录了空海大师的佛学文论、书法真迹复刻、诗词作品、文镜秘府论等全部核心著作，不仅能了解他的佛学思想体系，还能细致研究他的书法笔法，了解中日文化交流史上的这段重要脉络，是研究唐代文化、中日书法交流的珍贵参考资料。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/a361049bf564"
-  },
-  {
-    id: 189,
-    title: "新高考数学直线与圆重难点题型原题集",
-    desc: "完全从近五年全国卷和各省市新高考模拟卷里，筛选出直线与圆板块的全部核心重难点原题，按照考点分类排列，每一道题都配套详细的分步解题思路，从基础的直线方程求解，到复杂的切线问题、最值问题、综合压轴题型全覆盖，帮你精准突破这个高频考点，考试遇到同类题直接秒出思路。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/17d05e52189e"
-  },
-  {
-    id: 188,
-    title: "英语读后续写专项提升",
-    desc: "瞄准新高考英语读后续写的得分痛点，从原文情节线索怎么梳理、续写的两大段落怎么搭建冲突和高潮，到情绪描写、动作描写的高分替换词汇、万能衔接句式，都做了系统的总结，配套近三年的高考真题和模拟题的范文拆解，帮你快速掌握答题逻辑，把读后续写的分数稳定拉到20分以上。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/4b386eb24a65"
-  },
-  {
-    id: 187,
-    title: "高中数学解答题分章节资料包",
-    desc: "完全按照高中数学必修+选择性必修的全部章节分类整理，把每一个单元里的高频解答题题型、对应的解题模板、易错点提醒都汇总在一起，同时配套word和pdf两种格式，你可以按需选择章节打印出来刷题练习，针对性补齐自己的知识短板，不用再抱着厚重的全本书漫无目的刷题。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/13dca94556a3"
-  },
-  {
-    id: 186,
-    title: "男士直男穿搭形象提升全课程",
-    desc: "完全不搞网红同款的高难度搭配，专门针对普通男生的身材、预算和日常场景设计，从判断自己的肤色冷暖、身材扬长避短的技巧，到职场、约会、休闲运动等不同场景的百元级单品挑选、配色公式都讲得明明白白，不用花大价钱买大牌，照着搭配就能快速摆脱油腻感，穿出干净利落的清爽形象。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/5f6a9767cfb6"
-  },
-  {
-    id: 185,
-    title: "观脸色识健康实用入门指南",
-    desc: "把传统面诊的复杂理论转化成普通人能看懂的实用知识，教你通过观察额头、眼周、脸颊、唇色等不同部位的气色变化，快速捕捉身体发出的早期健康信号，不用记复杂的穴位和术语，对着镜子就能简单自查日常身体状态，提前调整作息饮食，做好日常健康养护。",
-    category: "yi",
-    categoryName: "医",
-    link: "https://pan.quark.cn/s/ce214a88a677"
-  },
-  {
-    id: 184,
-    title: "小学生硬笔书法全套课+可打印练字稿纸",
-    desc: "完全贴合人教版小学语文课本的生字学习进度，从正确的握笔姿势、坐姿矫正开始，把横、竖、撇、捺等基础笔画的起笔收笔技巧，到偏旁部首、间架结构的排布规律，再到同步课本的生字进阶练习，做了分年级的系统规划，配套的练字稿纸都是适配不同学段的田字格、米字格护眼版本，直接打印就能用，坚持练习两三个月就能明显看到孩子书写水平提升。",
-    category: "soft",
-    categoryName: "学习资料",
-    link: "https://pan.quark.cn/s/2ffec4a1b813"
-  },
-  {
-    id: 183,
-    title: "宠物行为读心术：养狗问题全解决",
-    desc: "没有晦涩的动物行为学理论，全是养狗人日常天天会碰到的真实场景：狗狗乱吠、拆家、拒食、出门爆冲、不听指令这些常见问题，都对应了狗狗当下的心理状态和行为逻辑，教你不用打骂，用正向引导的方式就能轻松纠正坏习惯，真正做到和自家狗狗顺畅沟通，养宠过程少走弯路。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/f557cd42821a"
-  },
-  {
-    id: 182,
-    title: "《捞偏门》赚钱项目实操参考合集",
-    desc: "整理汇总了近两年来市面上低门槛、轻投入的小众副业项目，从项目的底层逻辑、启动准备、获客渠道到变现结算的全流程细节都做了清晰拆解，没有空泛的鸡汤理论，全是可落地的实操思路，帮你打破信息差，找到适合自己的额外增收方向，避开常见的创业坑。",
-    category: "za",
-    categoryName: "奇异杂集",
-    link: "https://pan.quark.cn/s/c4cd0b6262ab"
-  },
-  {
-    id: 181,
-    title: "龙氏正骨手法系统教学资料",
-    desc: "完整还原龙氏正骨的核心体系，从正骨前的放松手法、精准触诊辨位，到仰头摇正法、低头摇正法、侧向扳正法等十几套经典正骨手法的动作细节、发力技巧、适配病症都逐一分步演示，连操作时的注意事项、禁忌症都标注得清清楚楚，方便正骨从业者对照练习，精准掌握规范手法。",
-    category: "yi",
-    categoryName: "医",
-    link: "https://pan.quark.cn/s/ec83fef19501"
-  },
-  {
-    id: 180,
-    title: "道家一字针法实用教程",
-    desc: "这套教程主打“取穴少、见效快”的特色针法思路，把道家传统针法里的核心取穴逻辑、进针手法、行针技巧都用通俗的方式拆解开来，每一个针法都对应具体的常见不适调理场景，配套实操案例演示，没有复杂难懂的古文门槛，中医爱好者和基层相关从业者都能快速上手学习参考。",
-    category: "yi",
-    categoryName: "医",
-    link: "https://pan.quark.cn/s/bc9e1d926545"
-  },
-  {
-    id: 179,
-    title: "低压电工系统培训教程",
-    desc: "完全从零基础视角切入，先把电工作业的安全规范、触电急救、电工基础理论这些必学内容讲透，再延伸到常用电工仪表使用、照明电路安装、电机控制线路排查、低压配电设备运维这些实操技能，配套大量现场实拍的操作演示视频，学完既能满足日常家庭电路维修需求，也能用来备考低压电工从业资格证。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/fee8e09d2630"
-  },
-  {
-    id: 178,
-    title: "跨境电商财务全流程实操指南",
-    desc: "专门针对亚马逊、速卖通等主流跨境平台的财务痛点打造，把多站点订单对账、外币结算汇兑损益核算、头程尾程成本分摊、平台佣金扣费梳理、出口退税申报这些新手最头疼的环节，一步步拆解成可直接套用的操作模板，帮跨境卖家理清每一笔资金流向，精准算出真实利润，避免糊涂账，避开跨境财务的常见合规坑。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/7dcb4216c654"
-  },
-  {
-    id: 177,
-    title: "精品凉拌菜+热卤全系列落地教程",
-    desc: "从基础的红油熬制、香料配比开始讲起，覆盖二三十款当下热门的凉拌素菜、荤菜配方，再延伸到麻辣卤、酱香卤等不同口味的热卤制作，连卤汤的日常养护、出餐摆盘、摆摊保鲜的实用技巧都包含在内，哪怕是完全没下过厨的新手，跟着步骤一步步操作，也能做出口味稳定的成品，不管是家庭日常加餐，还是小成本摆摊开店都能直接用。",
-    category: "course",
-    categoryName: "技能教程",
-    link: "https://pan.quark.cn/s/8e1c7eb1cb4f"
-  },
+              {    
+title: "小学生硬笔书法全套课+可打印练字稿纸",    
+desc: "完全贴合人教版小学语文课本的生字学习进度，从正确的握笔姿势、坐姿矫正开始，把横、竖、撇、捺等基础笔画的起笔收笔技巧，到偏旁部首、间架结构的排布规律，再到同步课本的生字进阶练习，做了分年级的系统规划，配套的练字稿纸都是适配不同学段的田字格、米字格护眼版本，直接打印就能用，坚持练习两三个月就能明显看到孩子书写水平提升。",    
+category: "soft",    
+categoryName: "学习资料",    
+link: "https://pan.quark.cn/s/2ffec4a1b813"  
+},  
+{    
+id: 183,    
+title: "宠物行为读心术：养狗问题全解决",    
+desc: "没有晦涩的动物行为学理论，全是养狗人日常天天会碰到的真实场景：狗狗乱吠、拆家、拒食、出门爆冲、不听指令这些常见问题，都对应了狗狗当下的心理状态和行为逻辑，教你不用打骂，用正向引导的方式就能轻松纠正坏习惯，真正做到和自家狗狗顺畅沟通，养宠过程少走弯路。",    
+category: "course",    
+categoryName: "技能教程",    
+link: "https://pan.quark.cn/s/f557cd42821a"  
+},  
+{    
+id: 182,    
+title: "《捞偏门》赚钱项目实操参考合集",    
+desc: "整理汇总了近两年来市面上低门槛、轻投入的小众副业项目，从项目的底层逻辑、启动准备、获客渠道到变现结算的全流程细节都做了清晰拆解，没有空泛的鸡汤理论，全是可落地的实操思路，帮你打破信息差，找到适合自己的额外增收方向，避开常见的创业坑。",    
+category: "za",    
+categoryName: "奇异杂集",    
+link: "https://pan.quark.cn/s/c4cd0b6262ab"  
+},  
+{    
+id: 181,    
+title: "龙氏正骨手法系统教学资料",    
+desc: "完整还原龙氏正骨的核心体系，从正骨前的放松手法、精准触诊辨位，到仰头摇正法、低头摇正法、侧向扳正法等十几套经典正骨手法的动作细节、发力技巧、适配病症都逐一分步演示，连操作时的注意事项、禁忌症都标注得清清楚楚，方便正骨从业者对照练习，精准掌握规范手法。",    
+category: "yi",    
+categoryName: "医",    
+link: "https://pan.quark.cn/s/ec83fef19501"  
+},  
+{    
+id: 180,    
+title: "道家一字针法实用教程",    
+desc: "这套教程主打“取穴少、见效快”的特色针法思路，把道家传统针法里的核心取穴逻辑、进针手法、行针技巧都用通俗的方式拆解开来，每一个针法都对应具体的常见不适调理场景，配套实操案例演示，没有复杂难懂的古文门槛，中医爱好者和基层相关从业者都能快速上手学习参考。",    
+category: "yi",    
+categoryName: "医",    
+link: "https://pan.quark.cn/s/bc9e1d926545"  
+},  
+{    
+id: 179,    
+title: "低压电工系统培训教程",    
+desc: "完全从零基础视角切入，先把电工作业的安全规范、触电急救、电工基础理论这些必学内容讲透，再延伸到常用电工仪表使用、照明电路安装、电机控制线路排查、低压配电设备运维这些实操技能，配套大量现场实拍的操作演示视频，学完既能满足日常家庭电路维修需求，也能用来备考低压电工从业资格证。",    
+category: "course",    
+categoryName: "技能教程",    
+link: "https://pan.quark.cn/s/fee8e09d2630"  
+},  
+{    
+id: 178,    
+title: "跨境电商财务全流程实操指南",    
+desc: "专门针对亚马逊、速卖通等主流跨境平台的财务痛点打造，把多站点订单对账、外币结算汇兑损益核算、头程尾程成本分摊、平台佣金扣费梳理、出口退税申报这些新手最头疼的环节，一步步拆解成可直接套用的操作模板，帮跨境卖家理清每一笔资金流向，精准算出真实利润，避免糊涂账，避开跨境财务的常见合规坑。",    
+category: "course",    
+categoryName: "技能教程",    
+link: "https://pan.quark.cn/s/7dcb4216c654"  
+},  
+{    
+id: 177,    
+title: "精品凉拌菜+热卤全系列落地教程",    
+desc: "从基础的红油熬制、香料配比开始讲起，覆盖二三十款当下热门的凉拌素菜、荤菜配方，再延伸到麻辣卤、酱香卤等不同口味的热卤制作，连卤汤的日常养护、出餐摆盘、摆摊保鲜的实用技巧都包含在内，哪怕是完全没下过厨的新手，跟着步骤一步步操作，也能做出口味稳定的成品，不管是家庭日常加餐，还是小成本摆摊开店都能直接用。",    
+category: "course",    
+categoryName: "技能教程",    
+link: "https://pan.quark.cn/s/8e1c7eb1cb4f"  
+},
       { id: "176", title: "通用中国手语系统培训视频课程", desc: "系统讲解国家通用手语常用表达，从基础手势、日常对话到场景交流逐步进阶，视频讲解清晰，支持反复回看，适合想要学习手语、方便和听障朋友交流的爱好者学习。", categoryName: "技能教程", link: "https://pan.quark.cn/s/7e298ead4d94" },
       { id: "175", title: "立体舌象六经辨证完整版教学课程", desc: "基础舌象识别到六经辨证对应逻辑，结合大量实操案例演示，把抽象的辨证方法转化为可落地的识别技巧，帮助学习者快速掌握实用舌诊技能。", categoryName: "医", link: "https://pan.quark.cn/s/5b5bd3aeecd6" },
       { id: "174", title: "伤寒论药证实战应用详解合集", desc: "梳理经典典籍中的核心用药辨证思路，结合实际案例拆解，帮助学习者快速理解条文背后的用药逻辑，降低经典中医典籍的学习门槛。", categoryName: "医", link: "https://pan.quark.cn/s/900ba5bbab2e" },
@@ -1366,7 +1033,7 @@
       { id: "154", title: "《饮食的悖论》健康饮食指南", desc: "《纽约时报》畅销书，由有40余年临床经验的美国心脏病专家史蒂文·R. 冈德里撰写，揭秘常见「健康食物」中凝集素的潜在影响，配套三阶段可落地饮食调整方案，帮你科学调整日常饮食习惯 。", categoryName: "医", link: "https://pan.quark.cn/s/2d937dc62d41" },
       { id: "153", title: "204张思维导图速记初中1600核心词（PDF版）", desc: "用可视化思维导图把初中1600个核心单词串联起来，告别死记硬背，大幅提升记忆效率，PDF格式可随时打印查阅，是初中生快速攻克英语词汇的高效工具 。", categoryName: "学习资料", link: "https://pan.quark.cn/s/ab79540aa73c" },
       { id: "152", title: "考研英语一、二历年真题+逐题解析", desc: "整合近年考研英语一、二完整真题，搭配考点定位、解题思路拆解和易错点提醒，帮你精准把握命题趋势，高效突破备考重难点，是考研英语刷题提分的核心实用资料 。", categoryName: "学习资料", link: "https://pan.quark.cn/s/5e778c20dc5b" },
-      { id: "151", title: "八字命理资料400部整理打包", desc: "这次整理的《八字命理系列书籍大合集》，围绕八字命理这一传统话题，汇集成一套方便翻阅的阅读资料，属于传统文化、民俗知识、古籍整理的范畴。", categoryName: "命", link: "https://pan.quark.cn/s/f81bbdddc5a4" },
+      { id: "151", title: "八字命理资料400部整理打包", desc: "这次整理的《八字命理系列书籍大合集》，围绕八字命理这一传统话题，汇集成一套方便翻阅的阅读资料，属于传统文化、民俗知识、古籍整理的范畴。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/f81bbdddc5a4" },
       { id: "150", title: "张天师符咒大全丨康熙皇室珍藏", desc: "《张天师符咒大全》，一份围绕道家符箓文化整理的传统文化、民俗知识、古籍整理类资料。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/ca49c0fb33ac" },
       { id: "149", title: "悬疑猎奇短视频副业，手机就能从0开始做", desc: "这个副业做的是悬疑、猎奇类的短视频内容：用几十秒到两三分钟，讲一个有悬念的故事，或者把一个冷门、有趣的知识讲得让人想看完。形式以\\\"配音＋画面＋字幕\\\"为主，不需要露脸，一部手机加一个剪辑软件就能做。", categoryName: "创业副业", link: "https://pan.quark.cn/s/7dbf06bce1b2" },
       { id: "148", title: "用AI制作田园治愈短片，保姆级上手教程", desc: "用AI工具制作\\\"农村治愈、田园慢生活\\\"风格的短视频，发布到短视频、视频号等平台，靠内容积累观众，再通过平台公开的渠道产生收入。", categoryName: "创业副业", link: "https://pan.quark.cn/s/67e36d2800e5" },
@@ -1558,6 +1225,7 @@
     function makeBtn(cat, container) {
       const btn = document.createElement('button');
       btn.className = 'filter-btn' + (cat === currentCategory ? ' active' : '');
+      btn.type = 'button';
       btn.textContent = cat;
       btn.addEventListener('click', () => {
         currentCategory = cat;
