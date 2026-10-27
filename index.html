@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
- <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>五术搬财资源库 - 山医命相卜与副业技能资源导航</title>
-<meta name="description" content="五术搬财资源库，整理山、医、命、相、卜及技能教程、创业副业、学习资料，便于检索与学习。公众号五术推。" />
-<meta name="keywords" content="五术,五术搬财,山医命相卜,资源库,技能教程,创业副业,五术推" />
-<link rel="canonical" href="https://kanyiky.github.io/wstzy/" />
-<meta property="og:title" content="五术搬财资源库" />
-<meta property="og:description" content="山医命相卜与实用技能资源导航" />
-<meta property="og:url" content="https://kanyiky.github.io/wstzy/" />
-<meta property="og:type" content="website" />
-<meta name="robots" content="index,follow" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="五术搬财资源库 · 山医命相卜" />
+  <title>五术搬财资源库</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- 楷体 / 宋体 -->
@@ -598,21 +591,22 @@ main { padding: 40px 32px 96px; }
       .card:hover .card-side-link { color: var(--ink); }
     }
 
-    /* ===== 详情弹层 ===== */
+
+    /* ===== 详情弹层 · 横向卷轴 ===== */
     .modal-mask {
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(26, 23, 20, 0.4);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(26, 23, 20, 0.45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px 16px;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.28s var(--ease), visibility 0.28s;
+      transition: opacity 0.35s var(--ease), visibility 0.35s;
     }
 
     .modal-mask.open {
@@ -621,199 +615,215 @@ main { padding: 40px 32px 96px; }
     }
 
     .modal {
-      width: 100%;
-      max-width: 520px;
-      max-height: min(88vh, 720px);
-      overflow-y: auto;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 28px 28px;
       position: relative;
-      transform: translateY(12px) scale(0.98);
-      transition: transform 0.4s var(--ease);
-      box-shadow: 0 12px 40px rgba(26, 23, 20, 0.12);
+      width: min(94vw, 720px);
+      max-height: none;
+      overflow: hidden;
+      background: #f7f1e6;
+      border: none;
+      border-radius: 2px;
+      padding: 28px 40px 24px;
+      box-sizing: border-box;
+      transform: scaleX(0.08);
+      transform-origin: center center;
+      opacity: 0;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+      box-shadow: 0 8px 28px rgba(26, 23, 20, 0.1);
+      border: 1px solid rgba(43, 38, 30, 0.1);
+      /* 隐藏滚动条 */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
+    .modal::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 
     .modal-mask.open .modal {
-      transform: translateY(0) scale(1);
+      transform: scaleX(1);
+      opacity: 1;
     }
 
     .modal-close {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      top: 10px;
+      right: 18px;
+      z-index: 4;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(43, 38, 30, 0.15);
+      border-radius: 2px;
       background: transparent;
       color: var(--ink-muted);
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background var(--t), color var(--t), border-color var(--t);
+      transition: background var(--t), color var(--t);
       font-family: inherit;
       -webkit-tap-highlight-color: transparent;
     }
-
     .modal-close:hover {
-      background: var(--hover);
+      background: rgba(43, 38, 30, 0.06);
       color: var(--ink);
-      border-color: var(--ink-muted);
+    }
+
+    /* 横向主排版：左文右码 / 左信息右操作 */
+    .modal-body {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 28px;
+      min-height: 160px;
+    }
+    .modal-main {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+    .modal-side {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
 
     .modal-tag {
       display: inline-block;
-      font-size: 0.75rem;
-      padding: 3px 10px;
-      border: 1px solid var(--border);
-      border-radius: 3px;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border: 1px solid rgba(43, 38, 30, 0.12);
+      border-radius: 2px;
       color: var(--ink-muted);
-      font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
+      font-family: "LXGW WenKai", "KaiTi", serif;
       letter-spacing: 0.1em;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .modal-title {
-      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-      font-size: 1.25rem;
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: 1.15rem;
       font-weight: 600;
       line-height: 1.45;
       color: var(--ink);
       letter-spacing: 0.04em;
-      margin-bottom: 14px;
-      padding-right: 36px;
+      margin-bottom: 10px;
+      padding-right: 28px;
     }
 
     .modal-desc {
-      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-      font-size: 0.92rem;
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: 0.88rem;
       color: var(--ink-soft);
-      line-height: 1.75;
-      margin-bottom: 22px;
+      line-height: 1.7;
+      margin-bottom: 14px;
       white-space: pre-wrap;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .modal-download {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 13px 20px;
+      display: inline-block;
+      padding: 9px 22px;
       border: none;
-      border-radius: 4px;
+      border-radius: 2px;
       background: var(--accent);
       color: #f6f1e8;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-family: "LXGW WenKai", "KaiTi", serif;
       letter-spacing: 0.16em;
       cursor: pointer;
       text-decoration: none;
-      transition: background var(--t), transform var(--t), box-shadow var(--t);
+      transition: background var(--t);
       -webkit-tap-highlight-color: transparent;
     }
-
-    .modal-download:hover {
-      background: #3d362c;
-      box-shadow: 0 4px 14px rgba(43, 38, 30, 0.25);
-    }
-
-    .modal-download:active {
-      transform: scale(0.98);
-    }
+    .modal-download:hover { background: #3d362c; }
+    .modal-download.is-hidden { display: none !important; }
 
     .modal-divider {
-      margin: 24px 0 18px;
-      border: none;
-      border-top: 1px solid var(--border-light);
+      display: none;
     }
 
     .modal-contact {
       text-align: center;
     }
-
     .modal-contact-title {
       font-family: "LXGW WenKai", "KaiTi", serif;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       color: var(--ink-soft);
-      letter-spacing: 0.14em;
-      margin-bottom: 14px;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
     }
-
     .modal-qr {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 12px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
+      width: 128px;
+      height: 128px;
+      border: 1px solid rgba(43, 38, 30, 0.12);
+      border-radius: 4px;
       background: #fff;
       object-fit: contain;
       display: block;
     }
-
     .modal-qr-placeholder {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 12px;
-      border: 1px dashed var(--border);
-      border-radius: 6px;
-      background: var(--hover);
+      width: 128px;
+      height: 128px;
+      border: 1px dashed rgba(43, 38, 30, 0.15);
+      border-radius: 4px;
+      background: rgba(43, 38, 30, 0.03);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--ink-muted);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-family: "LXGW WenKai", "KaiTi", serif;
-      letter-spacing: 0.08em;
-    }
-
-    .modal-wx {
-      font-family: "Noto Serif SC", "Songti SC", serif;
-      font-size: 0.9rem;
-      color: var(--ink);
       letter-spacing: 0.06em;
+      text-align: center;
+      padding: 8px;
+      box-sizing: border-box;
     }
-
+    .modal-wx {
+      font-family: "Noto Serif SC", serif;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
     .modal-wx span {
-      color: var(--ink-muted);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       margin-right: 6px;
       font-family: "LXGW WenKai", "KaiTi", serif;
+      color: var(--ink-muted);
     }
-
     .modal-tip {
-      margin-top: 8px;
       font-size: 0.72rem;
       color: var(--ink-muted);
       letter-spacing: 0.06em;
+      margin-top: 4px;
       font-family: "LXGW WenKai", "KaiTi", serif;
     }
 
-    /* 卡片可点击提示 */
-    .card {
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    @media (min-width: 860px) {
+    /* 手机：仍横向，略收紧 */
+    @media (max-width: 560px) {
       .modal {
-        padding: 36px 32px 28px;
-        max-width: 560px;
+        width: min(96vw, 100%);
+        padding: 22px 28px 20px;
       }
-      .modal-title { font-size: 1.35rem; }
-      .modal-desc { font-size: 0.98rem; }
+      .modal-body {
+        gap: 16px;
+      }
+      .modal-title { font-size: 1.02rem; }
+      .modal-desc {
+        font-size: 0.82rem;
+        -webkit-line-clamp: 4;
+      }
       .modal-qr, .modal-qr-placeholder {
-        width: 160px;
-        height: 160px;
+        width: 108px;
+        height: 108px;
       }
+
     }
 
-  
     /* 公众号徽章 · 极简内凹 */
     .official-badge {
       display: inline-block;
@@ -906,6 +916,76 @@ main { padding: 40px 32px 96px; }
 
 
 
+
+    /* 类目简介 */
+    .cat-intro {
+      margin: 8px auto 0;
+      max-width: 36em;
+      padding: 18px 12px 8px;
+      text-align: center;
+    }
+    .cat-intro-name {
+      font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.35em;
+      text-indent: 0.35em;
+      color: var(--ink);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .cat-intro-text {
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      font-size: 0.86rem;
+      line-height: 1.95;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      text-align: justify;
+      text-align-last: center;
+    }
+    @media (min-width: 860px) {
+      .cat-intro { padding: 22px 8px 12px; }
+      .cat-intro-name { font-size: 1.02rem; margin-bottom: 14px; }
+      .cat-intro-text { font-size: 0.92rem; line-height: 2; }
+    }
+
+    /* 联系客服 · 右下角固定，在返回顶部上方 */
+    #contactFab.contact-fab {
+      position: fixed !important;
+      right: 16px !important;
+      bottom: 84px !important;
+      left: auto !important;
+      top: auto !important;
+      z-index: 99999 !important;
+      width: 44px !important;
+      height: 44px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      border: 1px solid #cfc4b0 !important;
+      background: #fbf7f0 !important;
+      color: #4f493f !important;
+      font-size: 0.78rem !important;
+      line-height: 1.15 !important;
+      letter-spacing: 0.08em !important;
+      text-align: center !important;
+      cursor: pointer !important;
+      box-shadow: 0 2px 12px rgba(28, 23, 20, 0.15) !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+      -webkit-tap-highlight-color: transparent;
+      font-family: "LXGW WenKai", "KaiTi", serif !important;
+    }
+    #contactFab.contact-fab:hover {
+      background: #2b261e !important;
+      color: #f6f1e8 !important;
+      border-color: #2b261e !important;
+    }
+
     /* 回到顶部按钮 */
     #backTop.back-top {
       position: fixed !important;
@@ -953,8 +1033,8 @@ main { padding: 40px 32px 96px; }
       inset: 0;
       z-index: 10000;
       background:
-        radial-gradient(ellipse at 50% 42%, rgba(255, 252, 245, 0.55) 0%, transparent 62%),
-        #efe6d6;
+        radial-gradient(ellipse at 50% 40%, rgba(255, 252, 245, 0.5) 0%, transparent 65%),
+        linear-gradient(180deg, #f3ebe0 0%, #ebe2d2 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -992,12 +1072,12 @@ main { padding: 40px 32px 96px; }
     .cover-line {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      font-family: "Liu Jian Mao Cao", "STLiti", "LiSu", "Ma Shan Zheng", "Noto Serif SC", cursive, serif;
-      font-size: clamp(1.65rem, 6.5vw, 2.6rem);
+      font-family: "Ma Shan Zheng", "STLiti", "LiSu", "Noto Serif SC", serif;
+      font-size: clamp(2.05rem, 8.2vw, 3.15rem);
       font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.28em;
       color: #2a241c;
-      line-height: 1.15;
+      line-height: 1.2;
       opacity: 0;
       transform: translateY(10px);
       animation: verseIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -1061,6 +1141,160 @@ main { padding: 40px 32px 96px; }
       height: 100vh;
     }
 
+    /* 宣纸颗粒噪点 · 印刷胶片感 */
+    .paper-grain {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      mix-blend-mode: multiply;
+    }
+
+
+
+
+    /* 旧分类栏隐藏 */
+    .filters { display: none !important; }
+
+    /* 左上角汉堡 */
+    .nav-toggle {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 120;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(43, 38, 30, 0.18);
+      background: rgba(250, 247, 241, 0.92);
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.35s var(--ease);
+      box-shadow: 0 1px 4px rgba(28, 23, 20, 0.04);
+    }
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: #2b261e;
+      transition: transform 0.35s var(--ease), opacity 0.25s ease;
+    }
+    .nav-toggle.is-open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .nav-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.is-open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+    .nav-toggle:hover {
+      border-color: rgba(43, 38, 30, 0.35);
+      background: #faf7f1;
+    }
+
+    /* 分类悬浮层 */
+    .nav-mask {
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      background: rgba(26, 23, 20, 0.28);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s var(--ease), visibility 0.35s;
+    }
+    .nav-mask.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 115;
+      width: min(78vw, 280px);
+      height: 100%;
+      background: #f7f2e9;
+      border-right: 1px solid rgba(43, 38, 30, 0.1);
+      padding: 72px 22px 32px;
+      transform: translateX(-105%);
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: 4px 0 24px rgba(28, 23, 20, 0.06);
+    }
+    .nav-panel.open {
+      transform: translateX(0);
+    }
+    .nav-panel-title {
+      font-family: "LXGW WenKai", "KaiTi", serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      color: rgba(42, 38, 30, 0.45);
+      margin-bottom: 18px;
+      padding-left: 4px;
+    }
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nav-item {
+      appearance: none;
+      border: none;
+      background: transparent;
+      text-align: left;
+      padding: 12px 10px;
+      font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      color: rgba(42, 38, 30, 0.55);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: color 0.3s var(--ease), background 0.3s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+    .nav-item:hover {
+      color: var(--ink);
+      background: rgba(43, 38, 30, 0.04);
+    }
+    .nav-item.active {
+      color: var(--ink);
+      font-weight: 500;
+      background: rgba(43, 38, 30, 0.05);
+    }
+    .nav-item.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 0.9em;
+      background: rgba(43, 38, 30, 0.55);
+    }
+    .nav-divider {
+      height: 1px;
+      background: rgba(43, 38, 30, 0.08);
+      margin: 10px 4px;
+    }
+    @media (min-width: 860px) {
+      .nav-toggle { top: 22px; left: 22px; width: 46px; height: 46px; }
+      .nav-panel { width: 300px; padding: 80px 28px 40px; }
+      .nav-item { font-size: 1rem; padding: 13px 12px; }
+    }
 
   </style>
 </head>
@@ -1076,6 +1310,18 @@ main { padding: 40px 32px 96px; }
     </div>
   </div>
 
+
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="打开分类" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-mask" id="navMask"></div>
+  <aside class="nav-panel" id="navPanel" aria-hidden="true">
+    <div class="nav-panel-title">分类</div>
+    <div class="nav-list" id="navList"></div>
+  </aside>
+
 <header>
     <div class="header-inner">
       <div class="brand">
@@ -1088,14 +1334,9 @@ main { padding: 40px 32px 96px; }
         </svg>
         <input type="search" id="search" placeholder="搜索标题或描述" autocomplete="off" />
       </div>
-      <div class="filters">
-        <div class="filter-layer layer1" id="layer1"></div>
-        <div class="filter-layer layer2" id="layer2"></div>
-        <div class="filter-layer layer3" id="layer3"></div>
-      </div>
-      <div class="need-more" id="needMore">
-        <span class="need-more-text">需要其他资源？欢迎联系客服为你查找</span>
-        <button type="button" class="need-more-btn" id="needMoreBtn">联系客服</button>
+<div class="cat-intro" id="catIntro">
+        <div class="cat-intro-name" id="catIntroName">全部</div>
+        <p class="cat-intro-text" id="catIntroText"></p>
       </div>
     </div>
   </header>
@@ -1109,29 +1350,34 @@ main { padding: 40px 32px 96px; }
     <p>资源仅供学习参考 · 请勿用于商业用途</p>
   </footer>
 
-  
-
-
-</div>
-
   <!-- 详情弹层 -->
   <div class="modal-mask" id="modalMask" role="dialog" aria-modal="true">
     <div class="modal" id="modal">
       <button type="button" class="modal-close" id="modalClose" aria-label="关闭">×</button>
-      <span class="modal-tag" id="modalTag"></span>
-      <h2 class="modal-title" id="modalTitle"></h2>
-      <p class="modal-desc" id="modalDesc"></p>
-      <a class="modal-download" id="modalDownload" href="#" target="_blank" rel="noopener noreferrer">立即下载</a>
-      <hr class="modal-divider" />
-      <div class="modal-contact">
-        <div class="modal-contact-title">客服微信</div>
-        <img class="modal-qr" id="modalQr" src="" alt="客服微信二维码" style="display:none" />
-        <div class="modal-qr-placeholder" id="modalQrPlaceholder">请替换二维码</div>
-        <div class="modal-wx"><span>微信号</span><strong id="modalWxId">wushu_kefu</strong></div>
-        <p class="modal-tip">长按识别二维码 · 或搜索微信号添加</p>
+      <div class="modal-body">
+        <div class="modal-main">
+          <span class="modal-tag" id="modalTag"></span>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <p class="modal-desc" id="modalDesc"></p>
+          <a class="modal-download" id="modalDownload" href="#" target="_blank" rel="noopener noreferrer">立即下载</a>
+        </div>
+        <div class="modal-side">
+          <div class="modal-contact">
+            <div class="modal-contact-title">客服微信</div>
+            <img class="modal-qr" id="modalQr" src="" alt="二维码" style="display:none" />
+            <div class="modal-qr-placeholder" id="modalQrPlaceholder">请替换二维码</div>
+            <div class="modal-wx"><span>微信号</span><strong id="modalWxId">wushu_kefu</strong></div>
+            <p class="modal-tip">长按识别二维码</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+
+<!-- 联系客服 + 回到顶部 -->
+<button type="button" class="contact-fab" id="contactFab" aria-label="联系客服">客服</button>
+<button type="button" class="back-top" id="backTop" aria-label="回到顶部">↑</button>
 
   <script>
     // ========== 客服配置（改这里） ==========
@@ -1380,9 +1626,22 @@ main { padding: 40px 32px 96px; }
       { id: "1", title: "各地方志（全国古今共4000+册）", desc: "覆盖全国各行政区域的珍稀地方文献合集，上起唐代图经古本，下迄当代新编省市县三级志书。", categoryName: "奇异杂集", link: "https://pan.quark.cn/s/f4b7cef1a222" }
     ];
 
-    const layer1 = ['全部'];
-    const layer2 = ['山', '医', '命', '相', '卜'];
-    const layer3 = ['技能教程', '创业副业', '奇异杂集', '学习资料'];
+    const navCategories = ['全部', '山', '医', '命', '相', '卜', '技能教程', '创业副业', '奇异杂集', '学习资料'];
+
+    const CATEGORY_INTRO = {
+      "全部": "天地之间，学问万端。上穷玄理，下及百工，近察己身，远图生计。今分九类，以便采撷，各有所归，各有所用。",
+      "山": "山者，入山修道之术也。炼丹养气，吐纳导引，辟谷养形，符箓通灵，筋骨以强。所求者，修身养性，返本还元，性命双全，以尽天年。",
+      "医": "医者，意也，仁术也。察阴阳，辨五行，明脏腑经络。望闻问切以审其症，方药针砭以疗其疾。上医治未病，其要在调和气血，扶正祛邪。然疾病当求良医，此记不可代诊。",
+      "命": "命者，禀于天，成于时也。以生辰年月日时，推五行之生克，察禀赋之厚薄，观运途之起伏。知命者，知进退，识盈虚，不怨天，不尤人。",
+      "相": "相者，察形观势之学也，分人相、地相二端。人相观面貌骨骼，相由心生，德厚则相随而转。地相察山川形势，宅墓之向背，贵在藏风聚气，天人相应。",
+      "卜": "卜者，决疑之术也。事有未决，心有所惑，则揲蓍起卦，观象玩辞，以占吉凶悔吝。卦非前定，贵在审时度势，趋吉避凶，知几而动。",
+      "奇异杂集": "杂集者，采百家之遗，拾九流之余也。凡奇文异籍，不入正门者，皆可纳焉。古今并蓄，新旧兼收，志怪搜神，博物通考，与今人新知并陈一架。不拘一格，以广见闻，所谓开卷有益，多识为先。",
+      "学习资料": "学者，觉也，效也。自蒙童入学，以至登科应试，皆有章程可循。小学初高，循序而进；考研应公，职称资格，各有门径。积跬步以至千里，聚细流以成江海，勤学为本，法门为用。",
+      "技能教程": "技艺者，立身之具也。弦歌可以养性，木作可以成器，电工通其理，手语达其意，烹调存其味，编程见其巧。百工各有所长，不必成系，但取其实用，日习一技，日增一能，所谓艺不压身，有备无患。",
+      "创业副业": "商者，通有无，权轻重也。察时势之变，观风口之起，辨可为与不可为。择业有道，先审己之力，再度市之势，继以章程步骤，逐一落实。然风险与机会并存，当量力而行，稳扎稳打，勿轻信暴富之言。"
+    };
+
+
 
     let currentCategory = '全部';
     let searchQuery = '';
@@ -1409,26 +1668,77 @@ main { padding: 40px 32px 96px; }
       modalQrPlaceholder.style.display = 'none';
     }
 
-    function makeBtn(cat, container) {
-      const btn = document.createElement('button');
-      btn.className = 'filter-btn' + (cat === currentCategory ? ' active' : '');
-      btn.type = 'button';
-      btn.textContent = cat;
-      btn.addEventListener('click', () => {
-        currentCategory = cat;
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        render();
-      });
-      container.appendChild(btn);
+function closeNav() {
+      var toggle = document.getElementById('navToggle');
+      var mask = document.getElementById('navMask');
+      var panel = document.getElementById('navPanel');
+      if (toggle) {
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      if (mask) mask.classList.remove('open');
+      if (panel) {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      }
     }
 
-    ['layer1', 'layer2', 'layer3'].forEach(id => {
-      document.getElementById(id).innerHTML = '';
-    });
-    layer1.forEach(c => makeBtn(c, document.getElementById('layer1')));
-    layer2.forEach(c => makeBtn(c, document.getElementById('layer2')));
-    layer3.forEach(c => makeBtn(c, document.getElementById('layer3')));
+    function openNav() {
+      var toggle = document.getElementById('navToggle');
+      var mask = document.getElementById('navMask');
+      var panel = document.getElementById('navPanel');
+      if (toggle) {
+        toggle.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+      if (mask) mask.classList.add('open');
+      if (panel) {
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    function buildNav() {
+      var list = document.getElementById('navList');
+      if (!list) return;
+      list.innerHTML = '';
+      navCategories.forEach(function (cat, i) {
+        if (i === 1 || i === 6) {
+          var div = document.createElement('div');
+          div.className = 'nav-divider';
+          list.appendChild(div);
+        }
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-item' + (cat === currentCategory ? ' active' : '');
+        btn.textContent = cat;
+        btn.addEventListener('click', function () {
+          currentCategory = cat;
+          list.querySelectorAll('.nav-item').forEach(function (b) {
+            b.classList.toggle('active', b.textContent === cat);
+          });
+          render();
+          // 选中后收回汉堡
+          window.setTimeout(closeNav, 180);
+        });
+        list.appendChild(btn);
+      });
+    }
+
+    buildNav();
+
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var mask = document.getElementById('navMask');
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          if (toggle.classList.contains('is-open')) closeNav();
+          else openNav();
+        });
+      }
+      if (mask) mask.addEventListener('click', closeNav);
+    })();
+
 
     let searchTimer;
     searchInput.addEventListener('input', (e) => {
@@ -1467,7 +1777,15 @@ main { padding: 40px 32px 96px; }
       if (e.key === 'Escape') closeModal();
     });
 
+    function updateCatIntro() {
+      var nameEl = document.getElementById('catIntroName');
+      var textEl = document.getElementById('catIntroText');
+      if (nameEl) nameEl.textContent = currentCategory;
+      if (textEl) textEl.textContent = CATEGORY_INTRO[currentCategory] || CATEGORY_INTRO['全部'];
+    }
+
     function render() {
+      updateCatIntro();
       let list = resources;
       if (currentCategory !== '全部') {
         list = list.filter(r => r.categoryName === currentCategory);
@@ -1524,9 +1842,9 @@ main { padding: 40px 32px 96px; }
       }
     }
 
-    var needMoreBtn = document.getElementById("needMoreBtn");
-    if (needMoreBtn) {
-      needMoreBtn.addEventListener("click", function () {
+    var contactFab = document.getElementById("contactFab");
+    if (contactFab) {
+      contactFab.addEventListener("click", function () {
         resetContactPanel();
         modalTag.textContent = "客服";
         modalTitle.textContent = "需要其他资源？";
@@ -1592,8 +1910,6 @@ main { padding: 40px 32px 96px; }
   </script>
 
 
-<!-- 回到顶部：必须在 body 下，不能放进弹层 -->
-<button type="button" class="back-top" id="backTop" aria-label="回到顶部">↑</button>
 <script>
 (function () {
   var btn = document.getElementById("backTop");
