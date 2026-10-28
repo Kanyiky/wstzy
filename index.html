@@ -12,8 +12,8 @@
   <!-- 霞鹜文楷：清晰楷书 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <!-- 开源隶书近似：马善政楷书偏碑味，配合系统隶书优先 -->
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=block" />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=block" rel="stylesheet" />
   <style>
     :root {
       --bg: #f5f1e8;
@@ -1080,7 +1080,8 @@ main { padding: 40px 32px 96px; }
       line-height: 1.2;
       opacity: 0;
       transform: translateY(10px);
-      animation: verseIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      /* 字体未就绪前不显示，避免先闪系统字 */
+      visibility: hidden;
     }
     /* 第一句偏上 */
     .cover-line:first-child {
@@ -1090,15 +1091,27 @@ main { padding: 40px 32px 96px; }
     /* 第二句偏下 */
     .cover-line:nth-child(2) {
       margin-top: clamp(36px, 8vh, 72px);
-      animation-delay: 0.65s;
     }
     @keyframes verseIn {
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .cover.is-font-ready .cover-line {
+      visibility: visible;
+      animation: verseIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .cover.is-font-ready .cover-line:nth-child(2) {
+      animation-delay: 0.65s;
+    }
+    .cover.is-font-ready .cover-enter-wrap {
+      visibility: visible;
+      animation: verseIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+    }
+
     .cover-enter-wrap {
       margin-top: clamp(28px, 6vh, 48px);
       opacity: 0;
-      animation: verseIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+      visibility: hidden;
     }
     .cover-enter {
       position: relative;
@@ -1893,11 +1906,48 @@ function closeNav() {
 
     render();
 
-    // 封面进入
+    // 封面进入：等书法字体就绪再渐显，避免先闪系统字
     (function () {
       var cover = document.getElementById("cover");
       var btn = document.getElementById("coverEnter");
       if (!cover || !btn) return;
+
+      function markReady() {
+        cover.classList.add("is-font-ready");
+      }
+
+      function waitFont() {
+        var done = false;
+        function finish() {
+          if (done) return;
+          done = true;
+          markReady();
+        }
+        // 超时兜底，避免一直不显示
+        var timer = window.setTimeout(finish, 2200);
+        if (document.fonts && document.fonts.load) {
+          document.fonts.load('48px "Ma Shan Zheng"').then(function () {
+            return document.fonts.ready;
+          }).then(function () {
+            window.clearTimeout(timer);
+            finish();
+          }).catch(function () {
+            window.clearTimeout(timer);
+            finish();
+          });
+        } else if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function () {
+            window.clearTimeout(timer);
+            finish();
+          });
+        } else {
+          window.clearTimeout(timer);
+          finish();
+        }
+      }
+
+      waitFont();
+
       function enter() {
         cover.classList.add("is-hidden");
         document.body.classList.remove("cover-lock");
