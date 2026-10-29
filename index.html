@@ -282,38 +282,42 @@
     .list {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 14px;
     }
 
-    /* 书目式条目：细线分隔，少框 */
+    /* 资源卡片：虚线圆角 + 轻悬浮 */
     .card {
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(43, 38, 30, 0.08);
-      border-radius: 0;
-      padding: 22px 4px;
+      background: var(--surface);
+      border: 1px dashed rgba(43, 38, 30, 0.28);
+      border-radius: 10px;
+      padding: 18px 16px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      transition: background var(--t), padding var(--t);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
       opacity: 0;
       animation: fadeUp 0.45s var(--ease) forwards;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       position: relative;
+      box-shadow: 0 2px 10px rgba(28, 23, 20, 0.04);
     }
 
     .card:first-child {
-      border-top: 1px solid rgba(43, 38, 30, 0.08);
+      border-top: 1px dashed rgba(43, 38, 30, 0.28);
     }
 
     .card:hover {
-      background: rgba(43, 38, 30, 0.03);
-      transform: none;
+      transform: translateY(-3px);
+      border-color: rgba(43, 38, 30, 0.42);
+      box-shadow: 0 8px 22px rgba(28, 23, 20, 0.08);
+      background: #fcfaf5;
     }
 
     .card:active {
-      background: rgba(43, 38, 30, 0.05);
+      transform: translateY(-1px) scale(0.985);
+      box-shadow: 0 3px 12px rgba(28, 23, 20, 0.06);
+      border-color: rgba(43, 38, 30, 0.5);
     }
 
     @keyframes fadeUp {
@@ -353,7 +357,7 @@
       gap: 10px;
       margin-top: 6px;
       padding-top: 12px;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px dashed rgba(43, 38, 30, 0.12);
     }
 
     .card-tag {
@@ -500,7 +504,7 @@ main { padding: 40px 32px 96px; }
         margin-bottom: 24px;
       }
 
-      .list { gap: 20px; }
+      .list { gap: 16px; }
 
       /* 电脑：左文右操作 */
       .card {
@@ -509,13 +513,13 @@ main { padding: 40px 32px 96px; }
         grid-template-rows: auto auto;
         column-gap: 24px;
         row-gap: 8px;
-        padding: 26px 28px;
+        padding: 22px 24px;
       }
 
       .card:hover {
-        transform: translateY(-1px);
-        box-shadow: none;
-        border-color: var(--border-strong);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 26px rgba(28, 23, 20, 0.09);
+        border-color: rgba(43, 38, 30, 0.42);
       }
 
       .card-title {
@@ -625,7 +629,7 @@ main { padding: 40px 32px 96px; }
       border-radius: 2px;
       padding: 28px 40px 24px;
       box-sizing: border-box;
-      transform: scaleX(0.08);
+      transform: scaleY(0.08);
       transform-origin: center center;
       opacity: 0;
       transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
@@ -639,7 +643,7 @@ main { padding: 40px 32px 96px; }
 
 
     .modal-mask.open .modal {
-      transform: scaleX(1);
+      transform: scaleY(1);
       opacity: 1;
     }
 
@@ -820,10 +824,10 @@ main { padding: 40px 32px 96px; }
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        transform: scaleX(0.12);
+        transform: scaleY(0.12);
       }
       .modal-mask.open .modal {
-        transform: scaleX(1);
+        transform: scaleY(1);
       }
       .modal-body {
         flex-direction: column;
@@ -978,19 +982,24 @@ main { padding: 40px 32px 96px; }
 
     /* 类目简介 */
     .cat-intro {
-      margin: 8px auto 0;
+      margin: 12px auto 8px;
       max-width: 36em;
-      padding: 18px 12px 8px;
-      text-align: center;
+      padding: 16px 18px 18px;
+      text-align: left;
+      border: 1px dashed rgba(43, 38, 30, 0.28);
+      border-radius: 10px;
+      background: var(--surface);
+      box-shadow: 0 2px 10px rgba(28, 23, 20, 0.04);
     }
     .cat-intro-name {
       font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
       font-size: 0.95rem;
       letter-spacing: 0.35em;
-      text-indent: 0.35em;
+      text-indent: 0;
       color: var(--ink);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-weight: 500;
+      text-align: left;
     }
     .cat-intro-text {
       font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
@@ -998,12 +1007,15 @@ main { padding: 40px 32px 96px; }
       line-height: 1.95;
       color: var(--ink-soft);
       letter-spacing: 0.04em;
-      text-align: justify;
-      text-align-last: center;
+      text-align: left;
+    }
+    .cat-intro-text .intro-lead {
+      display: block;
+      margin-bottom: 0.55em;
     }
     @media (min-width: 860px) {
-      .cat-intro { padding: 22px 8px 12px; }
-      .cat-intro-name { font-size: 1.02rem; margin-bottom: 14px; }
+      .cat-intro { padding: 18px 22px 20px; margin-top: 16px; }
+      .cat-intro-name { font-size: 1.02rem; margin-bottom: 12px; }
       .cat-intro-text { font-size: 0.92rem; line-height: 2; }
     }
 
@@ -1869,11 +1881,11 @@ main { padding: 40px 32px 96px; }
     const modalQrPlaceholder = document.getElementById('modalQrPlaceholder');
     const modalWxId = document.getElementById('modalWxId');
 
-    modalWxId.textContent = CONTACT.wechatId;
-    if (CONTACT.qrImage) {
+    if (modalWxId) modalWxId.textContent = CONTACT.wechatId;
+    if (CONTACT.qrImage && modalQr) {
       modalQr.src = CONTACT.qrImage;
       modalQr.style.display = 'block';
-      modalQrPlaceholder.style.display = 'none';
+      if (modalQrPlaceholder) modalQrPlaceholder.style.display = 'none';
     }
 
 function closeNav() {
@@ -1949,7 +1961,7 @@ function closeNav() {
 
 
     let searchTimer;
-    searchInput.addEventListener('input', (e) => {
+    if (searchInput) searchInput.addEventListener('input', (e) => {
       clearTimeout(searchTimer);
       searchTimer = setTimeout(() => {
         searchQuery = e.target.value.trim().toLowerCase();
@@ -1989,7 +2001,19 @@ function closeNav() {
       var nameEl = document.getElementById('catIntroName');
       var textEl = document.getElementById('catIntroText');
       if (nameEl) nameEl.textContent = currentCategory;
-      if (textEl) textEl.textContent = CATEGORY_INTRO[currentCategory] || CATEGORY_INTRO['全部'];
+      if (!textEl) return;
+      var full = CATEGORY_INTRO[currentCategory] || CATEGORY_INTRO['全部'] || '';
+      var idx = full.indexOf('。');
+      if (idx >= 0 && idx < full.length - 1) {
+        var lead = full.slice(0, idx + 1);
+        var rest = full.slice(idx + 1).replace(/^\s+/, '');
+        function esc(s) {
+          return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+        textEl.innerHTML = '<span class="intro-lead">' + esc(lead) + '</span>' + esc(rest);
+      } else {
+        textEl.textContent = full;
+      }
     }
 
     function render() {
